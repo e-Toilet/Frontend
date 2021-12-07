@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-TW" >
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="./img/favicon.ico" type="image/x-icon" />
+  <title>E-Toilet Control Panel</title>
+  <link rel='stylesheet' href='https://unpkg.com/css-pro-layout@1.1.0/dist/css/css-pro-layout.css'>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css'><link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="layout has-sidebar fixed-sidebar fixed-header">
+  <aside id="sidebar" class="sidebar break-point-lg has-bg-image">
+    <div class="image-wrapper">
+      <img src="https://user-images.githubusercontent.com/25878302/144499035-2911184c-76d3-4611-86e7-bc4e8ff84ff5.jpg" alt="sidebar background" />
+    </div>
+    <div class="sidebar-layout">
+      <div class="sidebar-header">
+        <span></span>
+        <span style="
+                text-transform: uppercase;
+                font-size: 12px;
+                letter-spacing: 3px;
+                font-weight: bold;
+              ">etoilet control panel</span>
+      </div>
+      <div class="sidebar-content">
+        <nav class="menu open-current-submenu">
+          <ul>
+            <li class="menu-item">
+              <a href="index.html">
+                <span class="menu-icon">
+                  <i class="ri-vip-diamond-fill"></i>
+                </span>
+                <span class="menu-title">廁所管理</span>
+                <span class="menu-suffix">&#128167;</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="member.html">
+                <span class="menu-icon">
+                  <i class="ri-bar-chart-2-fill"></i>
+                </span>
+                <span class="menu-title">會員管理</span>
+              </a>
+            </li>
+            <li class="menu-item sub-menu">
+              <a href="#">
+                <span class="menu-icon">
+                  <i class="ri-shopping-cart-fill"></i>
+                </span>
+                <span class="menu-title">管理員管理</span>
+              </a>
+              <div class="sub-menu-list">
+                <ul>
+                  <li class="menu-item">
+                    <a href="#">
+                      <span class="menu-title">新增管理員</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sidebar-footer" style="text-transform: uppercase;"><span>Copyright @ e-toilet</span></div>
+    </div>
+  </aside>
+  <div id="overlay" class="overlay"></div>
+  <div class="layout" style="background-color: #07103c	; color: #ffffff;">
+    <header class="header" style="background-color: white;">
+      <a id="btn-collapse" href="#">
+        <i class="ri-menu-line ri-xl"></i>
+      </a>
+      <a id="btn-toggle" href="#" class="sidebar-toggler break-point-lg">
+        <i class="ri-menu-line ri-xl"></i>
+      </a>
+    </header>
+    <main class="content" id="app">
+      <!-- 這裡才開始寫自己的Code -->
+      <div>
+        <h1>Member Dashboard</h1>
+        <ul>
+          <li v-for="toilet in toilets">
+            <span style="padding-left: 20px;">{{toilet.toilet_name}}</span>
+            <div style="padding-right: 20px;">
+              <a @click="test(toilet.toilet_id)">
+                <i class="ri-delete-bin-6-line"></i>
+              </a>
+              <a @click="test(toilet.toilet_id)">
+                <i class="ri-menu-line"></i>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+    <div class="overlay"></div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://unpkg.com/@popperjs/core@2'></script>
+  <!-- development version, includes helpful console warnings -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<!-- 根據Vue的官網source去改變src的位址，version問題 -->
+  <script  src="./js/script.js"></script>
+  <script src="./js/member_action.js"></script>
+
+</body>
+</html>
