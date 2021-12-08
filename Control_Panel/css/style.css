@@ -21,27 +21,6 @@
 .layout.rtl .header {
   box-shadow: -1px 1px 4px #9aa0b9;
 }
-.login_register div{
-  display: flex;
-  align-items: center;
-  margin: 1rem 0 1rem 0;
-}
-.login_register div label{
-  word-wrap:normal;
-  width: 8rem;
-  margin-right: 10px;
-}
-.login_register div input[type="password"],
-.login_register div input[type="text"] {
-  display: block;
-  width: 100%;
-  /* margin: 1rem 0 1rem 0; */
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 0;
-  border-radius: 0.125rem 0.25rem;
-  background-color: hsl(222, 20%, 95%);
-}
 
 .sidebar {
   color: #b3b8d4;
@@ -107,7 +86,11 @@
 }
 
 @keyframes swing {
-  0%, 30%, 50%, 70%, 100% {
+  0%,
+  30%,
+  50%,
+  70%,
+  100% {
     transform: rotate(0deg);
   }
   10% {
@@ -129,14 +112,14 @@
   margin: 0;
 }
 
-.layout .content ul{
+.layout .content ul {
   list-style-type: none;
   margin: 10px;
   font-size: 200%;
 }
 
-.layout .content ul li{
-  inline-size: auto 12rem ;
+.layout .content ul li {
+  inline-size: auto 12rem;
   font-weight: 300;
   display: flex;
   padding: 10px 0 10px 0;
@@ -144,14 +127,14 @@
   border-right-width: 30px; */
   align-content: center;
   justify-content: space-between;
-  background-color: #000F5C;
+  background-color: #000f5c;
   border-style: solid;
   border-color: gray;
   border-radius: 15px;
   margin: 3px;
 }
 
-.layout .content ul li i{
+.layout .content ul li i {
   align-content: center;
 }
 
@@ -237,7 +220,9 @@
 .layout .sidebar .menu > ul > .sub-menu > .sub-menu-list {
   background-color: #0b1a2c;
 }
-.layout .sidebar .menu.icon-shape-circle .menu-item a .menu-icon, .layout .sidebar .menu.icon-shape-rounded .menu-item a .menu-icon, .layout .sidebar .menu.icon-shape-square .menu-item a .menu-icon {
+.layout .sidebar .menu.icon-shape-circle .menu-item a .menu-icon,
+.layout .sidebar .menu.icon-shape-rounded .menu-item a .menu-icon,
+.layout .sidebar .menu.icon-shape-square .menu-item a .menu-icon {
   background-color: #0b1a2c;
 }
 .layout .sidebar .menu.icon-shape-circle .menu-item a .menu-icon {
@@ -249,7 +234,12 @@
 .layout .sidebar .menu.icon-shape-square .menu-item a .menu-icon {
   border-radius: 0;
 }
-.layout .sidebar:not(.collapsed) .menu > ul > .menu-item.sub-menu > .sub-menu-list {
+.layout
+  .sidebar:not(.collapsed)
+  .menu
+  > ul
+  > .menu-item.sub-menu
+  > .sub-menu-list {
   visibility: visible !important;
   position: static !important;
   transform: translate(0, 0) !important;
@@ -284,10 +274,17 @@
 .layout .sidebar.collapsed .menu > ul > .menu-item.active > a::after {
   background-color: #dee2ec;
 }
-.layout .sidebar.has-bg-image .menu.icon-shape-circle .menu-item a .menu-icon, .layout .sidebar.has-bg-image .menu.icon-shape-rounded .menu-item a .menu-icon, .layout .sidebar.has-bg-image .menu.icon-shape-square .menu-item a .menu-icon {
+.layout .sidebar.has-bg-image .menu.icon-shape-circle .menu-item a .menu-icon,
+.layout .sidebar.has-bg-image .menu.icon-shape-rounded .menu-item a .menu-icon,
+.layout .sidebar.has-bg-image .menu.icon-shape-square .menu-item a .menu-icon {
   background-color: rgba(11, 26, 44, 0.6);
 }
-.layout .sidebar.has-bg-image:not(.collapsed) .menu > ul > .sub-menu > .sub-menu-list {
+.layout
+  .sidebar.has-bg-image:not(.collapsed)
+  .menu
+  > ul
+  > .sub-menu
+  > .sub-menu-list {
   background-color: rgba(11, 26, 44, 0.6);
 }
 .layout.rtl .sidebar .menu .menu-item a .menu-icon {
@@ -308,7 +305,12 @@
   right: auto;
   left: 10px;
 }
-.layout.rtl .sidebar.collapsed .menu > ul > .menu-item.sub-menu > .sub-menu-list {
+.layout.rtl
+  .sidebar.collapsed
+  .menu
+  > ul
+  > .menu-item.sub-menu
+  > .sub-menu-list {
   margin-left: -3px !important;
 }
 
