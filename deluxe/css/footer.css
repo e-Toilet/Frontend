@@ -1,0 +1,18 @@
+.footer{
+    
+}
+
+.fixed-footer{
+  background: white;
+  color:#333333;
+  border:1px solid #DDDDDD;
+  padding:10px;
+  width:21%;
+  position:fixed;
+  bottom:0;
+  left:50%;
+  margin-left:29%;
+  _position: absolute; /* position fixed for IE6 */
+  _top:expression(documentElement.scrollTop+documentElement.clientHeight-this.clientHeight-4);
+  z-index:4;
+}
