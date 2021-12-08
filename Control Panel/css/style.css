@@ -21,6 +21,27 @@
 .layout.rtl .header {
   box-shadow: -1px 1px 4px #9aa0b9;
 }
+.login_register div{
+  display: flex;
+  align-items: center;
+  margin: 1rem 0 1rem 0;
+}
+.login_register div label{
+  word-wrap:normal;
+  width: 8rem;
+  margin-right: 10px;
+}
+.login_register div input[type="password"],
+.login_register div input[type="text"] {
+  display: block;
+  width: 100%;
+  /* margin: 1rem 0 1rem 0; */
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 0;
+  border-radius: 0.125rem 0.25rem;
+  background-color: hsl(222, 20%, 95%);
+}
 
 .sidebar {
   color: #b3b8d4;
