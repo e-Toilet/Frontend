@@ -155,7 +155,7 @@
                         <div class="col-md-7 d-flex justify-content-center">
                             <div class="d-flex justify-content-center">
                                 <div class="wrap">
-                                    <button type="button" class="btn" title="找附近" style="background-color: white;border-radius: 50%;border: 0;width: 110%;height: 100%"  data-toggle="modal" data-target="#googlemap">
+                                    <button type="button" class="btn" title="找附近" onclick="getLocation()" style="background-color: white;border-radius: 50%;border: 0;width: 110%;height: 100%"  data-toggle="modal" data-target="#googlemap">
                                         <div class="col" style="margin-top: 1rem">
                                             <img src="images/nearby1.png" width="80" height="80">
                                         </div>
@@ -200,6 +200,19 @@
                 $('#output').attr('src', dataURL).show(); //將img的src設定為dataURL並顯示
             };
         }
+
+        function getLocation(){
+            if (navigator.geolocation) {//取得 經緯度
+                navigator.geolocation.getCurrentPosition(showPosition);//有拿到位置就呼叫 showPosition 函式
+            } else {
+                //沒有支援呼叫地理位置功能的瀏覽器
+            }
+        }
+
+        function showPosition(position){
+            alert("Longitude: " + position.coords.longitude + "\n" + "Latitude: " + position.coords.latitude +)
+        }
+        
 
 //        function initMap() {
 //            var Station_latlng = {
