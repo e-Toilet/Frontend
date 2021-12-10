@@ -486,8 +486,6 @@ pre {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  justify-content: center; 
-  align-items: center;
   margin-right: -15px;
   margin-left: -15px; }
 
@@ -508,9 +506,6 @@ pre {
   position: relative;
   width: 100%;
   min-height: 1px;
-  display: flex;
-  justify-content: center; 
-  align-items: center;
   padding-right: 15px;
   padding-left: 15px; }
 
