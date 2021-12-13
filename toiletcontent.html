@@ -459,6 +459,20 @@
             };
         }
 
+        function AddLocation() {
+            if (navigator.geolocation) {
+                //取得 經緯度
+                navigator.geolocation.getCurrentPosition(addPosition); //有拿到位置就呼叫 showPosition 函式
+            } else {
+                //沒有支援呼叫地理位置功能的瀏覽器
+            }
+        }
+
+        function addPosition(pos) {
+            $("#here").attr("type", "show").show();
+            $("#here").attr("placeholder", "(" + pos.coords.longitude + "," + pos.coords.latitude + ")").show();
+        }
+
         //        刪除評論
         document.getElementById("demo").addEventListener("click", function() {
             swal({
@@ -753,8 +767,15 @@
                                 <font color="red">＊</font>經緯度
                             </td>
                             <td align="left">
-                                <img src="images/gps.png" width="30" height="30" />
+                                <button type="button" class="btn" onclick="AddLocation()" style="background: white">
+                                    <img src="images/gps.png" width="30" height="30" />
+                                </button>
                             </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 100px">
+                            </td>
+                            <td><input id="here" type="hidden" disabled></td>
                         </tr>
                         <tr>
                             <td colspan="2">
