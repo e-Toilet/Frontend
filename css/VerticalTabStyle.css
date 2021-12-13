@@ -16,7 +16,7 @@ body {font-family: "Lato", sans-serif;}
   display: block;
   background-color: inherit;
   color: black;
-  padding: 22px 16px;
+  padding: 22px 2px;
   width: 100%;
   border: none;
   outline: none;
@@ -41,7 +41,7 @@ body {font-family: "Lato", sans-serif;}
   float: left;
   padding: 0px 12px;
   border: 1px solid #ccc;
-  width: 70%;
+  width: 75%;
   border-left: none;
   height: 300px;
   display: none
@@ -54,8 +54,6 @@ body {font-family: "Lato", sans-serif;}
 {
   list-style: none;
   border-bottom: solid;
-  width: 95%;
   position: relative;
-  left: 2.5%
 }
 </style>

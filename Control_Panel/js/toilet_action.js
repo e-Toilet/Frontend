@@ -1,21 +1,17 @@
 const app = new Vue({
     el: '#app',
     data: {
-        toilets: [
-            {toilet_id:"1", toilet_name:"第一廁所"},
-            {toilet_id:"2", toilet_name:"第二廁所"},
-            {toilet_id:"3", toilet_name:"第三廁所"},
-            {toilet_id:"4", toilet_name:"第四廁所"},
-            {toilet_id:"4", toilet_name:"第四廁所"},
-            {toilet_id:"4", toilet_name:"第四廁所"},
-            {toilet_id:"4", toilet_name:"第四廁所"},
-            {toilet_id:"4", toilet_name:"第四廁所"},
-            {toilet_id:"4", toilet_name:"第四廁所"}
-        ]
+        toilets: []
+    },
+    created: () => {
+        axios.get('http://140.115.87.117:8090/getAllToilet')
+                .then( (response) => {
+                    result = JSON.parse(response.data.Toiletinfo)
+                    app.toilets = result  
+                })
     },
     methods: {
-        test: (id) => {
-            alert(`Hello, ${id}`)
+        test2: () => {
         }
     }
 })

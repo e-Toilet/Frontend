@@ -12,6 +12,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
@@ -92,7 +93,7 @@
       </aside>
       <div id="overlay" class="overlay"></div>
       <div class="layout" style="background-color: #07103c; color: #ffffff">
-        <header class="header" style="background-color: white">
+        <header class="header" style="background-color: #0e1c2d">
           <a id="btn-collapse" href="#">
             <i class="ri-menu-line ri-xl"></i>
           </a>
@@ -107,7 +108,7 @@
             <!--加入搜尋-->
             <ul>
               <li v-for="toilet in toilets">
-                <span style="padding-left: 20px">{{toilet.toilet_name}}</span>
+                <span style="padding-left: 20px">{{toilet.name}}</span>
                 <div style="padding-right: 20px">
                   <a @click="test(toilet.toilet_id)">
                     <i class="ri-delete-bin-6-line"></i>
