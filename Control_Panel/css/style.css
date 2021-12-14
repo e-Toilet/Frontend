@@ -335,3 +335,7 @@ a {
     display: none;
   }
 }
+/* 因為我的Modal不能在父結點下，導致Modal會因為暗化背景而點不到，所以手動將Modal-backdrop的z-index值調低 */
+.modal-backdrop {
+  z-index: -1111;
+}

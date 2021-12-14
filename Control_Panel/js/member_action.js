@@ -1,7 +1,12 @@
 const app = new Vue({
     el: '#app',
     data:{
-        members:[]
+        members: [],
+        member_info: {
+        },
+        isEmailLegal: false,
+        isPasswordLegal: false
+        
     },
     created: () => {
         axios.get('http://140.115.87.117:8090/getAllMember')
@@ -36,7 +41,7 @@ const app = new Vue({
                         })
                         .catch((error) => {
                             swal({
-                                title: `Backend Error`,
+                                title: "Encounter error message",
                                 text: error,
                                 icon: 'error'
                             })
@@ -52,8 +57,33 @@ const app = new Vue({
         
         },
         update_member: () => {
-            
-        }
+            axios.post('http://140.115.87.117:8090/updateMemberInfo', app.member_info)
+                .then((response) => {
+                    swal({
+                        title: 'Member update Successfully',
+                        text: response,
+                        icon: 'success'
+                    })
+                })
+                .catch((error) => { 
+                    swal({
+                        title: "Encounter error message",
+                        text: error,
+                        icon: 'error'
+                    })
+                })
+        },
+        SendMemberInfo: (memberobj) => {
+            app.member_info = memberobj
+            app.checkIFEmailLegal()
+            app.checkIFPasswordLegal()
+        },
+        checkIFEmailLegal: () => {
+            app.isEmailLegal = (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(app.member_info.email))
+        },
+        checkIFPasswordLegal: () => {
+            app.isPasswordLegal = (app.member_info.password.length >= 6)
+        },
 
     }
 })
