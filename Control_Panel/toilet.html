@@ -19,6 +19,17 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
     <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
     <link rel="stylesheet" href="./css/style.css" />
   </head>
@@ -116,16 +127,122 @@
             <ul>
               <li v-for="toilet in toilets" v-if="toilet.status == 1">
                 <span style="padding-left: 20px">{{toilet.name}}</span>
-                <div style="padding-right: 20px; white-space: nowrap;">
+                <div style="padding-right: 20px; white-space: nowrap">
                   <a @click="delete_toilet(toilet)">
                     <i class="ri-delete-bin-6-line"></i>
                   </a>
-                  <a @click="update_toilet(toilet)">
+                  <a @click="SendToiletInfo(toilet)" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#update_toilet_modal"
+                  >
                     <i class="ri-menu-line"></i>
                   </a>
                 </div>
               </li>
             </ul>
+          </div>
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="update_toilet_modal"
+            tabindex="-1"
+            aria-labelledby="ModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="ModalLabel">更新廁所資訊</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form style="color: black">
+                    <div class="mb-3">
+                      <label for="toilet_name" class="form-label">Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="toilet_name"
+                        aria-describedby="nameHelp"
+                        v-model.lazy="toilet_info.name"
+                      />
+                      <div id="nameHelp" v-show="!checkInputLegal(toilet_info.name)" class="form-text" style="color: red">
+                        Name should not be empty
+                      </div>
+                    </div>
+                    <!-- 這裡寫city country district -->
+                    <div class="mb-3">
+                      <label class="form-label">Country</label>
+                      <select class="form-select" aria-label="Default select example" v-model="toilet_info.country_id">
+                        <option selected disabled>Select Country...</option>
+                        <option v-for="country in countries" :value="country.country_id">{{ country.country_name }}</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label">City</label>
+                      <select class="form-select" aria-label="Default select example" v-model="toilet_info.city_id">
+                        <option selected disabled>Select City...</option>
+                        <option v-for="city in cities" :value="city.city_id" v-show="city.country_id == toilet_info.country_id">{{ city.city_name }}</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label">District</label>
+                      <select class="form-select" aria-label="Default select example"  v-model="toilet_info.district_id">
+                        <option selected disabled>Select District...</option>
+                        <option v-for="district in districts" :value="district.district_id" v-show="district.city_id == toilet_info.city_id">{{ district.district_name }}</option>
+                      </select>
+                    </div>
+                    
+                    
+
+                    <div class="mb-3">
+                      <label class="form-label" for="toilet_longitude"
+                        >Longitude</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="toilet_longtitude"
+                        aria-describedby="longitudeHelp"
+                        v-model="toilet_info.longitude"
+                        disabled
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="toilet_latitude" class="form-label"
+                        >Latitude</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="toilet_latitude"
+                        aria-describedby="latitudeHelp"
+                        v-model.trim="toilet_info.latitude"
+                        disabled
+                      />
+                      </div>
+                    </div>
+                  </form>        
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      @click="update_toilet"
+                      aria-label="Close"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </main>
         <div class="overlay"></div>

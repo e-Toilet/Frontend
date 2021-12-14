@@ -1,84 +1,94 @@
 const app = new Vue({
-    el: '#app',
-    data: {
-        toilets: []
-    },
-    created: () => {
-        axios.get('http://140.115.87.117:8090/getAllToilet')
-                .then( (response) => {
-                    result = JSON.parse(response.data.Toiletinfo)
-                    app.toilets = result  
-                })
-    },
-    methods: {
-        delete_toilet: (toiletobj) => {
-            let toilet_id = toiletobj.toilet_id
-            let toilet_name = toiletobj.name
-            let toiletsArray = app.toilets
+  el: "#app",
+  data: {
+    toilets: [],
+    toilet_info: {},
+    countries: [],
+    cities: [],
+    districts: [],
+  },
+  created: () => {
+    axios.get("http://140.115.87.117:8090/getAllToilet").then((response) => {
+      result = JSON.parse(response.data.Toiletinfo);
+      app.toilets = result;
+    });
+    axios.get("http://140.115.87.117:8090/getAllCountry").then((response) => {
+      app.countries = JSON.parse(response.data.CountryInfo);
+    });
+    axios.get("http://140.115.87.117:8090/getAllCity").then((response) => {
+      app.cities = JSON.parse(response.data.CityInfo);
+    });
+    axios.get("http://140.115.87.117:8090/getAllDistrict").then((response) => {
+      app.districts = JSON.parse(response.data.DistrictInfo);
+    });
+  },
+  methods: {
+    delete_toilet: (toiletobj) => {
+      let toilet_id = toiletobj.toilet_id;
+      let toilet_name = toiletobj.name;
+      let toiletsArray = app.toilets;
 
-            swal({
-                title: `Sure to delete ${toilet_name}?`,
-                icon: "warning",
-                buttons: true,
-                dangerMode: true
-            }).then((response) => {
-                if(response){
-                    axios.post('http://140.115.87.117:8090/deleteToilet',{"toilet_id": toilet_id})
-                        .then(() => {
-                            let deleted_obj_index = toiletsArray.indexOf(toiletobj)
-                            console.log(deleted_obj_index)
-                            if (deleted_obj_index > -1)
-                                toiletsArray.splice(deleted_obj_index, 1)
-                            swal({
-                                title: `${toilet_name} delete successfully`,
-                                icon: "success"
-                            })
-                        })
-                        .catch((error) => {
-                            swal({
-                                title: `Backend Error`,
-                                text: error,
-                                icon: 'error'
-                            })
-                        })                  
-                }else{
-                    swal({
-                        title: 'Cancel',
-                        icon: "error"
-                    })
-                }
-                    
+      swal({
+        title: `Sure to delete ${toilet_name}?`,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((response) => {
+        if (response) {
+          axios
+            .post("http://140.115.87.117:8090/deleteToilet", {
+              toilet_id: toilet_id,
             })
-        },
-        update_toilet: (toilet_obj) => {
-            // let { value: formValues } = await Swal.fire({
-            //     title: 'Multiple inputs',
-            //     html:
-            //         '<label for="swal-input1">Name: </label>'+
-            //         '<input id="swal-input1" class="swal2-input">' +
-            //         '<label for="swal-input2">Country: </label>'+
-            //         '<input id="swal-input2" class="swal2-input">' +
-            //         '<label for="swal-input3">City: </label>'+
-            //         '<input id="swal-input3" class="swal2-input">' +
-            //         '<label for="swal-input4">District: </label>'+
-            //         '<input id="swal-input4" class="swal2-input">' +
-            //         '<label for="swal-input5">Longtitude: </label>'+
-            //         '<input id="swal-input5" class="swal2-input">' +
-            //         '<label for="swal-input6">Latiutude: </label>'+
-            //         '<input id="swal-input6" class="swal2-input">',
-            //     focusConfirm: false,
-            //     preConfirm: () => {
-            //         return [
-            //         document.getElementById('swal-input1').value,
-            //         document.getElementById('swal-input2').value
-            //         ]
-            //     }
-            // })
-
-            // if (formValues) {
-            //     Swal.fire(JSON.stringify(formValues))
-            // }
-            
+            .then(() => {
+              let deleted_obj_index = toiletsArray.indexOf(toiletobj);
+              console.log(deleted_obj_index);
+              if (deleted_obj_index > -1)
+                toiletsArray.splice(deleted_obj_index, 1);
+              swal({
+                title: `${toilet_name} delete successfully`,
+                icon: "success",
+              });
+            })
+            .catch((error) => {
+              swal({
+                title: `Backend Error`,
+                text: error,
+                icon: "error",
+              });
+            });
+        } else {
+          swal({
+            title: "Cancelled",
+            icon: "error",
+          });
         }
-    }
-})
+      });
+    },
+    update_toilet: () => {
+      //   toiletobj = app.toilet_info;
+      //   delete toiletobj["avg_rating"];
+      //   delete toiletobj["status"];
+      axios
+        .post("http://140.115.87.117:8090/updateToilet", app.toilet_info)
+        .then((response) => {
+          swal({
+            title: "Toilet update Successfully",
+            icon: "success",
+          });
+        })
+        .catch((error) => {
+          swal({
+            title: "Encounter error message",
+            text: error,
+            icon: "error",
+          });
+        });
+    },
+    SendToiletInfo: (toiletobj) => {
+      app.toilet_info = toiletobj;
+    },
+    checkInputLegal: (input) => {
+      return String(input).length > 0;
+    },
+  },
+});
