@@ -3,11 +3,13 @@ const app = new Vue({
     data: {
         email: "",
         password: "",
-        name: ""
+        name: "",
+        isRegistered: false
     },
     methods: {
         checkForm: function (e) {
-            if (this.email && this.validEmail(this.email) && this.password && this.validPassword(this.password) && this.name) {
+            let checkIsInputedAndLegal = this.email && this.validEmail(this.email) && this.password && this.validPassword(this.password) && this.name
+            if (checkIsInputedAndLegal) {
                 axios.post('http://140.115.87.117:8090/Register', {
                         email: app.email,
                         password: app.password,
@@ -16,13 +18,14 @@ const app = new Vue({
                     .then((response) => {
                         result = response.data
                         alert("註冊成功")
-                        //                        props.history.push("/Login")
-                        //                        this.$router.push({path:"/Login"})
-                        console.log(result)
+                        self.location.reload()
                     })
                     .catch((error) => {
                         alert("註冊失敗！此信箱已存在，請嘗試新的信箱！")
+                        return
                     })
+                    
+                    
             }
             if (!this.name) {
                 alert('Name欄位為必填.');

@@ -122,6 +122,7 @@
   inline-size: auto 12rem;
   font-weight: 300;
   display: flex;
+  flex-wrap: nowrap;
   padding: 10px 0 10px 0;
   /* border-left-width:30px;
   border-right-width: 30px; */

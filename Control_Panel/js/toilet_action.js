@@ -11,17 +11,43 @@ const app = new Vue({
                 })
     },
     methods: {
-        delete_toilet: (toilet_id, toilet_name) => {
+        delete_toilet: (toiletobj) => {
+            let toilet_id = toiletobj.toilet_id
+            let toilet_name = toiletobj.name
+            let toiletsArray = app.toilets
+
             swal({
                 title: `Sure to delete ${toilet_name}?`,
                 icon: "warning",
                 buttons: true,
                 dangerMode: true
-            }).then(() => {
-                swal({
-                    title: `${toilet_name} delete successfully`,
-                    icon: "success"
-                })
+            }).then((response) => {
+                if(response){
+                    axios.post('http://140.115.87.117:8090/deleteToilet',{"toilet_id": toilet_id})
+                        .then(() => {
+                            let deleted_obj_index = toiletsArray.indexOf(toiletobj)
+                            console.log(deleted_obj_index)
+                            if (deleted_obj_index > -1)
+                                toiletsArray.splice(deleted_obj_index, 1)
+                            swal({
+                                title: `${toilet_name} delete successfully`,
+                                icon: "success"
+                            })
+                        })
+                        .catch((error) => {
+                            swal({
+                                title: `Backend Error`,
+                                text: error,
+                                icon: 'error'
+                            })
+                        })                  
+                }else{
+                    swal({
+                        title: 'Cancel',
+                        icon: "error"
+                    })
+                }
+                    
             })
         },
         update_toilet: (toilet_obj) => {

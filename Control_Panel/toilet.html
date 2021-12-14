@@ -19,7 +19,7 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
@@ -110,14 +110,14 @@
         </header>
         <main class="content" id="app">
           <!-- 這裡才開始寫自己的Code -->
-          <div>
+          <div class="content">
             <h1>Dashboard</h1>
             <!--加入搜尋-->
             <ul>
-              <li v-for="toilet in toilets">
+              <li v-for="toilet in toilets" v-if="toilet.status == 1">
                 <span style="padding-left: 20px">{{toilet.name}}</span>
-                <div style="padding-right: 20px">
-                  <a @click="delete_toilet(toilet.toilet_id, toilet.name)">
+                <div style="padding-right: 20px; white-space: nowrap;">
+                  <a @click="delete_toilet(toilet)">
                     <i class="ri-delete-bin-6-line"></i>
                   </a>
                   <a @click="update_toilet(toilet)">
