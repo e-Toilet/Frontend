@@ -5,10 +5,10 @@ const showtoilet = new Vue({
     },
     created: () => {
         axios.get('http://140.115.87.117:8090/getAllToilet')
-            .then((response) => {
-                result = JSON.parse(response.data.Toiletinfo)
-                showtoilet.toilets = result
-            })
+        .then((response) => {
+            result = JSON.parse(response.data.Toiletinfo)
+            showtoilet.toilets = result
+        })
     },
     methods: {
     }
