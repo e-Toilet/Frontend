@@ -107,8 +107,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="row">
-                        <div id="one" class="col-sm col-md-6 col-lg-4 ftco-animate" style="display: unset">
+                    <div class="row" id="showtoilet">
+                        <div class="col-sm col-md-6 col-lg-4 ftco-animate" style="display: unset" v-for="toilet in toilets">
                             <!--小卡片-->
                             <div class="room">
                                 <a id="Toilet1" href="toiletcontent.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/t.jpg)">
@@ -123,16 +123,16 @@
                                 </a>
                                 <div class="text p-3 text-center">
                                     <h3 class="mb-3">
-                                        <a id="toilettitle" href="toiletcontent.html" style="float: inherit">新竹火車站公廁</a>
+                                        <a href="toiletcontent.html" style="float: inherit">{{toilet.name}}</a>
                                     </h3>
                                     <p>
                                     </p>
-                                    <span class="per">( <span id="latitude">120.971696</span> ,
-                                        <span id="longitude">24.801643</span> )</span>
+                                    <span class="per">( <span>{{toilet.longtitude}}</span> ,
+                                        <span>{{toilet.latitude}}</span> )</span>
                                     <p>
                                         <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;
-                                        <span id="country">台灣</span> ，<span id="city">新竹市</span>
-                                        ，<span id="district">東區</span>
+                                        <span>{{toilet.country_id}}</span> ，<span>{{toilet.city_id}}</span>
+                                        ，<span>{{toilet.district_id}}</span>
                                     </p>
                                     <hr />
                                     <p class="pt-1">
@@ -141,81 +141,7 @@
                                         <i class="fas fa-star" id="three-star"></i>&nbsp;
                                         <i class="fas fa-star" id="four-star"></i>&nbsp;
                                         <i class="far fa-star" id="five-star"></i>
-                                        <h id="average_rating">(4.5)</h>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="two" class="col-sm col-md-6 col-lg-4 ftco-animate" style="display: unset">
-                            <div class="room">
-                                <a id="Toilet2" href="toiletcontent1.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/t1.jpg)">
-                                    <div class="
-                        icon
-                        d-flex
-                        justify-content-center
-                        align-items-center
-                      ">
-                                        <span class="icon-search2"></span>
-                                    </div>
-                                </a>
-                                <div class="text p-3 text-center">
-                                    <h3 class="mb-3">
-                                        <a id="toilettitle1" href="toiletcontent1.html" style="float: inherit">民族路公廁</a>
-                                    </h3>
-                                    <p>
-                                    </p>
-                                    <span class="per">( <span id="latitude">120.919696</span> ,
-                                        <span id="longitude">24.611643</span> )</span>
-                                    <p>
-                                        <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;
-                                        <span id="country">台灣</span> ，<span id="city">新竹市</span>
-                                        ，<span id="district">東區</span>
-                                    </p>
-                                    <hr />
-                                    <p class="pt-1">
-                                        <i class="fas fa-star" id="one-star"></i>&nbsp;
-                                        <i class="fas fa-star" id="two-star"></i>&nbsp;
-                                        <i class="fas fa-star" id="three-star"></i>&nbsp;
-                                        <i class="far fa-star" id="four-star"></i>&nbsp;
-                                        <i class="far fa-star" id="five-star"></i>
-                                        <h id="average_rating">(3.5)</h>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="three" class="col-sm col-md-6 col-lg-4 ftco-animate" style="display: unset">
-                            <div class="room">
-                                <a id="Toilet3" href="toiletcontent2.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/t2.jpg)">
-                                    <div class="
-                        icon
-                        d-flex
-                        justify-content-center
-                        align-items-center
-                      ">
-                                        <span class="icon-search2"></span>
-                                    </div>
-                                </a>
-                                <div class="text p-3 text-center">
-                                    <h3 class="mb-3">
-                                        <a id="toilettitle2" href="toiletcontent2.html" style="float: inherit">澳門首家線上公廁</a>
-                                    </h3>
-                                    <p>
-                                    </p>
-                                    <span class="per">( <span id="latitude">120.917616</span> ,
-                                        <span id="longitude">24.611933</span> )</span>
-                                    <p>
-                                        <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;
-                                        <span id="country">台灣</span> ，<span id="city">新竹市</span>
-                                        ，<span id="district">東區</span>
-                                    </p>
-                                    <hr />
-                                    <p class="pt-1">
-                                        <i class="fas fa-star" id="one-star"></i>&nbsp;
-                                        <i class="fas fa-star" id="two-star"></i>&nbsp;
-                                        <i class="fas fa-star" id="three-star"></i>&nbsp;
-                                        <i class="fas fa-star" id="four-star"></i>&nbsp;
-                                        <i class="fas fa-star" id="five-star"></i>
-                                        <h id="average_rating">(5)</h>
+                                        (<span>{{toilet.avg_rating}}</span>)
                                     </p>
                                 </div>
                             </div>
@@ -281,6 +207,10 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+    <script src="./js/toilet.js"></script>
 </body>
 <form method="post">
     <div class="modal fade" id="Create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
