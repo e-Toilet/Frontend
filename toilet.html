@@ -104,31 +104,31 @@
     </div>
 
     <section class="ftco-section bg-light">
-        <div class="container">
+        <div class="container" id="showtoilet" >
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="row" id="showtoilet">
-                        <div class="col-sm col-md-6 col-lg-4 ftco-animate" style="display: unset" v-for="toilet in toilets">
+                    <div class="row" >
+                        <div class="col-sm col-md-6 col-lg-4 ftco-animate" v-for="toilet in toilets">
                             <!--小卡片-->
                             <div class="room">
-                                <a id="Toilet1" href="toiletcontent.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/t.jpg)">
+                                <a href="toiletcontent.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/t.jpg)">
                                     <div class="
-                        icon
-                        d-flex
-                        justify-content-center
-                        align-items-center
-                      ">
+                                        icon
+                                        d-flex
+                                        justify-content-center
+                                        align-items-center
+                                    ">
                                         <span class="icon-search2"></span>
                                     </div>
                                 </a>
                                 <div class="text p-3 text-center">
                                     <h3 class="mb-3">
-                                        <a href="toiletcontent.html" style="float: inherit">{{toilet.name}}</a>
+                                        <a style="float: inherit">{{toilet.name}}</a>
                                     </h3>
                                     <p>
-                                    </p>
                                     <span class="per">( <span>{{toilet.longtitude}}</span> ,
                                         <span>{{toilet.latitude}}</span> )</span>
+                                    </p>
                                     <p>
                                         <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;
                                         <span>{{toilet.country_id}}</span> ，<span>{{toilet.city_id}}</span>
@@ -141,7 +141,7 @@
                                         <i class="fas fa-star" id="three-star"></i>&nbsp;
                                         <i class="fas fa-star" id="four-star"></i>&nbsp;
                                         <i class="far fa-star" id="five-star"></i>
-                                        (<span>{{toilet.avg_rating}}</span>)
+                                        {<span>{{toilet.avg_rating}}</span>}
                                     </p>
                                 </div>
                             </div>

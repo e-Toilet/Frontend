@@ -5,15 +5,9 @@ const searchtoilet = new Vue({
         cities: [],
         districts: [],
         selected: {
-            country: "國家",
-            city: "城市",
-            district: "地區",
-            country_id: "",
-            city_id: "",
-            district_id: "",
-            country_name: "",
-            city_name: "",
-            district_name: ""
+            country_id: "-1",
+            city_id: "-1",
+            district_id: "-1",
         }
     },
     created: () => {

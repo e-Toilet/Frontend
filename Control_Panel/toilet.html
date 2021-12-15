@@ -199,8 +199,20 @@
                         <option v-for="district in districts" :value="district.district_id" v-show="district.city_id == toilet_info.city_id">{{ district.district_name }}</option>
                       </select>
                     </div>
-                    
-                    
+
+                    <div class="mb-3">
+                      <label for="toilet_address" class="form-label">Address</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="toilet_address"
+                        aria-describedby="addressHelp"
+                        v-model.lazy="toilet_info.address"
+                      />
+                      <div id="addressHelp" v-show="!checkInputLegal(toilet_info.name)" class="form-text" style="color: red">
+                        Address should not be empty
+                      </div>
+                    </div>
 
                     <div class="mb-3">
                       <label class="form-label" for="toilet_longitude"

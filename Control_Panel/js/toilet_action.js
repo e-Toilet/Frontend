@@ -65,21 +65,23 @@ const app = new Vue({
       });
     },
     update_toilet: () => {
-      //   toiletobj = app.toilet_info;
-      //   delete toiletobj["avg_rating"];
-      //   delete toiletobj["status"];
+      console.log(app.toilet_info)
       axios
         .post("http://140.115.87.117:8090/updateToilet", app.toilet_info)
-        .then((response) => {
+        .then(() => {
           swal({
             title: "Toilet update Successfully",
             icon: "success",
-          });
+          })
+          // app.toilets
+          app.toilets[app.toilet_info.toilet_id-1] = app.toilet_info
         })
         .catch((error) => {
+          error_msg = error.response.data.error
+          console.log()
           swal({
-            title: "Encounter error message",
-            text: error,
+            title: "Encountered an error message",
+            text: error_msg,
             icon: "error",
           });
         });

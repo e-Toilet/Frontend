@@ -8,10 +8,8 @@ const showtoilet = new Vue({
             .then((response) => {
                 result = JSON.parse(response.data.Toiletinfo)
                 showtoilet.toilets = result
-                console.log(result)
             })
     },
     methods: {
-
     }
 })
