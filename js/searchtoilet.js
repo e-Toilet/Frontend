@@ -8,6 +8,11 @@ const searchtoilet = new Vue({
             country_id: "-1",
             city_id: "-1",
             district_id: "-1",
+        },
+        create: {
+            country_id: "-1",
+            city_id: "-1",
+            district_id: "-1",
         }
     },
     created: () => {
@@ -15,6 +20,7 @@ const searchtoilet = new Vue({
             .then((response) => {
                 result = JSON.parse(response.data.CountryInfo)
                 searchtoilet.countries = result
+                console.log(result)
             })
         axios.get('http://140.115.87.117:8090/getAllCity')
             .then((response) => {

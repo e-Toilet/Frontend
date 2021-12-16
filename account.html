@@ -238,6 +238,89 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="Create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog model-dialog-centered modal-lg" role="document" style="width: 400">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body" style="align-content: center" id="searchtoilet">
+                        <table align="center" style="text-align: center; border-collapse: separate" rules="none" >
+                            <tr height="40">
+                                <td style="width: 100px">
+                                    <font color="red">＊</font>廁所名稱
+                                </td>
+                                <td align="left">
+                                    <input rows="1" style="width: 200px" required />
+                                </td>
+                            </tr>
+
+                            <tr height="40">
+                                <td style="width: 100px">
+                                    <font color="red">＊</font>國家
+                                </td>
+                                <td align="left">
+                                    <select v-model="create.country_id" style="width: 200px">
+                                        <option value="-1" selected disabled>國家</option>
+                                        <option v-for="country in countries" :value="country.country_id">{{country.country_name}}</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr height="40">
+                                <td style="width: 100px">
+                                    <font color="red">＊</font>城市
+                                </td>
+                                <td align="left">
+                                    <select v-model="create.city_id" style="width: 200px">
+                                        <option value="-1" selected disabled>城市</option>
+                                        <option v-for="city in cities" :value="city.city_id" v-show="city.country_id == create.country_id">{{city.city_name}}</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr height="40">
+                                <td style="width: 100px">
+                                    <font color="red">＊</font>地區
+                                </td>
+                                <td align="left">
+                                    <select v-model="create.district_id" style="width: 200px">
+                                        <option value="-1" selected disabled>地區</option>
+                                        <option v-for="district in districts" :value="district.district_id" v-show="district.city_id == create.city_id">{{district.district_name}}</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+                            <tr height="40">
+                                <td style="width: 100px">
+                                    <font color="red">＊</font>經緯度
+                                </td>
+                                <td align="left">
+                                    <button type="button" class="btn" onclick="AddLocation()" style="background: white">
+                                        <img src="images/gps.png" width="30" height="30" />
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100px">
+                                </td>
+                                <td><input id="here" type="hidden" disabled></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <img id="output" height="150" style="display: none" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary" value="送出" style="width: 80px; height: 35px; font-size: 13px" />
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- loader -->
@@ -601,98 +684,10 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
+    <script src="./js/searchtoilet.js"></script>
+    <script src="./js/member_action.js"></script>
 </body>
-<form method="post">
-    <div class="modal fade" id="Create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog model-dialog-centered modal-lg" role="document" style="width: 400">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                </div>
-                <div class="modal-body" style="align-content: center">
-                    <table align="center" style="text-align: center; border-collapse: separate" rules="none">
-                        <tr height="40">
-                            <td style="width: 100px">
-                                <font color="red">＊</font>廁所名稱
-                            </td>
-                            <td align="left">
-                                <input id="edittoilet" rows="1" style="width: 200px" required />
-                            </td>
-                        </tr>
-
-                        <tr height="40">
-                            <td style="width: 100px">
-                                <font color="red">＊</font>國家
-                            </td>
-                            <td align="left">
-                                <select id="country" style="width: 200px">
-                                    <option selected disabled>國家</option>
-                                    <option>台灣</option>
-                                    <option>美國</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr height="40">
-                            <td style="width: 100px">
-                                <font color="red">＊</font>城市
-                            </td>
-                            <td align="left">
-                                <select id="city" style="width: 200px">
-                                    <option selected disabled>城市</option>
-                                    <option value="">台北市</option>
-                                    <option value="">桃園市</option>
-                                    <option value="">新竹市</option>
-                                    <option value="">台中市</option>
-                                    <option value="">高雄市</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr height="40">
-                            <td style="width: 100px">
-                                <font color="red">＊</font>地區
-                            </td>
-                            <td align="left">
-                                <select id="district" style="width: 200px">
-                                    <option selected disabled>地區</option>
-                                    <option value="">東區</option>
-                                    <option value="">北區</option>
-                                    <option value="">香山區</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr height="40">
-                            <td style="width: 100px">
-                                <font color="red">＊</font>經緯度
-                            </td>
-                            <td align="left">
-                                <button type="button" class="btn" onclick="AddLocation()" style="background: white">
-                                    <img src="images/gps.png" width="30" height="30" />
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 100px">
-                            </td>
-                            <td><input id="here" type="hidden" disabled></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <img id="output" height="150" style="display: none" />
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" class="btn btn-primary" value="送出" style="width: 80px; height: 35px; font-size: 13px" />
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-
 </html>
