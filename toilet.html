@@ -70,7 +70,7 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="images/user.jpg" width="30" height="30" style="border: 2px #d0d0d0 solid; border-radius: 50%" /></a>
+                            <img src="images/user_large.jpg" width="30" height="30" style="border: 2px #d0d0d0 solid; border-radius: 50%" /></a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="account.html">個人資料</a>
                             <a class="dropdown-item" href="Login.html">登入</a>
@@ -115,10 +115,10 @@
 
 
     <section class="ftco-section bg-light">
-        <div class="container" id="showtoilet" >
+        <div class="container" id="showtoilet">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="row" >
+                    <div class="row">
                         <div class="col-sm col-md-6 col-lg-4" v-for="toilet in toilets">
                             <!--小卡片-->
                             <div class="room">
@@ -137,22 +137,76 @@
                                         <a style="float: inherit">{{toilet.name}}</a>
                                     </h3>
                                     <p>
-                                    <span class="per">( <span>{{toilet.longitude}}</span> ,
-                                        <span>{{toilet.latitude}}</span> )</span>
+                                        <span class="per">( <span>{{toilet.longitude}}</span> ,
+                                            <span>{{toilet.latitude}}</span> )</span>
                                     </p>
                                     <p>
                                         <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;
-                                        <span>{{toilet.country_id}}</span> ，<span>{{toilet.city_id}}</span>
+                                        <span v-if="toilet.country_id == countries.country_id">{{country.country_name}}</span> ，<span>{{toilet.city_id}}</span>
                                         ，<span>{{toilet.district_id}}</span>
                                     </p>
                                     <hr />
                                     <p class="pt-1">
-                                        <i class="fas fa-star" id="one-star"></i>&nbsp;
-                                        <i class="fas fa-star" id="two-star"></i>&nbsp;
-                                        <i class="fas fa-star" id="three-star"></i>&nbsp;
-                                        <i class="fas fa-star" id="four-star"></i>&nbsp;
-                                        <i class="far fa-star" id="five-star"></i>
-                                        (<span>{{toilet.avg_rating}}</span>)
+                                    <span id="onestar" style="display: none">
+                                        <i class="fas fa-star"></i>&nbsp;
+                                        <i class="far fa-star"></i>&nbsp;
+                                        <i class="far fa-star"></i>&nbsp;
+                                        <i class="far fa-star"></i>&nbsp;
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                    <span id="twostar" style="display: none">
+                                        <i class="fas fa-star"></i>&nbsp;
+                                        <i class="fas fa-star"></i>&nbsp;
+                                        <i class="far fa-star"></i>&nbsp;
+                                        <i class="far fa-star"></i>&nbsp;
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                    <span id="threestar" style="display: none">
+                                        <i class="fas fa-star"></i>&nbsp;
+                                        <i class="fas fa-star"></i>&nbsp;
+                                        <i class="fas fa-star"></i>&nbsp;
+                                        <i class="far fa-star"></i>&nbsp;
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                    <span id="fourstar" style="display: none">
+                                        <i class="fas fa-star"></i>&nbsp;
+                                        <i class="fas fa-star"></i>&nbsp;
+                                        <i class="fas fa-star"></i>&nbsp;
+                                        <i class="fas fa-star"></i>&nbsp;
+                                        <i class="far fa-star"></i>
+                                    </span>
+                                    <span id="fivestar" style="display: none">
+                                        <i class="fas fa-star"></i>&nbsp;
+                                        <i class="fas fa-star"></i>&nbsp;
+                                        <i class="fas fa-star"></i>&nbsp;
+                                        <i class="fas fa-star"></i>&nbsp;
+                                        <i class="fas fa-star"></i>
+                                    </span>
+                                    (<span id="avg" type="number">{{toilet.avg_rating}}</span>)
+<!--
+                                    <script>
+                                    function countstar() {
+                                            var count=Math.round(parseFloat({{toilet.avg_rating}}.textContent));
+                                            if (count == 1) {
+                                                $("#onestar").attr("style", "display==block,inline").show();
+                                                document.getElementById("onestar").style.display=="block,inline";
+                                            }else if(count == 2){
+                                                $("#twostar").attr("style", "display==block,inline").show();
+                                                document.getElementById("twostar").style.display=="block,inline";
+                                            }else if(count == 3){
+                                                $("#threestar").attr("style", "display==block,inline").show();
+                                                document.getElementById("threestar").style.display=="block,inline";
+                                            }else if(count == 4){
+                                                $("#fourstar").attr("style", "display==block,inline").show();
+                                                document.getElementById("fourstar").style.display=="block,inline";
+                                            }else if(count == 5){
+                                                $("#fivestar").attr("style", "display==block,inline").show();
+                                                document.getElementById("fivestar").style.display=="block,inline";
+                                            }
+                                            console.log(count)
+                                        }
+                                    </script>
+-->
                                     </p>
                                 </div>
                             </div>
@@ -170,7 +224,7 @@
                         </button>
                     </div>
                     <div class="modal-body" style="align-content: center" id="searchtoilet">
-                        <table align="center" style="text-align: center; border-collapse: separate" rules="none" >
+                        <table align="center" style="text-align: center; border-collapse: separate" rules="none">
                             <tr height="40">
                                 <td style="width: 100px">
                                     <font color="red">＊</font>廁所名稱
@@ -215,7 +269,14 @@
                                     </select>
                                 </td>
                             </tr>
-
+                            <tr height="40">
+                                <td style="width: 100px">
+                                    <font color="red">＊</font>地址
+                                </td>
+                                <td align="left">
+                                    <input rows="1" style="width: 200px" required />
+                                </td>
+                            </tr>
                             <tr height="40">
                                 <td style="width: 100px">
                                     <font color="red">＊</font>經緯度
@@ -256,17 +317,6 @@
 
     <!--刪除廁所-->
     <script>
-        function openFile(event) {
-            var input = event.target; //取得上傳檔案
-            var reader = new FileReader(); //建立FileReader物件
-            reader.readAsDataURL(input.files[0]); //以.readAsDataURL將上傳檔案轉換為base64字串
-            reader.onload = function() {
-                //FileReader取得上傳檔案後執行以下內容
-                var dataURL = reader.result; //設定變數dataURL為上傳圖檔的base64字串
-                $("#output").attr("src", dataURL).show(); //將img的src設定為dataURL並顯示
-            };
-        }
-
         function AddLocation() {
             if (navigator.geolocation) {
                 //取得 經緯度
@@ -280,6 +330,22 @@
             $("#here").attr("type", "show").show();
             $("#here").attr("placeholder", "(" + pos.coords.longitude + "," + pos.coords.latitude + ")").show();
         }
+
+        $(function countstar() {
+            var count=Math.round(parseFloat(document.getElementById("avg").textContent));
+            if (count == 1) {
+                document.getElementById("onestar").style.display=="block,inline";
+            }else if(count == 2){
+                document.getElementById("twostar").style.display=="block,inline";
+            }else if(count == 3){
+                document.getElementById("threestar").style.display=="block,inline";
+            }else if(count == 4){
+                document.getElementById("fourstar").style.display=="block,inline";
+            }else if(count == 5){
+                document.getElementById("fivestar").style.display=="block,inline";
+            }
+            console.log(count)
+        })
 
     </script>
 
@@ -307,4 +373,5 @@
     <script src="./js/toilet.js"></script>
     <script src="./js/searchtoilet.js"></script>
 </body>
+
 </html>

@@ -4,7 +4,23 @@ const app = new Vue({
         email: "",
         password: "",
         name: "",
-        isRegistered: false
+        isRegistered: false,
+        account: [],
+        comment:""
+    },
+    created: () => {
+        axios.get('http://140.115.87.117:8090/getMemberInfo?member_id=112')
+            .then((response) => {
+                result = JSON.parse(response.data.Memberinfo)
+                app.account = result
+//                console.log(result)
+            })
+        axios.get('http://140.115.87.117:8090/getMemberReviewCount?member_id=112')
+            .then((response) => {
+                result = JSON.parse(response.data.Review_count)
+                app.comment = result
+                console.log(result)
+            })
     },
     methods: {
         checkForm: function (e) {
@@ -24,8 +40,8 @@ const app = new Vue({
                         alert("註冊失敗！此信箱已存在，請嘗試新的信箱！")
                         return
                     })
-                    
-                    
+
+
             }
             if (!this.name) {
                 alert('Name欄位為必填.');
