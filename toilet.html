@@ -42,6 +42,89 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/buttom.css" />
     <link rel="stylesheet" href="css/ul.css" />
+    
+    <script type="text/javascript">
+        
+         $(function () {
+            var count = Math.round(parseFloat(document.getElementById("avg").textContent));
+            if (count == 1) {
+                document.getElementById("onestar").style.display == "block,inline";
+            } else if (count == 2) {
+                document.getElementById("twostar").style.display == "block,inline";
+            } else if (count == 3) {
+                document.getElementById("threestar").style.display == "block,inline";
+            } else if (count == 4) {
+                document.getElementById("fourstar").style.display == "block,inline";
+            } else if (count == 5) {
+                document.getElementById("fivestar").style.display == "block,inline";
+            }
+            console.log(count)
+        });
+        
+        $(function() {
+            var images = ['toilet.jpg', 'toilet1.jpg', 'toilet2.jpg', 'toilet3.jpg', 'toilet4.jpg'];
+            $('#toiletimage').css({
+                'background-image': 'url(images/' + images[Math.floor(Math.random() * images.length)] + ')'
+            });
+        });
+        //        document.ready(function() {
+        //            var images = ["toilet.jpg", "toilet1.jpg", "toilet2.jpg", "toilet3.jpg", "toilet4.jpg"];
+        //            document.getElementById("toiletimage").css({
+        //                'background-image': 'url(images/' + images[Math.floor(Math.random() * 5)] + ')'
+        //            });
+        //        });
+
+        //        let bgs = ["toilet.jpg", "toilet1.jpg", "toilet2.jpg", "toilet3.jpg", "toilet4.jpg"];
+        //        window.onload = function() {
+        //            //$("#web_bg").css({"backgroundColor":"jietu/" + bgs[parseInt(Math.random()*5)]})
+        //            $("#toiletimage").css({
+        //                "backgroundImage": "url(images/" + bgs[parseInt(Math.random() * 5)] + ")"
+        //            })
+        //        };
+
+    </script>
+
+    <!--
+    <script type="text/javascript">
+        function backgr() {
+            var randimg = Math.floor(Math.random() * 5);
+            if (randimg == 0) {
+                document.getElementById('toiletimage').className = "bg1";
+            } else if (randimg == 1) {
+                document.getElementById('toiletimage').className = "bg2";
+            } else if (randimg == 2) {
+                document.getElementById('toiletimage').className = "bg3";
+            } else if (randimg == 3) {
+                document.getElementById('toiletimage').className = "bg4";
+            } else if (randimg == 4) {
+                document.getElementById('toiletimage').className = "bg5";
+            }
+        }
+
+    </script>
+    <style type="text/css">
+        .bg1 {
+            background-image: url(images/toilet.jpg);
+        }
+
+        .bg2 {
+            background-image: url(images/toilet1.jpg);
+        }
+
+        .bg3 {
+            background-image: url(images/toilet2.jpg);
+        }
+
+        .bg4 {
+            background-image: url(images/toilet3.jpg);
+        }
+        
+        .bg5 {
+            background-image: url(images/toilet4.jpg);
+        }
+
+    </style>
+-->
 </head>
 
 <body>
@@ -122,7 +205,7 @@
                         <div class="col-sm col-md-6 col-lg-4" v-for="toilet in toilets">
                             <!--小卡片-->
                             <div class="room">
-                                <a href="toiletcontent.html" class="img d-flex justify-content-center align-items-center" style="background-image: url(images/t.jpg)">
+                                <a href="toiletcontent.html" class="img d-flex justify-content-center align-items-center">
                                     <div class="
                                         icon
                                         d-flex
@@ -132,6 +215,7 @@
                                         <span class="icon-search2"></span>
                                     </div>
                                 </a>
+                                <div id="toiletimage"></div>
                                 <div class="text p-3 text-center">
                                     <h3 class="mb-3">
                                         <a style="float: inherit">{{toilet.name}}</a>
@@ -147,66 +231,42 @@
                                     </p>
                                     <hr />
                                     <p class="pt-1">
-                                    <span id="onestar" style="display: none">
-                                        <i class="fas fa-star"></i>&nbsp;
-                                        <i class="far fa-star"></i>&nbsp;
-                                        <i class="far fa-star"></i>&nbsp;
-                                        <i class="far fa-star"></i>&nbsp;
-                                        <i class="far fa-star"></i>
-                                    </span>
-                                    <span id="twostar" style="display: none">
-                                        <i class="fas fa-star"></i>&nbsp;
-                                        <i class="fas fa-star"></i>&nbsp;
-                                        <i class="far fa-star"></i>&nbsp;
-                                        <i class="far fa-star"></i>&nbsp;
-                                        <i class="far fa-star"></i>
-                                    </span>
-                                    <span id="threestar" style="display: none">
-                                        <i class="fas fa-star"></i>&nbsp;
-                                        <i class="fas fa-star"></i>&nbsp;
-                                        <i class="fas fa-star"></i>&nbsp;
-                                        <i class="far fa-star"></i>&nbsp;
-                                        <i class="far fa-star"></i>
-                                    </span>
-                                    <span id="fourstar" style="display: none">
-                                        <i class="fas fa-star"></i>&nbsp;
-                                        <i class="fas fa-star"></i>&nbsp;
-                                        <i class="fas fa-star"></i>&nbsp;
-                                        <i class="fas fa-star"></i>&nbsp;
-                                        <i class="far fa-star"></i>
-                                    </span>
-                                    <span id="fivestar" style="display: none">
-                                        <i class="fas fa-star"></i>&nbsp;
-                                        <i class="fas fa-star"></i>&nbsp;
-                                        <i class="fas fa-star"></i>&nbsp;
-                                        <i class="fas fa-star"></i>&nbsp;
-                                        <i class="fas fa-star"></i>
-                                    </span>
-                                    (<span id="avg" type="number">{{toilet.avg_rating}}</span>)
-<!--
-                                    <script>
-                                    function countstar() {
-                                            var count=Math.round(parseFloat({{toilet.avg_rating}}.textContent));
-                                            if (count == 1) {
-                                                $("#onestar").attr("style", "display==block,inline").show();
-                                                document.getElementById("onestar").style.display=="block,inline";
-                                            }else if(count == 2){
-                                                $("#twostar").attr("style", "display==block,inline").show();
-                                                document.getElementById("twostar").style.display=="block,inline";
-                                            }else if(count == 3){
-                                                $("#threestar").attr("style", "display==block,inline").show();
-                                                document.getElementById("threestar").style.display=="block,inline";
-                                            }else if(count == 4){
-                                                $("#fourstar").attr("style", "display==block,inline").show();
-                                                document.getElementById("fourstar").style.display=="block,inline";
-                                            }else if(count == 5){
-                                                $("#fivestar").attr("style", "display==block,inline").show();
-                                                document.getElementById("fivestar").style.display=="block,inline";
-                                            }
-                                            console.log(count)
-                                        }
-                                    </script>
--->
+                                        <span id="onestar" style="display: none">
+                                            <i class="fas fa-star"></i>&nbsp;
+                                            <i class="far fa-star"></i>&nbsp;
+                                            <i class="far fa-star"></i>&nbsp;
+                                            <i class="far fa-star"></i>&nbsp;
+                                            <i class="far fa-star"></i>
+                                        </span>
+                                        <span id="twostar" style="display: none">
+                                            <i class="fas fa-star"></i>&nbsp;
+                                            <i class="fas fa-star"></i>&nbsp;
+                                            <i class="far fa-star"></i>&nbsp;
+                                            <i class="far fa-star"></i>&nbsp;
+                                            <i class="far fa-star"></i>
+                                        </span>
+                                        <span id="threestar" style="display: none">
+                                            <i class="fas fa-star"></i>&nbsp;
+                                            <i class="fas fa-star"></i>&nbsp;
+                                            <i class="fas fa-star"></i>&nbsp;
+                                            <i class="far fa-star"></i>&nbsp;
+                                            <i class="far fa-star"></i>
+                                        </span>
+                                        <span id="fourstar" style="display: none">
+                                            <i class="fas fa-star"></i>&nbsp;
+                                            <i class="fas fa-star"></i>&nbsp;
+                                            <i class="fas fa-star"></i>&nbsp;
+                                            <i class="fas fa-star"></i>&nbsp;
+                                            <i class="far fa-star"></i>
+                                        </span>
+                                        <span id="fivestar" style="display: none">
+                                            <i class="fas fa-star"></i>&nbsp;
+                                            <i class="fas fa-star"></i>&nbsp;
+                                            <i class="fas fa-star"></i>&nbsp;
+                                            <i class="fas fa-star"></i>&nbsp;
+                                            <i class="fas fa-star"></i>
+                                        </span>
+                                        (<span id="avg" type="number">{{toilet.avg_rating}}</span>)
                                     </p>
                                 </div>
                             </div>
@@ -330,22 +390,6 @@
             $("#here").attr("type", "show").show();
             $("#here").attr("placeholder", "(" + pos.coords.longitude + "," + pos.coords.latitude + ")").show();
         }
-
-        $(function countstar() {
-            var count=Math.round(parseFloat(document.getElementById("avg").textContent));
-            if (count == 1) {
-                document.getElementById("onestar").style.display=="block,inline";
-            }else if(count == 2){
-                document.getElementById("twostar").style.display=="block,inline";
-            }else if(count == 3){
-                document.getElementById("threestar").style.display=="block,inline";
-            }else if(count == 4){
-                document.getElementById("fourstar").style.display=="block,inline";
-            }else if(count == 5){
-                document.getElementById("fivestar").style.display=="block,inline";
-            }
-            console.log(count)
-        })
 
     </script>
 

@@ -90,6 +90,20 @@ const searchtoilet = new Vue({
                 alert('經緯度欄位為必填.');
             }
             e.preventDefault();
-        }
+        },
+//        AddLocation: function (e) {
+//            if (navigator.geolocation) {
+//                //取得 經緯度
+//                navigator.geolocation.getCurrentPosition(this.options.methods.addPosition.bind(this)); //有拿到位置就呼叫 showPosition 函式
+//            } else {
+//                //沒有支援呼叫地理位置功能的瀏覽器
+//            }
+//        },
+//        addPosition: function (pos) {
+//            this.longitude.attr("type", "show").show();
+//            this.longitude.attr("placeholder", pos.coords.longitude).show();
+//            this.latitude.attr("type", "show").show();
+//            this.latitude.attr("placeholder", pos.coords.latitude).show();
+//        }
     }
 })
