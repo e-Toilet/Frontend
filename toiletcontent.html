@@ -137,8 +137,13 @@
                                             {{toiletinfo[0].name}}
                                         </h2>
                                         <hr style="clear: both" />
-
-                                        <div class="room-img" style="background-image: url(images/t.jpg)"></div>
+                                        <div class="room-img" id="changeimage"></div>
+                                        <script type="text/javascript">
+                                            var images = ['toilet.jpg', 'toilet1.jpg', 'toilet2.jpg', 'toilet3.jpg', 'toilet4.jpg'];
+                                            var randimg = parseInt(Math.random() * 5);
+                                            var currentImage = images[randimg];
+                                            document.getElementById("changeimage").style.backgroundImage = "url(images/" + currentImage + ")";
+                                        </script>
                                     </div>
                                     <h5>
                                         &nbsp;&nbsp;&nbsp;

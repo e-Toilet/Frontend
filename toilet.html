@@ -42,72 +42,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/buttom.css" />
     <link rel="stylesheet" href="css/ul.css" />
-
-    <script type="text/javascript">
-        $(function() {
-            var images = ['toilet.jpg', 'toilet1.jpg', 'toilet2.jpg', 'toilet3.jpg', 'toilet4.jpg'];
-            $('#toiletimage').css({
-                'background-image': 'url(images/' + images[Math.floor(Math.random() * images.length)] + ')'
-            });
-        });
-        //        document.ready(function() {
-        //            var images = ["toilet.jpg", "toilet1.jpg", "toilet2.jpg", "toilet3.jpg", "toilet4.jpg"];
-        //            document.getElementById("toiletimage").css({
-        //                'background-image': 'url(images/' + images[Math.floor(Math.random() * 5)] + ')'
-        //            });
-        //        });
-
-        //        let bgs = ["toilet.jpg", "toilet1.jpg", "toilet2.jpg", "toilet3.jpg", "toilet4.jpg"];
-        //        window.onload = function() {
-        //            //$("#web_bg").css({"backgroundColor":"jietu/" + bgs[parseInt(Math.random()*5)]})
-        //            $("#toiletimage").css({
-        //                "backgroundImage": "url(images/" + bgs[parseInt(Math.random() * 5)] + ")"
-        //            })
-        //        };
-
-    </script>
-
-    <!--
-    <script type="text/javascript">
-        function backgr() {
-            var randimg = Math.floor(Math.random() * 5);
-            if (randimg == 0) {
-                document.getElementById('toiletimage').className = "bg1";
-            } else if (randimg == 1) {
-                document.getElementById('toiletimage').className = "bg2";
-            } else if (randimg == 2) {
-                document.getElementById('toiletimage').className = "bg3";
-            } else if (randimg == 3) {
-                document.getElementById('toiletimage').className = "bg4";
-            } else if (randimg == 4) {
-                document.getElementById('toiletimage').className = "bg5";
-            }
-        }
-
-    </script>
-    <style type="text/css">
-        .bg1 {
-            background-image: url(images/toilet.jpg);
-        }
-
-        .bg2 {
-            background-image: url(images/toilet1.jpg);
-        }
-
-        .bg3 {
-            background-image: url(images/toilet2.jpg);
-        }
-
-        .bg4 {
-            background-image: url(images/toilet3.jpg);
-        }
-        
-        .bg5 {
-            background-image: url(images/toilet4.jpg);
-        }
-
-    </style>
--->
 </head>
 
 <body>
@@ -179,7 +113,6 @@
         </div>
     </div>
 
-
     <section class="ftco-section bg-light">
         <div class="container" id="showtoilet">
             <div class="row">
@@ -188,7 +121,13 @@
                         <div class="col-sm col-md-6 col-lg-4" v-for="toilet in toilets">
                             <!--小卡片-->
                             <div class="room">
-                                <a href="toiletcontent.html" class="img d-flex justify-content-center align-items-center">
+                                <a href="toiletcontent.html" id="changeimage" class="img d-flex justify-content-center align-items-center">
+                                    <script type="text/javascript">
+                                        var images = ['toilet.jpg', 'toilet1.jpg', 'toilet2.jpg', 'toilet3.jpg', 'toilet4.jpg'];
+                                        var randimg = parseInt(Math.random() * 5);
+                                        var currentImage = images[randimg];
+                                        document.getElementById("changeimage").style.backgroundImage = "url(images/" + currentImage + ")";
+                                    </script>
                                     <div class="
                                         icon
                                         d-flex
