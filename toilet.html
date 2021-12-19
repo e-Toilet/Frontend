@@ -42,25 +42,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/buttom.css" />
     <link rel="stylesheet" href="css/ul.css" />
-    
+
     <script type="text/javascript">
-        
-         $(function () {
-            var count = Math.round(parseFloat(document.getElementById("avg").textContent));
-            if (count == 1) {
-                document.getElementById("onestar").style.display == "block,inline";
-            } else if (count == 2) {
-                document.getElementById("twostar").style.display == "block,inline";
-            } else if (count == 3) {
-                document.getElementById("threestar").style.display == "block,inline";
-            } else if (count == 4) {
-                document.getElementById("fourstar").style.display == "block,inline";
-            } else if (count == 5) {
-                document.getElementById("fivestar").style.display == "block,inline";
-            }
-            console.log(count)
-        });
-        
         $(function() {
             var images = ['toilet.jpg', 'toilet1.jpg', 'toilet2.jpg', 'toilet3.jpg', 'toilet4.jpg'];
             $('#toiletimage').css({
@@ -231,35 +214,35 @@
                                     </p>
                                     <hr />
                                     <p class="pt-1">
-                                        <span id="onestar" style="display: none">
+                                        <span v-if="toilet.avg_rating ==1 || (toilet.avg_rating > 1 &&  2 > toilet.avg_rating)" style="display: block,inline">
                                             <i class="fas fa-star"></i>&nbsp;
                                             <i class="far fa-star"></i>&nbsp;
                                             <i class="far fa-star"></i>&nbsp;
                                             <i class="far fa-star"></i>&nbsp;
                                             <i class="far fa-star"></i>
                                         </span>
-                                        <span id="twostar" style="display: none">
+                                        <span v-if="toilet.avg_rating == 2 || (toilet.avg_rating > 2 &&  3 > toilet.avg_rating)" style="display: block,inline">
                                             <i class="fas fa-star"></i>&nbsp;
                                             <i class="fas fa-star"></i>&nbsp;
                                             <i class="far fa-star"></i>&nbsp;
                                             <i class="far fa-star"></i>&nbsp;
                                             <i class="far fa-star"></i>
                                         </span>
-                                        <span id="threestar" style="display: none">
+                                        <span v-if="toilet.avg_rating ==3 || (toilet.avg_rating > 3 &&  4 > toilet.avg_rating)" style="display: block,inline">
                                             <i class="fas fa-star"></i>&nbsp;
                                             <i class="fas fa-star"></i>&nbsp;
                                             <i class="fas fa-star"></i>&nbsp;
                                             <i class="far fa-star"></i>&nbsp;
                                             <i class="far fa-star"></i>
                                         </span>
-                                        <span id="fourstar" style="display: none">
+                                        <span v-if="toilet.avg_rating ==4 || (toilet.avg_rating > 4 &&  5 > toilet.avg_rating)" style="display: block,inline">
                                             <i class="fas fa-star"></i>&nbsp;
                                             <i class="fas fa-star"></i>&nbsp;
                                             <i class="fas fa-star"></i>&nbsp;
                                             <i class="fas fa-star"></i>&nbsp;
                                             <i class="far fa-star"></i>
                                         </span>
-                                        <span id="fivestar" style="display: none">
+                                        <span v-if="toilet.avg_rating == 5" style="display: block,inline">
                                             <i class="fas fa-star"></i>&nbsp;
                                             <i class="fas fa-star"></i>&nbsp;
                                             <i class="fas fa-star"></i>&nbsp;
