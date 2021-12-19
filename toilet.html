@@ -121,7 +121,7 @@
                         <div class="col-sm col-md-6 col-lg-4" v-for="toilet in toilets">
                             <!--小卡片-->
                             <div class="room">
-                                <a href="toiletcontent.html" id="changeimage" class="img d-flex justify-content-center align-items-center">
+                                <a id="changeimage" class="img d-flex justify-content-center align-items-center" @click="JumpToToilet(toilet.toilet_id)">
                                     <script type="text/javascript">
                                         var images = ['toilet.jpg', 'toilet1.jpg', 'toilet2.jpg', 'toilet3.jpg', 'toilet4.jpg'];
                                         var randimg = parseInt(Math.random() * 5);

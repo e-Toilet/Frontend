@@ -13,13 +13,25 @@ const showtoilet = new Vue({
         review_info: {},
     },
     created: () => {
+        let url = location.href
+        let toilet_id
+        console.log(url)
+        try{
+            let toilet = url.split('?')[1].split('&')[0]
+                toilet_id = toilet.split('=')[1]
+
+        }
+        catch(error){
+
+        }
+        
         axios.get('http://140.115.87.117:8090/getToiletByLoc?district_id=36')
             .then((response) => {
                 result = JSON.parse(response.data.Toiletinfo)
                 showtoilet.toilets = result
-                console.log(result)
+                // console.log(result)
             })
-        axios.get('http://140.115.87.117:8090/getToiletByID?toilet_id=1')
+        axios.get(`http://140.115.87.117:8090/getToiletByID?toilet_id=${toilet_id}`)
             .then((response) => {
                 result = JSON.parse(response.data.Toiletinfo)
                 showtoilet.toiletinfo = result
@@ -29,7 +41,7 @@ const showtoilet = new Vue({
             .then((response) => {
                 result = JSON.parse(response.data.Reviewinfo)
                 showtoilet.reviews = result
-                console.log(result)
+                // console.log(result)
             })
         axios.get('http://140.115.87.117:8090/getMemberInfo?member_id=112')
             .then((response) => {
@@ -179,6 +191,9 @@ const showtoilet = new Vue({
         SendReviewInfo: (reviewobj) => {
             showtoilet.review_info = reviewobj;
         },
+        JumpToToilet: (toilet_id) => {
+            location.href = `toiletcontent.html?toilet_id=${toilet_id}`
+        }
 
     },
 });
