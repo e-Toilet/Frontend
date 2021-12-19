@@ -8,6 +8,8 @@ const showtoilet = new Vue({
         cities: [],
         districts: [],
         account: [],
+        rating: "",
+        content: "",
         review_info: {},
     },
     created: () => {
@@ -15,6 +17,7 @@ const showtoilet = new Vue({
             .then((response) => {
                 result = JSON.parse(response.data.Toiletinfo)
                 showtoilet.toilets = result
+                console.log(result)
             })
         axios.get('http://140.115.87.117:8090/getToiletByID?toilet_id=1')
             .then((response) => {
@@ -32,10 +35,39 @@ const showtoilet = new Vue({
             .then((response) => {
                 result = JSON.parse(response.data.Memberinfo)
                 showtoilet.account = result
-                console.log(result)
+                //                console.log(result)
             })
     },
     methods: {
+        createcommet: function (e) {
+            let check = this.rating
+            if (check) {
+                axios.post('http://140.115.87.117:8090/CreateNewReview', {
+                        rating: showtoilet.rating,
+                        member_id: 12,
+                        toilet_id: 1,
+                        content: showtoilet.content
+                    })
+                    .then((response) => {
+                        result = response.data
+                        alert("新增評論成功")
+                        console.log(rating)
+                        console.log(member_id)
+                        console.log(toilet_id)
+                        console.log(content)
+
+                        self.location.reload()
+                    })
+                    .catch((error) => {
+                        alert("新增失敗！")
+                        return
+                    })
+            }
+            if (!this.reviewstar) {
+                alert('星等必選.');
+            }
+            e.preventDefault();
+        },
         delete_myreview: (reviewobj) => {
             let review_id = reviewobj.review_id;
             let reviewsArray = showtoilet.reviews;
@@ -140,7 +172,7 @@ const showtoilet = new Vue({
                         });
                     })
             }
-             if (!this.rating) {
+            if (!this.rating) {
                 alert('星等必選.');
             }
         },

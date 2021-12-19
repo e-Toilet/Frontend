@@ -143,6 +143,7 @@
                                             var randimg = parseInt(Math.random() * 5);
                                             var currentImage = images[randimg];
                                             document.getElementById("changeimage").style.backgroundImage = "url(images/" + currentImage + ")";
+
                                         </script>
                                     </div>
                                     <h5>
@@ -485,12 +486,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                             &times;
                         </button>
-                        <table align="center" style="
-                text-align: center;
-                margin-top: 2rem;
-                border-collapse: separate;
-                border-spacing: 0px 1rem;
-              " rules="none">
+                        <table align="center" style="text-align: center;margin-top: 2rem;border-collapse: separate;border-spacing: 0px 1rem;" rules="none">
                             <tr>
                                 <td align="left" width="25%">
                                     <img src="images/user_large.jpg" width="50px" height="50px" style="border: 2px #d0d0d0 solid; border-radius: 50%" />
@@ -507,21 +503,22 @@
                                 <td colspan="2">
                                     <ul class="list1">
                                         <li>
-                                            <img src="images/star.png" width="50px" height="50px" />
+                                            <img id="one" src="images/star.png" width="50px" height="50px" />
                                         </li>
                                         <li>
-                                            <img src="images/star.png" width="50px" height="50px" />
+                                            <img id="two" src="images/star.png" width="50px" height="50px" />
                                         </li>
                                         <li>
-                                            <img src="images/star.png" width="50px" height="50px" />
+                                            <img id="three" src="images/star.png" width="50px" height="50px" />
                                         </li>
                                         <li>
-                                            <img src="images/star.png" width="50px" height="50px" />
+                                            <img id="four" src="images/star.png" width="50px" height="50px" />
                                         </li>
                                         <li>
-                                            <img src="images/star.png" width="50px" height="50px" />
+                                            <img id="five" src="images/star.png" width="50px" height="50px" />
                                         </li>
                                     </ul>
+                                    <div id="s1" v-model.trim="rating"></div>
                                 </td>
                             </tr>
 
@@ -533,7 +530,7 @@
 
                             <tr>
                                 <td colspan="2">
-                                    <textarea v-model.trim="reviewcommet" style="width: 310px; height: 50px; min-height: 50px" placeholder="詳細說明你在這個地點的親身經驗"></textarea>
+                                    <textarea v-model.trim="content" style="width: 310px; height: 50px; min-height: 50px" placeholder="詳細說明你在這個地點的親身經驗"></textarea>
                                 </td>
                             </tr>
                         </table>
@@ -641,6 +638,80 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="EditCommet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog model-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body" id="showtoilet">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <table align="center" style="
+                text-align: center;
+                margin-top: 2rem;
+                border-collapse: separate;
+                border-spacing: 0px 1rem;
+              " rules="none">
+                            <tr>
+                                <td align="left" width="25%">
+                                    <img src="images/user_large.jpg" width="50px" height="50px" style="border: 2px #d0d0d0 solid; border-radius: 50%" />
+                                </td>
+                                <td align="left">{{account[0].name}}</td>
+                            </tr>
+
+                            <tr height="40">
+                                <td align="left" colspan="2">
+                                    <font color="black">評分</font>
+                                </td>
+                            </tr>
+                            <tr height="40">
+                                <td colspan="2">
+                                    <ul class="list2" id="review_rating">
+                                        <li>
+                                            <img src="images/star.png" width="50px" height="50px" />
+                                        </li>
+                                        <li>
+                                            <img src="images/star.png" width="50px" height="50px" />
+                                        </li>
+                                        <li>
+                                            <img src="images/star.png" width="50px" height="50px" />
+                                        </li>
+                                        <li>
+                                            <img src="images/star.png" width="50px" height="50px" />
+                                        </li>
+                                        <li>
+                                            <img src="images/star.png" width="50px" height="50px" />
+                                        </li>
+                                    </ul>
+                                    <div id="s2" v-model.trim="review_rating"></div>
+                                </td>
+                            </tr>
+
+                            <tr height="40">
+                                <td align="left" colspan="2">
+                                    <font color="black">評論</font>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <textarea id="review_content" style="width: 310px; height: 50px; min-height: 50px" placeholder="詳細說明你在這個地點的親身經驗" v-model.lazy="review_info.content"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                        <table align="center" style="text-align: center" rules="none">
+                            <tr>
+                                <td>
+                                    <input type="submit" class="btn btn-primary" value="取消" style="width: 80px; height: 35px; font-size: 13px" />
+                                </td>
+                                <td>
+                                    <input type="submit" @click="update_review" class="btn btn-primary" value="送出" style="width: 80px; height: 35px; font-size: 13px" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen">
@@ -744,34 +815,9 @@
                 for (var k = index + 1; k < leng; k++) {
                     arr2[k] = "images/star.png";
                 }
-                $(".s1").text(s1);
+                $("#s1").text(s1);
+                console.log(s1);
             });
-
-            aLi.hover(
-                function() {
-                    for (var j = 0; j < leng; j++) {
-                        aLi.eq(j).find("img").attr("src", "images/star.png");
-                    }
-                    var index = $(this).index();
-                    if (index < 2) {
-                        for (var j = 0; j <= index; j++) {
-                            aLi.eq(j).find("img").attr("src", "images/star2.png");
-                            $(".s1").text(arr[index]);
-                        }
-                    } else {
-                        for (var j = 0; j <= index; j++) {
-                            aLi.eq(j).find("img").attr("src", "images/star2.png");
-                            $(".s1").text(arr[index]);
-                        }
-                    }
-                },
-                function() {
-                    for (var index = 0; index < leng; index++) {
-                        aLi.eq(index).find("img").attr("src", arr2[index]);
-                    }
-                    $(".s1").text(s1);
-                }
-            );
         });
         $(function() {
             var aLi = $(".list2 li");
@@ -784,7 +830,7 @@
                 "images/star.png",
                 "images/star.png",
             ];
-            var s1 = "";
+            var s2 = "";
 
             aLi.click(function() {
                 for (var j = 0; j < leng; j++) {
@@ -794,13 +840,13 @@
                 if (index < 2) {
                     for (var j = 0; j <= index; j++) {
                         aLi.eq(j).find("img").attr("src", "images/star2.png");
-                        s1 = arr[index];
+                        s2 = arr[index];
                         arr2[j] = aLi.eq(j).find("img").attr("src");
                     }
                 } else {
                     for (var j = 0; j <= index; j++) {
                         aLi.eq(j).find("img").attr("src", "images/star2.png");
-                        s1 = arr[index];
+                        s2 = arr[index];
                         arr2[j] = aLi.eq(j).find("img").attr("src");
                     }
                 }
@@ -808,34 +854,8 @@
                 for (var k = index + 1; k < leng; k++) {
                     arr2[k] = "images/star.png";
                 }
-                $(".s1").text(s1);
+                $("#s2").text(s2);
             });
-
-            aLi.hover(
-                function() {
-                    for (var j = 0; j < leng; j++) {
-                        aLi.eq(j).find("img").attr("src", "images/star.png");
-                    }
-                    var index = $(this).index();
-                    if (index < 2) {
-                        for (var j = 0; j <= index; j++) {
-                            aLi.eq(j).find("img").attr("src", "images/star2.png");
-                            $(".s1").text(arr[index]);
-                        }
-                    } else {
-                        for (var j = 0; j <= index; j++) {
-                            aLi.eq(j).find("img").attr("src", "images/star2.png");
-                            $(".s1").text(arr[index]);
-                        }
-                    }
-                },
-                function() {
-                    for (var index = 0; index < leng; index++) {
-                        aLi.eq(index).find("img").attr("src", arr2[index]);
-                    }
-                    $(".s1").text(s1);
-                }
-            );
         });
 
     </script>
@@ -864,78 +884,5 @@
     <script src="./js/toilet.js"></script>
     <script src="./js/searchtoilet.js"></script>
 </body>
-<div class="modal fade" id="EditCommet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog model-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body" id="showtoilet">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <table align="center" style="
-                text-align: center;
-                margin-top: 2rem;
-                border-collapse: separate;
-                border-spacing: 0px 1rem;
-              " rules="none">
-                    <tr>
-                        <td align="left" width="25%">
-                            <img src="images/user_large.jpg" width="50px" height="50px" style="border: 2px #d0d0d0 solid; border-radius: 50%" />
-                        </td>
-                        <td align="left">{{account[0].name}}</td>
-                    </tr>
-
-                    <tr height="40">
-                        <td align="left" colspan="2">
-                            <font color="black">評分</font>
-                        </td>
-                    </tr>
-                    <tr height="40">
-                        <td colspan="2">
-                            <ul class="list2" id="review_rating">
-                                <li>
-                                    <img src="images/star.png" width="50px" height="50px" />
-                                </li>
-                                <li>
-                                    <img src="images/star.png" width="50px" height="50px" />
-                                </li>
-                                <li>
-                                    <img src="images/star.png" width="50px" height="50px" />
-                                </li>
-                                <li>
-                                    <img src="images/star.png" width="50px" height="50px" />
-                                </li>
-                                <li>
-                                    <img src="images/star.png" width="50px" height="50px" />
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-
-                    <tr height="40">
-                        <td align="left" colspan="2">
-                            <font color="black">評論</font>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td colspan="2">
-                            <textarea id="review_content" style="width: 310px; height: 50px; min-height: 50px" placeholder="詳細說明你在這個地點的親身經驗" v-model.lazy="review_info.content"></textarea>
-                        </td>
-                    </tr>
-                </table>
-                <table align="center" style="text-align: center" rules="none">
-                    <tr>
-                        <td>
-                            <input type="submit" class="btn btn-primary" value="取消" style="width: 80px; height: 35px; font-size: 13px" />
-                        </td>
-                        <td>
-                            <input type="submit" @click="update_review" class="btn btn-primary" value="送出" style="width: 80px; height: 35px; font-size: 13px" />
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
 
 </html>
