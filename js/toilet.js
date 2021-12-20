@@ -1,222 +1,184 @@
 const showtoilet = new Vue({
-  el: "#showtoilet",
-  data: {
-    toilets: [],
-    toiletinfo: [],
-    reviews: [],
-    countries: [],
-    cities: [],
-    districts: [],
-    account: [],
-    rating: "",
-    content: "",
-    review_info: {},
-  },
-  created: () => {
-    let url = location.href;
-    let requests = url.split("?");
-    let district_id = 0;
-    let toilet_id = 0;
-    if (requests.length > 1) {
-      let params = requests[1].split("&");
-      for (let i = 0; i < params.length; i++) {
-        let key_value = params[i].split("=");
-        switch (key_value[0]) {
-          case "district_id":
-            district_id = key_value[1];
-            break;
-          case "toilet_id":
-            toilet_id = key_value[1];
-            break;
-          default:
-            console.log("Nothing happened.");
-        }
-      }
-    }
-
-    if (district_id != 0) {
-      axios
-        .get(
-          `http://140.115.87.117:8090/getToiletByLoc?district_id=${district_id}`
-        )
-        .then((response) => {
-          result = JSON.parse(response.data.Toiletinfo);
-          showtoilet.toilets = result;
-          // console.log(result)
-        });
-    } else if (toilet_id != 0) {
-      axios
-        .get(`http://140.115.87.117:8090/getToiletByID?toilet_id=${toilet_id}`)
-        .then((response) => {
-          result = JSON.parse(response.data.Toiletinfo);
-          showtoilet.toiletinfo = result;
-          //                console.log(result)
-        });
-      axios
-        .get(`http://140.115.87.117:8090/getReview?toilet_id=${toilet_id}`)
-        .then((response) => {
-          result = JSON.parse(response.data.Reviewinfo);
-          showtoilet.reviews = result;
-          // console.log(result)
-        });
-    }
-
-    axios
-      .get("http://140.115.87.117:8090/getMemberInfo?member_id=112")
-      .then((response) => {
-        result = JSON.parse(response.data.Memberinfo);
-        showtoilet.account = result;
-        //                console.log(result)
-      });
-  },
-  methods: {
-    createcommet: function (e) {
-      let check = this.rating;
-      if (check) {
-        axios
-          .post("http://140.115.87.117:8090/CreateNewReview", {
-            rating: showtoilet.rating,
-            member_id: 12,
-            toilet_id: 1,
-            content: showtoilet.content,
-          })
-          .then((response) => {
-            result = response.data;
-            alert("新增評論成功");
-            console.log(rating);
-            console.log(member_id);
-            console.log(toilet_id);
-            console.log(content);
-
-            self.location.reload();
-          })
-          .catch((error) => {
-            alert("新增失敗！");
-            return;
-          });
-      }
-      if (!this.reviewstar) {
-        alert("星等必選.");
-      }
-      e.preventDefault();
+    el: '#showtoilet',
+    data: {
+        toiletinfo: [],
+        reviews: [],
+        account: [],
+        rating: "",
+        content: "",
+        review_info: {},
     },
-    delete_myreview: (reviewobj) => {
-      let review_id = reviewobj.review_id;
-      let reviewsArray = showtoilet.reviews;
+    created: () => {
+        let url = location.href
+        let toilet_id
+        console.log(url)
+        try {
+            let toilet = url.split('?')[1].split('&')[0]
+            toilet_id = toilet.split('=')[1]
 
-      swal({
-        title: `確認刪除你的評論嗎?`,
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      }).then((response) => {
-        if (response) {
-          axios
-            .post("http://140.115.87.117:8090/deleteReview", {
-              review_id: review_id,
-            })
-            .then(() => {
-              let deleted_obj_index = reviewsArray.indexOf(reviewobj);
-              console.log(deleted_obj_index);
-              if (deleted_obj_index > -1)
-                reviewsArray.splice(deleted_obj_index, 1);
-              swal({
-                title: `刪除成功`,
-                icon: "success",
-              });
-            })
-            .catch((error) => {
-              swal({
-                title: `刪除失敗`,
-                text: error,
-                icon: "error",
-              });
-            });
-        } else {
-          swal({
-            title: "取消",
-            icon: "error",
-          });
-        }
-      });
-    },
-    delete_review: (reviewobj) => {
-      let review_id = reviewobj.review_id;
-      let reviewsArray = showtoilet.reviews;
+        } catch (error) {
 
-      swal({
-        title: `確認刪除此評論嗎?`,
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      }).then((response) => {
-        if (response) {
-          axios
-            .post("http://140.115.87.117:8090/deleteReview", {
-              review_id: review_id,
-            })
-            .then(() => {
-              let deleted_obj_index = reviewsArray.indexOf(reviewobj);
-              console.log(deleted_obj_index);
-              if (deleted_obj_index > -1)
-                reviewsArray.splice(deleted_obj_index, 1);
-              swal({
-                title: `刪除成功`,
-                icon: "success",
-              });
-            })
-            .catch((error) => {
-              swal({
-                title: `刪除失敗`,
-                text: error,
-                icon: "error",
-              });
-            });
-        } else {
-          swal({
-            title: "取消",
-            icon: "error",
-          });
         }
-      });
+        axios.get(`http://140.115.87.117:8090/getToiletByID?toilet_id=${toilet_id}`)
+            .then((response) => {
+                result = JSON.parse(response.data.Toiletinfo)
+                showtoilet.toiletinfo = result
+                //                console.log(result)
+            })
+        axios.get(`http://140.115.87.117:8090/getReview?toilet_id=${toilet_id}`)
+            .then((response) => {
+                result = JSON.parse(response.data.Reviewinfo)
+                showtoilet.reviews = result
+                // console.log(result)
+            })
+        axios.get('http://140.115.87.117:8090/getMemberInfo?member_id=112')
+            .then((response) => {
+                result = JSON.parse(response.data.Memberinfo)
+                showtoilet.account = result
+                //                console.log(result)
+            })
     },
-    update_review: () => {
-      console.log(showtoilet.review_info);
-      let checkIsInputedAndLegal = this.rating;
-      if (checkIsInputedAndLegal) {
-        axios
-          .post(
-            "http://140.115.87.117:8090/updateReview",
-            showtoilet.review_info
-          )
-          .then(() => {
+    methods: {
+        createcommet: function (e) {
+            let check = this.rating && this.content.length < 46
+            if (check) {
+                axios.post('http://140.115.87.117:8090/CreateNewReview', {
+                        rating: showtoilet.rating,
+                        member_id: 12,
+                        toilet_id: 1,
+                        content: showtoilet.content
+                    })
+                    .then((response) => {
+                        result = response.data
+                        alert("新增評論成功")
+                        console.log(rating)
+                        console.log(member_id)
+                        console.log(toilet_id)
+                        console.log(content)
+                        self.location.reload()
+                    })
+                    .catch((error) => {
+                        alert("新增失敗！")
+                        return
+                    })
+            }
+            if (!this.rating) {
+                alert('星等必選.');
+            }
+            if (this.content.length > 45) {
+                alert('評論內容不可超過45字.');
+            }
+            e.preventDefault();
+        },
+        delete_myreview: (reviewobj) => {
+            let review_id = reviewobj.review_id;
+            let reviewsArray = showtoilet.reviews;
             swal({
-              title: "修改成功",
-              icon: "success",
+                title: `確認刪除你的評論嗎?`,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((response) => {
+                if (response) {
+                    axios
+                        .post("http://140.115.87.117:8090/deleteReview", {
+                            review_id: review_id,
+                        })
+                        .then(() => {
+                            let deleted_obj_index = reviewsArray.indexOf(reviewobj);
+                            console.log(deleted_obj_index);
+                            if (deleted_obj_index > -1)
+                                reviewsArray.splice(deleted_obj_index, 1);
+                            swal({
+                                title: `刪除成功`,
+                                icon: "success",
+                            });
+                        })
+                        .catch((error) => {
+                            swal({
+                                title: `刪除失敗`,
+                                text: error,
+                                icon: "error",
+                            });
+                        });
+                } else {
+                    swal({
+                        title: "取消",
+                        icon: "error",
+                    });
+                }
             });
-            //  showtoilet.review_info
-            showtoilet.review_info[showtoilet.review_info.review_id - 1] =
-              showtoilet.review_info;
-          })
-          .catch((error) => {
-            error_msg = error.response.data.error;
-            console.log();
+        },
+        delete_review: (reviewobj) => {
+            let review_id = reviewobj.review_id;
+            let reviewsArray = showtoilet.reviews;
+
             swal({
-              title: "修改失敗",
-              text: error_msg,
-              icon: "error",
+                title: `確認刪除此評論嗎?`,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((response) => {
+                if (response) {
+                    axios
+                        .post("http://140.115.87.117:8090/deleteReview", {
+                            review_id: review_id,
+                        })
+                        .then(() => {
+                            let deleted_obj_index = reviewsArray.indexOf(reviewobj);
+                            console.log(deleted_obj_index);
+                            if (deleted_obj_index > -1)
+                                reviewsArray.splice(deleted_obj_index, 1);
+                            swal({
+                                title: `刪除成功`,
+                                icon: "success",
+                            });
+                        })
+                        .catch((error) => {
+                            swal({
+                                title: `刪除失敗`,
+                                text: error,
+                                icon: "error",
+                            });
+                        });
+                } else {
+                    swal({
+                        title: "取消",
+                        icon: "error",
+                    });
+                }
             });
-          });
-      }
-      if (!this.rating) {
-        alert("星等必選.");
-      }
+        },
+        update_review: () => {
+            console.log(showtoilet.review_info)
+            let checkIsInputedAndLegal = this.rating
+            if (checkIsInputedAndLegal) {
+                axios
+                    .post("http://140.115.87.117:8090/updateReview", showtoilet.review_info)
+                    .then(() => {
+                        swal({
+                            title: "修改成功",
+                            icon: "success",
+                        })
+                        //  showtoilet.review_info
+                        showtoilet.review_info[showtoilet.review_info.review_id - 1] = showtoilet.review_info
+                    })
+                    .catch((error) => {
+                        error_msg = error.response.data.error
+                        console.log()
+                        swal({
+                            title: "修改失敗",
+                            text: error_msg,
+                            icon: "error",
+                        });
+                    })
+            }
+            if (!this.rating) {
+                alert('星等必選.');
+            }
+        },
+        SendReviewInfo: (reviewobj) => {
+            showtoilet.review_info = reviewobj;
+        }
     },
-    SendReviewInfo: (reviewobj) => {
-      showtoilet.review_info = reviewobj;
-    },
-    JumpToToilet: (toilet_id) => {
-      location.href = `toiletcontent.html?toilet_id=${toilet_id}`;
-    },
-  },
 });

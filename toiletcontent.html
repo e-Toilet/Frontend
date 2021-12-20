@@ -29,7 +29,6 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/tabstyle.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/buttom.css" />
     <link rel="stylesheet" href="css/ul.css" />
 
@@ -180,14 +179,14 @@
                                                     <i class="far fa-star"></i>&nbsp;
                                                     <i class="far fa-star"></i>
                                                 </span>
-                                                <span v-if="toiletinfo[0].avgRating == 3 || (toiletinfo[0].avgRating > 3 &&  4 > toiletinfo[0].avgRating)" style="display: block,inline">
+                                                <span v-if="toiletinfo[0].avgRating ==3 || (toiletinfo[0].avgRating > 3 &&  4 > toiletinfo[0].avgRating)" style="display: block,inline">
                                                     <i class="fas fa-star"></i>&nbsp;
                                                     <i class="fas fa-star"></i>&nbsp;
                                                     <i class="fas fa-star"></i>&nbsp;
                                                     <i class="far fa-star"></i>&nbsp;
                                                     <i class="far fa-star"></i>
                                                 </span>
-                                                <span v-if="toiletinfo[0].avgRating == 4 || (toiletinfo[0].avgRating > 4 &&  5 > toiletinfo[0].avgRating)" style="display: block,inline">
+                                                <span v-if="toiletinfo[0].avgRating ==4 || (toiletinfo[0].avgRating > 4 &&  5 > toiletinfo[0].avgRating)" style="display: block,inline">
                                                     <i class="fas fa-star"></i>&nbsp;
                                                     <i class="fas fa-star"></i>&nbsp;
                                                     <i class="fas fa-star"></i>&nbsp;
@@ -313,7 +312,8 @@
                           ">
                                                 <br />
                                                 <h1 style="display: inline">{{toiletinfo[0].avgRating}}</h1>/
-                                                <h4 style="display: inline">{{reviews.length-1}}</h4>則
+                                                <div v-if="reviews.length>0" style="display: inline"><h4 style="display: inline">{{reviews.length-1}}</h4>則</div>
+                                                <div v-if="reviews.length==0" style="display: inline"><h4 style="display: inline">{{reviews.length}}</h4>則</div>
                                                 <div style="color: #8d703b">
                                                     <span v-if="toiletinfo[0].avgRating ==1 || (toiletinfo[0].avgRating > 1 &&  2 > toiletinfo[0].avgRating)" style="display: block,inline">
                                                         <i class="fas fa-star"></i>&nbsp;

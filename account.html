@@ -149,7 +149,7 @@
                             <div class="borderstyle">
                                 <br />
                                 <label style="width: 80px; text-align: center"><b>帳&nbsp;&nbsp;&nbsp;號</b></label>
-                                <label style="display: inline" id="name">{{account[0].name}}</label><label><input id="EditName" type="text" value={{account[0].name}} name="請輸入姓名" style="display: none;width: 100px" /></label>
+                                <label style="display: inline" id="name">{{account[0].name}}</label><label><input id="EditName" type="text" v-model.lazy="account[0].name" name="請輸入姓名" style="display: none;width: 100px" /></label>
                                 <div style="float: right" id="EditNamebt">
                                     <a style="cursor: pointer" onclick="edit('Name')"><i style="font-size: 16px" class="far" data-toggle="modal" data-target="#modell">&#xf044;</i></a>&nbsp;&nbsp;
                                 </div>
@@ -168,7 +168,7 @@
                             <div class="borderstyle">
                                 <br />
                                 <label style="width: 60px; text-align: center"><b>EMail</b></label>
-                                <label style="display: inline" id="Mail">{{account[0].email}}</label><label><input id="EditMail" type="text" value={{account[0].email}} name="請輸入電子郵件" style="display: none;width: 120px" /></label>
+                                <label style="display: inline" id="Mail">{{account[0].email}}</label><label><input id="EditMail" type="text" v-model.lazy="account[0].email" name="請輸入電子郵件" style="display: none;width: 120px" /></label>
                                 <div style="float: right" id="EditMailbt">
                                     <a style="cursor: pointer" onclick="edit('Mail')"><i style="font-size: 16px" class="far" data-toggle="modal" data-target="#modell">&#xf044;</i></a>&nbsp;&nbsp;
                                 </div>

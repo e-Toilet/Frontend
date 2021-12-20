@@ -114,33 +114,36 @@
     </div>
 
     <section class="ftco-section bg-light">
-        <div class="container" id="showtoilet">
+        <div class="container" id="searchtoilet">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
                         <div class="col-sm col-md-6 col-lg-4" v-for="toilet in toilets">
                             <!--小卡片-->
                             <div class="room">
-                                <a id="changeimage" class="img d-flex justify-content-center align-items-center" @click="JumpToToilet(toilet.toilet_id)">
-                                    <script type="text/javascript">
-                                        var images = ['toilet.jpg', 'toilet1.jpg', 'toilet2.jpg', 'toilet3.jpg', 'toilet4.jpg'];
-                                        var randimg = parseInt(Math.random() * 5);
-                                        var currentImage = images[randimg];
-                                        document.getElementById("changeimage").style.backgroundImage = "url(images/" + currentImage + ")";
-                                    </script>
-                                    <div class="
-                                        icon
-                                        d-flex
-                                        justify-content-center
-                                        align-items-center
-                                    ">
+                                <a v-if="toilets[0].name==toilet.name" v-show="toilets.length>1" style="background-image: url(images/toilet.jpg)" class="img d-flex justify-content-center align-items-center" @click="JumpToToilet(toilet.toilet_id)" style="cursor: pointer">
+                                    <div class="icon d-flex justify-content-center align-items-center">
                                         <span class="icon-search2"></span>
                                     </div>
                                 </a>
-                                <div id="toiletimage"></div>
+                                <a v-if="toilets[1].name==toilet.name" v-show="toilets.length>2" style="background-image: url(images/toilet1.jpg)" class="img d-flex justify-content-center align-items-center" @click="JumpToToilet(toilet.toilet_id)" style="cursor: pointer">
+                                    <div class="icon d-flex justify-content-center align-items-center">
+                                        <span class="icon-search2"></span>
+                                    </div>
+                                </a>
+                                <a v-if="toilets[2].name==toilet.name" v-show="toilets.length>3" style="background-image: url(images/toilet2.jpg)" class="img d-flex justify-content-center align-items-center" @click="JumpToToilet(toilet.toilet_id)" style="cursor: pointer">
+                                    <div class="icon d-flex justify-content-center align-items-center">
+                                        <span class="icon-search2"></span>
+                                    </div>
+                                </a>   
+                                <a v-if="toilets[3].name==toilet.name" v-show="toilets.length>4" style="background-image: url(images/toilet3.jpg)" class="img d-flex justify-content-center align-items-center" @click="JumpToToilet(toilet.toilet_id)" style="cursor: pointer">
+                                    <div class="icon d-flex justify-content-center align-items-center">
+                                        <span class="icon-search2"></span>
+                                    </div>
+                                </a>                               
                                 <div class="text p-3 text-center">
-                                    <h3 class="mb-3">
-                                        <a style="float: inherit">{{toilet.name}}</a>
+                                    <h3 class="mb-3" style="cursor: pointer">
+                                        <a style="float: inherit" @click="JumpToToilet(toilet.toilet_id)">{{toilets.length}}{{toilet.name}}</a>
                                     </h3>
                                     <p>
                                         <span class="per">( <span>{{toilet.longitude}}</span> ,
@@ -296,6 +299,15 @@
             <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
         </svg>
     </div>
+
+    <script type="text/javascript">
+//        var images = ['toilet.jpg', 'toilet1.jpg', 'toilet2.jpg', 'toilet3.jpg', 'toilet4.jpg', 'toilet5.jpg', 'toilet6.jpg', 'toilet7.jpg', 'toilet8.jpeg', 'toilet9.jpg', 'toilet10.jpg', 'toilet11.jpg', 'toilet12.jpg', 'toilet13.jpg', 'toilet14.jpg', 'toilet15.jpg', 'toilet16.jpg', , 'toilet17.jpg', 'toilet18.jpg', 'toilet19.jpg', 'toilet20.jpg'];
+//        var randimg = Math.floor(Math.random() * 20);
+//        var currentImage = images[randimg];
+//        document.getElementById("changeimage").style.backgroundImage = "url(images/" + currentImage + ")";
+//        console.log(randimg)
+
+    </script>
 
     <!--刪除廁所-->
     <script>
