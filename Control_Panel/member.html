@@ -116,14 +116,25 @@
           <div class="content">
             <h1>Member Dashboard</h1>
             <ul>
-              <li v-for="member in members" v-if="member.status == 1 || member.status == 2">
+              <li
+                v-for="member in members"
+                v-if="member.status == 1 || member.status == 2"
+              >
                 <!--Disappear when status equals 1-->
                 <span style="padding-left: 20px">{{member.name}}</span>
                 <div style="padding-right: 20px">
-                  <a v-if="member.status == 1" @click="upgrade_member_toAdmin(member.name, member.member_id)">
-                    <i class="ri-medal-line"></i>
+                  <a
+                    v-if="member.status == 1"
+                    @click="upgrade_member_to(member.name, member.member_id, 2)"
+                  >
+                    <!-- 會員 -->
+                    <i class="ri-user-2-line"></i>
                   </a>
-                  <a v-else-if="member.status == 2">
+                  <a
+                    v-else-if="member.status == 2"
+                    @click="upgrade_member_to(member.name, member.member_id, 1)"
+                  >
+                    <!-- 管理 -->
                     <i class="ri-medal-fill"></i>
                   </a>
                   <a @click="delete_member(member)">
