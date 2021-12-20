@@ -121,22 +121,22 @@
                         <div class="col-sm col-md-6 col-lg-4" v-for="toilet in toilets">
                             <!--小卡片-->
                             <div class="room">
-                                <a v-if="toilets[0].name==toilet.name" v-show="toilets.length>1" style="background-image: url(images/toilet.jpg)" class="img d-flex justify-content-center align-items-center" @click="JumpToToilet(toilet.toilet_id)" style="cursor: pointer">
+                                <a v-if="toilets.length>=1 && toilets[0].name==toilet.name" style="background-image: url(images/toilet.jpg)" class="img d-flex justify-content-center align-items-center" @click="JumpToToilet(toilet.toilet_id)" style="cursor: pointer">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <span class="icon-search2"></span>
                                     </div>
                                 </a>
-                                <a v-if="toilets[1].name==toilet.name" v-show="toilets.length>2" style="background-image: url(images/toilet1.jpg)" class="img d-flex justify-content-center align-items-center" @click="JumpToToilet(toilet.toilet_id)" style="cursor: pointer">
+                                <a v-if="toilets.length>=2 && toilets[1].name==toilet.name" style="background-image: url(images/toilet1.jpg)" class="img d-flex justify-content-center align-items-center" @click="JumpToToilet(toilet.toilet_id)" style="cursor: pointer">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <span class="icon-search2"></span>
                                     </div>
                                 </a>
-                                <a v-if="toilets[2].name==toilet.name" v-show="toilets.length>3" style="background-image: url(images/toilet2.jpg)" class="img d-flex justify-content-center align-items-center" @click="JumpToToilet(toilet.toilet_id)" style="cursor: pointer">
+                                <a v-if="toilets.length>=3 && toilets[2].name==toilet.name" style="background-image: url(images/toilet2.jpg)" class="img d-flex justify-content-center align-items-center" @click="JumpToToilet(toilet.toilet_id)" style="cursor: pointer">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <span class="icon-search2"></span>
                                     </div>
                                 </a>   
-                                <a v-if="toilets[3].name==toilet.name" v-show="toilets.length>4" style="background-image: url(images/toilet3.jpg)" class="img d-flex justify-content-center align-items-center" @click="JumpToToilet(toilet.toilet_id)" style="cursor: pointer">
+                                <a v-if="toilets.length>=4 && toilets[3].name==toilet.name" style="background-image: url(images/toilet3.jpg)" class="img d-flex justify-content-center align-items-center" @click="JumpToToilet(toilet.toilet_id)" style="cursor: pointer">
                                     <div class="icon d-flex justify-content-center align-items-center">
                                         <span class="icon-search2"></span>
                                     </div>
