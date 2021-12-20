@@ -84,6 +84,38 @@ const app = new Vue({
         checkIFPasswordLegal: () => {
             app.isPasswordLegal = (app.member_info.password.length >= 6)
         },
+        upgrade_member_toAdmin: (member_name, member_id) => {
+            swal({
+                title: `Sure to Upgrade User: ${member_name}?`,
+                icon: "info",
+                buttons: true,
+                dangerMode: false
+            }).then((response) => {
+                if(response){
+                    axios.post('http://140.115.87.117:8090/updateMemberStatus', {"member_id": member_id, "status": "2"})
+                        .then((response) => {
+                            swal({
+                                title: 'Member is now admin',
+                                icon: 'success'
+                            })
+                        })
+                        .catch((error) => { 
+                            swal({
+                                title: "Encounter error message",
+                                text: error,
+                                icon: 'error'
+                            })
+                        })
+                }else{
+                    swal({
+                        title: 'Cancel',
+                        icon: "error"
+                    })
+                }
+
+            })
+            
+        }
 
     }
 })

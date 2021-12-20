@@ -68,14 +68,6 @@
                     <span class="menu-suffix">&#128167;</span>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="member.html">
-                    <span class="menu-icon">
-                      <i class="ri-bar-chart-2-fill"></i>
-                    </span>
-                    <span class="menu-title">會員管理</span>
-                  </a>
-                </li>
                 <li class="menu-item sub-menu">
                   <a href="#">
                     <span class="menu-icon">
@@ -86,8 +78,8 @@
                   <div class="sub-menu-list">
                     <ul>
                       <li class="menu-item">
-                        <a href="create_admin.html">
-                          <span class="menu-title">新增管理員</span>
+                        <a href="member.html">
+                          <span class="menu-title">會員管理</span>
                         </a>
                       </li>
                     </ul>
@@ -124,10 +116,16 @@
           <div class="content">
             <h1>Member Dashboard</h1>
             <ul>
-              <li v-for="member in members" v-if="member.status == 1">
+              <li v-for="member in members" v-if="member.status == 1 || member.status == 2">
                 <!--Disappear when status equals 1-->
                 <span style="padding-left: 20px">{{member.name}}</span>
                 <div style="padding-right: 20px">
+                  <a v-if="member.status == 1" @click="upgrade_member_toAdmin(member.name, member.member_id)">
+                    <i class="ri-medal-line"></i>
+                  </a>
+                  <a v-else-if="member.status == 2">
+                    <i class="ri-medal-fill"></i>
+                  </a>
                   <a @click="delete_member(member)">
                     <i class="ri-delete-bin-6-line"></i>
                   </a>
@@ -242,8 +240,9 @@
     <!-- partial -->
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- development version, includes helpful console warnings -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
     <!-- 根據Vue的官網source去改變src的位址，version問題 -->
+    <script src="./js/vue.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/member_action.js"></script>
   </body>
