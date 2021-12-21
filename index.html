@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="css/ionicons.min.css" />
 
     <link rel="stylesheet" href="css/bootstrap-datepicker.css" />
-    <link rel="stylesheet" href="css/jquery.timepicker.css" />
 
     <link rel="stylesheet" href="css/flaticon.css" />
     <link rel="stylesheet" href="css/icomoon.css" />
@@ -166,7 +165,7 @@
                         <div class="col-md-7 d-flex justify-content-center">
                             <div class="d-flex justify-content-center">
                                 <div class="wrap">
-                                    <button type="button" class="btn" title="找附近" onclick="getLocation()" style="
+                                    <button type="button" class="btn" title="找附近" @click="PositionToSearch" style="
                                         background-color: white;
                                         border-radius: 50%;
                                         border: 0;
@@ -225,7 +224,7 @@
                                     <font color="red">＊</font>廁所名稱
                                 </td>
                                 <td align="left">
-                                    <input v-model.trim="name" rows="1" style="width: 200px" required />
+                                    <input v-model.trim="create_toilet.name" rows="1" style="width: 200px" required />
                                 </td>
                             </tr>
 
@@ -234,7 +233,7 @@
                                     <font color="red">＊</font>國家
                                 </td>
                                 <td align="left">
-                                    <select v-model="create.country_id" style="width: 200px">
+                                    <select v-model="create_toilet.country_id" style="width: 200px">
                                         <option value="-1" selected disabled>國家</option>
                                         <option v-for="country in countries" :value="country.country_id">{{country.country_name}}</option>
                                     </select>
@@ -246,9 +245,9 @@
                                     <font color="red">＊</font>城市
                                 </td>
                                 <td align="left">
-                                    <select v-model="create.city_id" style="width: 200px">
+                                    <select v-model="create_toilet.city_id" style="width: 200px">
                                         <option value="-1" selected disabled>城市</option>
-                                        <option v-for="city in cities" :value="city.city_id" v-show="city.country_id == create.country_id">{{city.city_name}}</option>
+                                        <option v-for="city in cities" :value="city.city_id" v-show="city.country_id == create_toilet.country_id">{{city.city_name}}</option>
                                     </select>
                                 </td>
                             </tr>
@@ -258,9 +257,9 @@
                                     <font color="red">＊</font>地區
                                 </td>
                                 <td align="left">
-                                    <select v-model="create.district_id" style="width: 200px">
+                                    <select v-model="create_toilet.district_id" style="width: 200px">
                                         <option value="-1" selected disabled>地區</option>
-                                        <option v-for="district in districts" :value="district.district_id" v-show="district.city_id == create.city_id">{{district.district_name}}</option>
+                                        <option v-for="district in districts" :value="district.district_id" v-show="district.city_id == create_toilet.city_id">{{district.district_name}}</option>
                                     </select>
                                 </td>
                             </tr>
@@ -269,7 +268,7 @@
                                     <font color="red">＊</font>地址
                                 </td>
                                 <td align="left">
-                                    <input v-model.trim="address" rows="1" style="width: 200px" required />
+                                    <input v-model.trim="create_toilet.address" rows="1" style="width: 200px" required />
                                 </td>
                             </tr>
                             <tr height="40">
@@ -277,7 +276,7 @@
                                     <font color="red">＊</font>經緯度
                                 </td>
                                 <td align="left">
-                                    <button type="button" class="btn" onclick="AddLocation()" style="background: white">
+                                    <button type="button" class="btn" @click="create_showPosition" style="background: white">
                                         <img src="images/gps.png" width="30" height="30" />
                                     </button>
                                 </td>
@@ -286,14 +285,14 @@
                                 <td style="width: 100px">
                                 </td>
                                 <td>
-                                    <input id="longitude" v-model.trim="longitude" type="hidden" disabled>
+                                    <input id="longitude" v-model="create_toilet.longitude" :type="isShow ? 'show':'hidden'" disabled>
                                 </td>
                             </tr>
                             <tr>
                                 <td style="width: 100px">
                                 </td>
                                 <td>
-                                    <input id="latitude" v-model.trim="latitude" type="hidden" disabled>
+                                    <input id="latitude" v-model="create_toilet.latitude" :type="isShow ? 'show':'hidden'" disabled>
                                 </td>
                             </tr>
                             <tr>
@@ -305,6 +304,41 @@
                     </div>
                     <div class="modal-footer">
                        <input type="submit" @click="createto" class="btn btn-primary" value="送出" style="width: 80px; height: 35px; font-size: 13px" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="googlemap" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog model-dialog-centered modal-lg" role="document" style="width: 400">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body" style="align-content: center">
+                        <table align="center" style="text-align: center; border-collapse: separate" rules="none">
+                            <tr height="40">
+                                <td style="width: 100px">
+                                    經度
+                                </td>
+                                <td style="width: 200px">
+                                    <input id="Longitude" v-model="selected.longitude" disabled>
+                                </td>
+                            </tr>
+                            <tr height="40">
+                                <td style="width: 100px">
+                                    緯度
+                                </td>
+                                <td style="width: 200px">
+                                    <input id="Latitude" v-model="selected.latitude" disabled>
+                                </td>
+                            </tr>
+                        </table>
+    
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary" value="送出" style="width: 80px; height: 35px; font-size: 13px" />
                     </div>
                 </div>
             </div>
@@ -323,19 +357,7 @@
             };
         }
 
-        function getLocation() {
-            if (navigator.geolocation) {
-                //取得 經緯度
-                navigator.geolocation.getCurrentPosition(showPosition); //有拿到位置就呼叫 showPosition 函式
-            } else {
-                //沒有支援呼叫地理位置功能的瀏覽器
-            }
-        }
 
-        function showPosition(position) {
-            $("#Longitude").attr("placeholder", position.coords.longitude).show();
-            $("#Latitude").attr("placeholder", position.coords.latitude).show();
-        }
 
         function AddLocation() {
             if (navigator.geolocation) {
@@ -387,7 +409,6 @@
     <script src="js/aos.js"></script>
     <script src="js/jquery.animateNumber.min.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/jquery.timepicker.min.js"></script>
     <script src="js/scrollax.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=true"></script>
     <script src="js/google-map.js"></script>
@@ -395,14 +416,15 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"></script>
-    <script src="./js/searchtoilet.js"></script>
+    <!-- Vue actions -->
+    <script src="./js/vue/index_selectSection.js"></script>
 
     <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 </body>
 
 <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 
-<form method="post">
+<!-- <form method="post">
     <div class="modal fade" id="googlemap" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog model-dialog-centered modal-lg" role="document" style="width: 400">
             <div class="modal-content">
@@ -418,7 +440,7 @@
                                 經度
                             </td>
                             <td style="width: 200px">
-                                <input id="Longitude" disabled>
+                                <input id="Longitude" v-model="selected.longitude" disabled>
                             </td>
                         </tr>
                         <tr height="40">
@@ -426,7 +448,7 @@
                                 緯度
                             </td>
                             <td style="width: 200px">
-                                <input id="Latitude" disabled>
+                                <input id="Latitude" v-model="selected.latitude" disabled>
                             </td>
                         </tr>
                     </table>
@@ -438,6 +460,6 @@
             </div>
         </div>
     </div>
-</form>
+</form> -->
 
 </html>

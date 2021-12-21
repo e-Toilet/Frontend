@@ -101,7 +101,7 @@ const app = new Vue({
               member_id: member_id,
               status: set_member_status,
             })
-            .then((response) => {
+            .then(() => {
               swal({
                 title: `Member is now ${
                   set_member_status == 1 ? "member" : "admin"
