@@ -135,8 +135,8 @@ const searchtoilet = new Vue({
         searchtoilet.selected.latitude = position.coords.latitude;
       });
     },
-    JumpToLngLat: (lng, lat) => {
-      location.href = `toilet.html?longitude=${lng}&lat=${lat}`;
+    JumpToLngLat: (lat, lng) => {
+      location.href = `toilet.html?longitude=${lng}&latitude=${lat}`;
     },
   },
 });

@@ -14,7 +14,7 @@ const searchtoilet = new Vue({
       district_id: "-1",
     },
     images: [
-      "toilet.jpg",
+      "toilet0.jpg",
       "toilet1.jpg",
       "toilet2.jpg",
       "toilet3.jpg",
@@ -47,86 +47,83 @@ const searchtoilet = new Vue({
     });
 
     let url = location.href;
-    let district_id;
-    let toilet_id;
-    console.log(url);
-    try {
-      let district = url.split("?")[1].split("&")[0];
-      district_id = district.split("=")[1];
-      let toilet = url.split("?")[1].split("&")[0];
-      toilet_id = toilet.split("=")[1];
-    } catch (error) {}
-    axios
-      .get(
-        `http://140.115.87.117:8090/getToiletByLoc?district_id=${district_id}`
-      )
-      .then((response) => {
-        result = JSON.parse(response.data.Toiletinfo);
-        searchtoilet.toilets = result;
+    let param_obj = {};
+    if (url.split("?").length > 1) {
+      //將?後面的所有參數都分割
+      let params = url.split("?")[1].split("&");
+      //將參數分割後，分割'='符號的前後文並且將'='前面設定為param_obj的key，後面設定為value
+      params.forEach((param) => {
+        let temp = param.split("=");
+        param_obj[temp[0]] = temp[1];
       });
-    axios
-      .get(`http://140.115.87.117:8090/getToiletByID?toilet_id=${toilet_id}`)
-      .then((response) => {
-        result = JSON.parse(response.data.Toiletinfo);
-        showtoilet.toiletinfo = result;
-      });
+    }
+
+    if (param_obj.hasOwnProperty("district_id")) {
+      axios
+        .get(
+          `http://140.115.87.117:8090/getToiletByLoc?district_id=${param_obj["district_id"]}`
+        )
+        .then((response) => {
+          result = JSON.parse(response.data.Toiletinfo);
+          searchtoilet.toilets = result;
+        });
+    } else if (
+      param_obj.hasOwnProperty("longitude") &&
+      param_obj.hasOwnProperty("latitude")
+    ) {
+      axios
+        .get(
+          `http://140.115.87.117:8090/getToiletByLongitude?longitude=${param_obj["longitude"]}&latitude=${param_obj["latitude"]}`
+        )
+        .then((response) => {
+          result = JSON.parse(response.data.Toiletinfo);
+          searchtoilet.toilets = result;
+        });
+    }
   },
   methods: {
     createto: function (e) {
+      //新增廁所
       let checkIsInputedAndLegal =
-        this.name &&
-        this.address &&
-        this.longitude &&
-        this.latitude &&
-        this.create.country_id &&
-        this.create.city_id &&
-        this.create.district_id;
+        searchtoilet.create_toilet.name &&
+        searchtoilet.create_toilet.address &&
+        searchtoilet.create_toilet.longitude &&
+        searchtoilet.create_toilet.latitude &&
+        searchtoilet.create_toilet.country_id &&
+        searchtoilet.create_toilet.city_id &&
+        searchtoilet.create_toilet.district_id;
       if (checkIsInputedAndLegal) {
         axios
-          .post("http://140.115.87.117:8090/createNewToilet", {
-            address: searchtoilet.address,
-            longitude: searchtoilet.longitude,
-            latitude: searchtoilet.latitude,
-            country: searchtoilet.create.country_id,
-            city: searchtoilet.create.city_id,
-            district: searchtoilet.create.district_id,
-            name: searchtoilet.name,
-          })
+          .post(
+            "http://140.115.87.117:8090/createNewToilet",
+            searchtoilet.create_toilet
+          )
           .then((response) => {
             result = response.data;
             alert("新增成功");
             self.location.reload();
           })
-          .catch((error) => {
+          .catch(() => {
             alert("新增失敗！請再試一次");
-            return;
           });
       }
-      if (!this.name) {
-        alert("廁所名稱欄位為必填.");
-      }
-      if (!this.create.country_id) {
-        alert("國家欄位為必選.");
-      } else if (this.create.country_id == "-1") {
-        alert("國家欄位為必選.");
-      }
-      if (!this.create.city_id) {
-        alert("城市欄位為必選.");
-      } else if (this.create.city_id == "-1") {
-        alert("城市欄位為必選.");
-      }
-      if (!this.create.district_id) {
-        alert("地區欄位為必選.");
-      } else if (this.create.district_id == "-1") {
-        alert("地區欄位為必選.");
-      }
-      if (!this.address) {
-        alert("地址欄位為必填.");
-      }
-      if (!this.longitude) {
-        alert("經緯度欄位為必填.");
-      } else if (!this.latitude) {
-        alert("經緯度欄位為必填.");
+
+      //檢查所有新增欄位有沒有填寫
+      for (let key in searchtoilet.create_toilet) {
+        let value = searchtoilet.create_toilet[key];
+        switch (key) {
+          case "country_id":
+            if (!value || value == "-1") alert("國家欄位為必選.");
+            break;
+          case "city_id":
+            if (!value || value == "-1") alert("城市欄位為必選.");
+            break;
+          case "district_id":
+            if (!value || value == "-1") alert("地區欄位為必選.");
+            break;
+          default:
+            if (!value) alert(key + " 為必填寫！");
+        }
       }
       e.preventDefault();
     },
