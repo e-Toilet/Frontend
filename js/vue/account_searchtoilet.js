@@ -1,16 +1,9 @@
 const searchtoilet = new Vue({
-  el: "#searchtoilet",
+  el: "#Create",
   data: {
     countries: [],
     cities: [],
     districts: [],
-    selected: {
-      longitude: 0.0,
-      latitude: 0.0,
-      country_id: "-1",
-      city_id: "-1",
-      district_id: "-1",
-    },
     create_toilet: {
       name: "",
       address: "",
@@ -45,6 +38,7 @@ const searchtoilet = new Vue({
         searchtoilet.create_toilet.country_id &&
         searchtoilet.create_toilet.city_id &&
         searchtoilet.create_toilet.district_id;
+
       if (checkIsInputedAndLegal) {
         axios
           .post(
@@ -80,28 +74,16 @@ const searchtoilet = new Vue({
       }
       e.preventDefault();
     },
-    JumpToSearch: (district_id) => {
-      //使用區域搜尋
-      if (
-        !searchtoilet.selected.country_id ||
-        searchtoilet.selected.country_id == "-1"
-      ) {
-        alert("國家欄位為必選.");
-      } else if (
-        !searchtoilet.selected.city_id ||
-        searchtoilet.selected.city_id == "-1"
-      ) {
-        alert("城市欄位為必選.");
-      } else if (
-        !searchtoilet.selected.district_id ||
-        searchtoilet.selected.district_id == "-1"
-      ) {
-        alert("地區欄位為必選.");
-      } else {
-        location.href = `toilet.html?district_id=${district_id}`;
-      }
+    create_showPosition: async () => {
+      //新增廁所的經緯度
+      await searchtoilet.getLocation().then((position) => {
+        searchtoilet.isShow = true;
+        searchtoilet.create_toilet.longitude = position.coords.longitude;
+        searchtoilet.create_toilet.latitude = position.coords.latitude;
+      });
     },
     getLocation: async () => {
+      //取得經緯度位置
       return new Promise((resolve, reject) => {
         if (!("geolocation" in navigator)) {
           reject(new Error("Geolocation is not available."));
@@ -118,25 +100,6 @@ const searchtoilet = new Vue({
           }
         );
       });
-    },
-    create_showPosition: async () => {
-      //新增廁所的經緯度
-      await searchtoilet.getLocation().then((position) => {
-        searchtoilet.isShow = true;
-        searchtoilet.create_toilet.longitude = position.coords.longitude;
-        searchtoilet.create_toilet.latitude = position.coords.latitude;
-      });
-    },
-    PositionToSearch: async () => {
-      //找附近的function
-      searchtoilet.selected.longitude = searchtoilet.selected.latitude = "";
-      await searchtoilet.getLocation().then((position) => {
-        searchtoilet.selected.longitude = position.coords.longitude;
-        searchtoilet.selected.latitude = position.coords.latitude;
-      });
-    },
-    JumpToLngLat: (lng, lat) => {
-      location.href = `toilet.html?longitude=${lng}&lat=${lat}`;
     },
   },
 });
