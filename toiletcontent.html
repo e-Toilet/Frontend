@@ -190,22 +190,7 @@
                         {{toiletinfo[0].name}}
                       </h2>
                       <hr style="clear: both" />
-                      <div class="room-img" id="changeimage"></div>
-                      <script type="text/javascript">
-                        var images = [
-                          "toilet.jpg",
-                          "toilet1.jpg",
-                          "toilet2.jpg",
-                          "toilet3.jpg",
-                          "toilet4.jpg",
-                        ];
-                        var randimg = parseInt(Math.random() * 5);
-                        var currentImage = images[randimg];
-                        document.getElementById(
-                          "changeimage"
-                        ).style.backgroundImage =
-                          "url(images/" + currentImage + ")";
-                      </script>
+                      <div class="room-img" style="background-image: url(images/toilet0.jpg)"></div>
                     </div>
                     <h5>
                       &nbsp;&nbsp;&nbsp;
@@ -216,6 +201,13 @@
                         >{{toiletinfo[0].district_id}}</span
                       >
                     </h5>
+                    <div>
+                      <h5>
+                        <span class="per" style="margin-left: 3rem">
+                          <span id="address">{{toiletinfo[0].address}}</span>
+                          </span>
+                      </h5>
+                    </div>
                     <div>
                       <h5>
                         <span class="per" style="margin-left: 3rem"
@@ -358,7 +350,7 @@
                                   border: 2px #d0d0d0 solid;
                                   border-radius: 50%;
                                 "
-                              />&nbsp;&nbsp;&nbsp;lily {{review.member_id}}
+                              />&nbsp;&nbsp;&nbsp;{{review.member_name}}
                               <span style="float: right">
                                 <button
                                   type="button"
@@ -727,7 +719,7 @@
                                       border: 2px #d0d0d0 solid;
                                       border-radius: 50%;
                                     "
-                                  />&nbsp;&nbsp;&nbsp;Alice {{review.member_id}}
+                                  />&nbsp;&nbsp;&nbsp;{{review.member_name}}
                                   <span style="float: right">
                                     <button
                                       @click="delete_review(review)"
