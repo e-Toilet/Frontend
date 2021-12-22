@@ -210,9 +210,8 @@
                         >{{toilet.name}}</a
                       >
                     </h3>
-                     <p>
-                      <span class="per">
-                      <span>{{toilet.address}}</span></span>
+                    <p>
+                      <span class="per"> <span>{{toilet.address}}</span></span>
                     </p>
                     <p>
                       <span class="per">
@@ -249,135 +248,177 @@
             </div>
           </div>
         </div>
-      </div>
-      <div
-        class="modal fade"
-        id="Create"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="myModalLabel"
-        aria-hidden="true"
-      >
         <div
-          class="modal-dialog model-dialog-centered modal-lg"
-          role="document"
-          style="width: 400"
+          class="modal fade"
+          id="Create"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="myModalLabel"
+          aria-hidden="true"
         >
-          <div class="modal-content">
-            <div class="modal-header">
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-hidden="true"
-              >
-                &times;
-              </button>
-            </div>
-            <div
-              class="modal-body"
-              style="align-content: center"
-              id="searchtoilet"
-            >
-              <table
-                align="center"
-                style="text-align: center; border-collapse: separate"
-                rules="none"
-              >
-                <tr height="40">
-                  <td style="width: 100px">
-                    <font color="red">＊</font>廁所名稱
-                  </td>
-                  <td align="left">
-                    <input rows="1" style="width: 200px" required />
-                  </td>
-                </tr>
+          <div
+            class="modal-dialog model-dialog-centered modal-lg"
+            role="document"
+            style="width: 400"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-hidden="true"
+                >
+                  &times;
+                </button>
+              </div>
+              <div class="modal-body" style="align-content: center">
+                <table
+                  align="center"
+                  style="text-align: center; border-collapse: separate"
+                  rules="none"
+                >
+                  <tr height="40">
+                    <td style="width: 100px">
+                      <font color="red">＊</font>廁所名稱
+                    </td>
+                    <td align="left">
+                      <input
+                        v-model.trim="create_toilet.name"
+                        rows="1"
+                        style="width: 200px"
+                        required
+                      />
+                    </td>
+                  </tr>
 
-                <tr height="40">
-                  <td style="width: 100px"><font color="red">＊</font>國家</td>
-                  <td align="left">
-                    <select v-model="create.country_id" style="width: 200px">
-                      <option value="-1" selected disabled>國家</option>
-                      <option
-                        v-for="country in countries"
-                        :value="country.country_id"
+                  <tr height="40">
+                    <td style="width: 100px">
+                      <font color="red">＊</font>國家
+                    </td>
+                    <td align="left">
+                      <select
+                        v-model="create_toilet.country_id"
+                        style="width: 200px"
                       >
-                        {{country.country_name}}
-                      </option>
-                    </select>
-                  </td>
-                </tr>
+                        <option value="-1" selected disabled>國家</option>
+                        <option
+                          v-for="country in countries"
+                          :value="country.country_id"
+                        >
+                          {{country.country_name}}
+                        </option>
+                      </select>
+                    </td>
+                  </tr>
 
-                <tr height="40">
-                  <td style="width: 100px"><font color="red">＊</font>城市</td>
-                  <td align="left">
-                    <select v-model="create.city_id" style="width: 200px">
-                      <option value="-1" selected disabled>城市</option>
-                      <option
-                        v-for="city in cities"
-                        :value="city.city_id"
-                        v-show="city.country_id == create.country_id"
+                  <tr height="40">
+                    <td style="width: 100px">
+                      <font color="red">＊</font>城市
+                    </td>
+                    <td align="left">
+                      <select
+                        v-model="create_toilet.city_id"
+                        style="width: 200px"
                       >
-                        {{city.city_name}}
-                      </option>
-                    </select>
-                  </td>
-                </tr>
+                        <option value="-1" selected disabled>城市</option>
+                        <option
+                          v-for="city in cities"
+                          :value="city.city_id"
+                          v-show="city.country_id == create_toilet.country_id"
+                        >
+                          {{city.city_name}}
+                        </option>
+                      </select>
+                    </td>
+                  </tr>
 
-                <tr height="40">
-                  <td style="width: 100px"><font color="red">＊</font>地區</td>
-                  <td align="left">
-                    <select v-model="create.district_id" style="width: 200px">
-                      <option value="-1" selected disabled>地區</option>
-                      <option
-                        v-for="district in districts"
-                        :value="district.district_id"
-                        v-show="district.city_id == create.city_id"
+                  <tr height="40">
+                    <td style="width: 100px">
+                      <font color="red">＊</font>地區
+                    </td>
+                    <td align="left">
+                      <select
+                        v-model="create_toilet.district_id"
+                        style="width: 200px"
                       >
-                        {{district.district_name}}
-                      </option>
-                    </select>
-                  </td>
-                </tr>
-                <tr height="40">
-                  <td style="width: 100px"><font color="red">＊</font>地址</td>
-                  <td align="left">
-                    <input rows="1" style="width: 200px" required />
-                  </td>
-                </tr>
-                <tr height="40">
-                  <td style="width: 100px">
-                    <font color="red">＊</font>經緯度
-                  </td>
-                  <td align="left">
-                    <button
-                      type="button"
-                      class="btn"
-                      onclick="AddLocation()"
-                      style="background: white"
-                    >
-                      <img src="images/gps.png" width="30" height="30" />
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="width: 100px"></td>
-                  <td><input id="here" type="hidden" disabled /></td>
-                </tr>
-                <tr>
-                  <td colspan="2">
-                    <img id="output" height="150" style="display: none" />
-                  </td>
-                </tr>
-              </table>
-            </div>
-            <div class="modal-footer">
-              <input
-                type="submit"
-                class="btn btn-primary"
-                value="送出"
-                style="width: 80px; height: 35px; font-size: 13px"
-              />
+                        <option value="-1" selected disabled>地區</option>
+                        <option
+                          v-for="district in districts"
+                          :value="district.district_id"
+                          v-show="district.city_id == create_toilet.city_id"
+                        >
+                          {{district.district_name}}
+                        </option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr height="40">
+                    <td style="width: 100px">
+                      <font color="red">＊</font>地址
+                    </td>
+                    <td align="left">
+                      <input
+                        v-model.trim="create_toilet.address"
+                        rows="1"
+                        style="width: 200px"
+                        required
+                      />
+                    </td>
+                  </tr>
+                  <tr height="40">
+                    <td style="width: 100px">
+                      <font color="red">＊</font>經緯度
+                    </td>
+                    <td align="left">
+                      <button
+                        type="button"
+                        class="btn"
+                        @click="create_showPosition"
+                        style="background: white"
+                      >
+                        <img src="images/gps.png" width="30" height="30" />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 100px"></td>
+                    <td>
+                      <input
+                        id="longitude"
+                        v-model="create_toilet.longitude"
+                        :type="isShow ? 'show':'hidden'"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 100px"></td>
+                    <td>
+                      <input
+                        id="latitude"
+                        v-model="create_toilet.latitude"
+                        :type="isShow ? 'show':'hidden'"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <img id="output" height="150" style="display: none" />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <input
+                  type="submit"
+                  @click="createto"
+                  class="btn btn-primary"
+                  value="送出"
+                  style="width: 80px; height: 35px; font-size: 13px"
+                />
+              </div>
             </div>
           </div>
         </div>

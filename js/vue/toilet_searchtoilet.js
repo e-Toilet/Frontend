@@ -18,6 +18,7 @@ const searchtoilet = new Vue({
       city_id: "-1",
       district_id: "-1",
     },
+    isShow: false,
     images: [
       "toilet0.jpg",
       "toilet1.jpg",
@@ -89,7 +90,6 @@ const searchtoilet = new Vue({
       return;
     }
   },
-  mounted: () => {},
   methods: {
     createto: function (e) {
       //新增廁所
@@ -101,6 +101,7 @@ const searchtoilet = new Vue({
         searchtoilet.create_toilet.country_id &&
         searchtoilet.create_toilet.city_id &&
         searchtoilet.create_toilet.district_id;
+
       if (checkIsInputedAndLegal) {
         axios
           .post(
@@ -135,6 +136,33 @@ const searchtoilet = new Vue({
         }
       }
       e.preventDefault();
+    },
+    create_showPosition: async () => {
+      //新增廁所的經緯度
+      await searchtoilet.getLocation().then((position) => {
+        searchtoilet.isShow = true;
+        searchtoilet.create_toilet.longitude = position.coords.longitude;
+        searchtoilet.create_toilet.latitude = position.coords.latitude;
+      });
+    },
+    getLocation: async () => {
+      //取得經緯度位置
+      return new Promise((resolve, reject) => {
+        if (!("geolocation" in navigator)) {
+          reject(new Error("Geolocation is not available."));
+        }
+
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            //成功後回傳resolve
+            resolve(position);
+          },
+          (err) => {
+            //失敗後回傳reject
+            reject(err);
+          }
+        );
+      });
     },
     JumpToToilet: (toilet_id) => {
       //顯示廁所詳細
