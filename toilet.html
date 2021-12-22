@@ -230,11 +230,13 @@
                     <hr />
                     <p class="pt-1">
                       <span style="display: block, inline">
-                        <i v-for="n in toilet.avg_rating" class="fas fa-star"
+                        <i
+                          v-for="n in (toilet.avg_rating|0)"
+                          class="fas fa-star"
                           >&nbsp;
                         </i>
                         <i
-                          v-for="n in (5-toilet.avg_rating)"
+                          v-for="n in (5-(toilet.avg_rating|0))"
                           class="far fa-star"
                           >&nbsp;</i
                         >

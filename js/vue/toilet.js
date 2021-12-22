@@ -1,45 +1,175 @@
 const showtoilet = new Vue({
   el: "#showtoilet",
   data: {
-    toiletinfo: [],
+    countries: [],
+    cities: [],
+    districts: [],
+    create_toilet: {
+      name: "",
+      address: "",
+      longitude: "",
+      latitude: "",
+      country_id: "-1",
+      city_id: "-1",
+      district_id: "-1",
+    },
+    isShow: false,
+    images: [
+      "toilet0.jpg",
+      "toilet1.jpg",
+      "toilet2.jpg",
+      "toilet3.jpg",
+      "toilet4.jpg",
+      "toilet5.jpg",
+      "toilet6.jpg",
+      "toilet7.jpg",
+      "toilet8.jpeg",
+      "toilet9.jpg",
+      "toilet10.jpg",
+      "toilet11.jpg",
+      "toilet12.jpg",
+      "toilet13.jpg",
+      "toilet14.jpg",
+      "toilet15.jpg",
+      "toilet16.jpg",
+      "toilet17.jpg",
+      "toilet18.jpg",
+      "toilet19.jpg",
+      "toilet20.jpg",
+    ],
+
+    toiletInfo: {},
     reviews: [],
-    account: [],
+    account: {},
     rating: "",
     content: "",
     review_info: {},
     selected_rating: 0,
   },
   created: () => {
+    //取得所有關於country, city and district的資訊
+    axios.get("http://140.115.87.117:8090/getAllLoc").then((response) => {
+      showtoilet.countries = JSON.parse(response.data.CountryInfo);
+      showtoilet.cities = JSON.parse(response.data.CityInfo);
+      showtoilet.districts = JSON.parse(response.data.DistrictInfo);
+    });
+
     let url = location.href;
-    let toilet_id;
-    console.log(url);
-    try {
-      let toilet = url.split("?")[1].split("&")[0];
-      toilet_id = toilet.split("=")[1];
-    } catch (error) {}
-    axios
-      .get(`http://140.115.87.117:8090/getToiletByID?toilet_id=${toilet_id}`)
-      .then((response) => {
-        result = JSON.parse(response.data.Toiletinfo);
-        showtoilet.toiletinfo = result;
-        //                console.log(result)
+    let param_obj = {};
+    if (url.split("?").length > 1) {
+      //將?後面的所有參數都分割
+      let params = url.split("?")[1].split("&");
+      //將參數分割後，分割'='符號的前後文並且將'='前面設定為param_obj的key，後面設定為value
+      params.forEach((param) => {
+        let temp = param.split("=");
+        param_obj[temp[0]] = temp[1];
       });
-    axios
-      .get(`http://140.115.87.117:8090/getReview?toilet_id=${toilet_id}`)
-      .then((response) => {
-        result = JSON.parse(response.data.Reviewinfo);
-        showtoilet.reviews = result;
-        // console.log(result)
-      });
+    }
+
+    if (param_obj.hasOwnProperty("toilet_id")) {
+      axios
+        .get(
+          `http://140.115.87.117:8090/getToiletByID?toilet_id=${param_obj["toilet_id"]}`
+        )
+        .then((response) => {
+          result = JSON.parse(response.data.Toiletinfo);
+          //廁所只會有一個，所以直接拿result[0]即可
+          showtoilet.toiletInfo = result[0];
+        });
+      axios
+        .get(
+          `http://140.115.87.117:8090/getReview?toilet_id=${param_obj["toilet_id"]}`
+        )
+        .then((response) => {
+          if (response.data.hasOwnProperty("Reviewinfo")) {
+            result = JSON.parse(response.data.Reviewinfo);
+            showtoilet.reviews = result;
+          }
+        });
+    }
     axios
       .get("http://140.115.87.117:8090/getMemberInfo?member_id=112")
       .then((response) => {
         result = JSON.parse(response.data.Memberinfo);
-        showtoilet.account = result;
-        //                console.log(result)
+        //登入中的會員也只會有一個，所以直接拿一個就好
+        showtoilet.account = result[0];
       });
   },
   methods: {
+    createto: function (e) {
+      //新增廁所
+      let checkIsInputedAndLegal =
+        showtoilet.create_toilet.name &&
+        showtoilet.create_toilet.address &&
+        showtoilet.create_toilet.longitude &&
+        showtoilet.create_toilet.latitude &&
+        showtoilet.create_toilet.country_id &&
+        showtoilet.create_toilet.city_id &&
+        showtoilet.create_toilet.district_id;
+
+      if (checkIsInputedAndLegal) {
+        axios
+          .post(
+            "http://140.115.87.117:8090/createNewToilet",
+            showtoilet.create_toilet
+          )
+          .then((response) => {
+            result = response.data;
+            alert("新增成功");
+            self.location.reload();
+          })
+          .catch(() => {
+            alert("新增失敗！請再試一次");
+          });
+      }
+
+      //檢查所有新增欄位有沒有填寫
+      for (let key in showtoilet.create_toilet) {
+        let value = showtoilet.create_toilet[key];
+        switch (key) {
+          case "country_id":
+            if (!value || value == "-1") alert("國家欄位為必選.");
+            break;
+          case "city_id":
+            if (!value || value == "-1") alert("城市欄位為必選.");
+            break;
+          case "district_id":
+            if (!value || value == "-1") alert("地區欄位為必選.");
+            break;
+          default:
+            if (!value) alert(key + " 為必填寫！");
+        }
+      }
+      e.preventDefault();
+    },
+    create_showPosition: async () => {
+      //新增廁所的經緯度
+      await showtoilet.getLocation().then((position) => {
+        showtoilet.isShow = true;
+        showtoilet.create_toilet.longitude = position.coords.longitude;
+        showtoilet.create_toilet.latitude = position.coords.latitude;
+      });
+    },
+    getLocation: async () => {
+      //取得經緯度位置
+      return new Promise((resolve, reject) => {
+        if (!("geolocation" in navigator)) {
+          reject(new Error("Geolocation is not available."));
+        }
+
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            //成功後回傳resolve
+            resolve(position);
+          },
+          (err) => {
+            //失敗後回傳reject
+            reject(err);
+          }
+        );
+      });
+    },
+
     createcommet: function (e) {
       let check = this.rating && this.content.length < 46;
       if (check) {
