@@ -4,6 +4,11 @@ const searchtoilet = new Vue({
     countries: [],
     cities: [],
     districts: [],
+    web: {
+      country_name: "",
+      city_name: "",
+      district_name: "",
+    },
     create_toilet: {
       name: "",
       address: "",
@@ -76,11 +81,15 @@ const searchtoilet = new Vue({
           `http://140.115.87.117:8090/getToiletByLongitude?longitude=${param_obj["longitude"]}&latitude=${param_obj["latitude"]}`
         )
         .then((response) => {
+          console.log(response);
           result = JSON.parse(response.data.Toiletinfo);
           searchtoilet.toilets = result;
         });
+    } else {
+      return;
     }
   },
+  mounted: () => {},
   methods: {
     createto: function (e) {
       //新增廁所
@@ -127,35 +136,36 @@ const searchtoilet = new Vue({
       }
       e.preventDefault();
     },
-    JumpToSearch: function (district_id) {
-      let checksearch =
-        this.selected.country_id &&
-        this.selected.city_id &&
-        this.selected.district_id &&
-        this.selected.district_id != -1;
-      console.log(checksearch);
-      if (checksearch) {
-        location.href = `toilet.html?district_id=${district_id}`;
-      }
-      if (!this.selected.country_id) {
-        alert("國家欄位為必選.");
-      } else if (this.selected.country_id == "-1") {
-        alert("國家欄位為必選.");
-      }
-      if (!this.selected.city_id) {
-        alert("城市欄位為必選.");
-      } else if (this.selected.city_id == "-1") {
-        alert("城市欄位為必選.");
-      }
-      if (!this.selected.district_id) {
-        alert("地區欄位為必選.");
-      } else if (this.selected.district_id == "-1") {
-        alert("地區欄位為必選.");
-      }
-    },
     JumpToToilet: (toilet_id) => {
       //顯示廁所詳細
       location.href = `toiletcontent.html?toilet_id=${toilet_id}`;
+    },
+    getCountryName: (country_id) => {
+      if (searchtoilet.web.country_name) return searchtoilet.web.country_name;
+
+      searchtoilet.countries.forEach((country) => {
+        if (country.country_id == country_id)
+          searchtoilet.web.country_name = country.country_name;
+        return searchtoilet.web.country_name;
+      });
+    },
+    getCityName: (city_id) => {
+      if (searchtoilet.web.city_name) return searchtoilet.web.city_name;
+
+      searchtoilet.cities.forEach((city) => {
+        if (city.city_id == city_id)
+          searchtoilet.web.city_name = city.city_name;
+        return searchtoilet.web.city_name;
+      });
+    },
+    getDistrictName: (district_id) => {
+      if (searchtoilet.web.district_name) return searchtoilet.web.district_name;
+
+      searchtoilet.districts.forEach((district) => {
+        if (district.district_id == district_id)
+          searchtoilet.web.district_name = district.district_name;
+        return searchtoilet.web.district_name;
+      });
     },
   },
 });

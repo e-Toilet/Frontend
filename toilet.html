@@ -211,71 +211,30 @@
                       >
                     </h3>
                     <p>
-                      <span class="per"
-                        >( <span>{{toilet.longitude}}</span> ,
-                        <span>{{toilet.latitude}}</span> )</span
-                      >
+                      <span class="per">
+                        <span>經度: {{toilet.longitude}}</span>
+                        <br />
+                        <span>緯度: {{toilet.latitude}}</span>
+                      </span>
                     </p>
                     <p>
                       <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;
-                      <span v-if="toilet.country_id == countries.country_id"
-                        >{{country.country_name}}</span
-                      >
-                      ，<span>{{toilet.city_id}}</span> ，<span
-                        >{{toilet.district_id}}</span
+                      <span> {{getCountryName(toilet.country_id)}} </span>
+                      、<span>{{getCityName(toilet.city_id)}}</span> 、<span
+                        >{{getDistrictName(toilet.district_id)}}</span
                       >
                     </p>
                     <hr />
                     <p class="pt-1">
-                      <span
-                        v-if="toilet.avg_rating ==1 || (toilet.avg_rating > 1 &&  2 > toilet.avg_rating)"
-                        style="display: block, inline"
-                      >
-                        <i class="fas fa-star"></i>&nbsp;
-                        <i class="far fa-star"></i>&nbsp;
-                        <i class="far fa-star"></i>&nbsp;
-                        <i class="far fa-star"></i>&nbsp;
-                        <i class="far fa-star"></i>
-                      </span>
-                      <span
-                        v-if="toilet.avg_rating == 2 || (toilet.avg_rating > 2 &&  3 > toilet.avg_rating)"
-                        style="display: block, inline"
-                      >
-                        <i class="fas fa-star"></i>&nbsp;
-                        <i class="fas fa-star"></i>&nbsp;
-                        <i class="far fa-star"></i>&nbsp;
-                        <i class="far fa-star"></i>&nbsp;
-                        <i class="far fa-star"></i>
-                      </span>
-                      <span
-                        v-if="toilet.avg_rating ==3 || (toilet.avg_rating > 3 &&  4 > toilet.avg_rating)"
-                        style="display: block, inline"
-                      >
-                        <i class="fas fa-star"></i>&nbsp;
-                        <i class="fas fa-star"></i>&nbsp;
-                        <i class="fas fa-star"></i>&nbsp;
-                        <i class="far fa-star"></i>&nbsp;
-                        <i class="far fa-star"></i>
-                      </span>
-                      <span
-                        v-if="toilet.avg_rating ==4 || (toilet.avg_rating > 4 &&  5 > toilet.avg_rating)"
-                        style="display: block, inline"
-                      >
-                        <i class="fas fa-star"></i>&nbsp;
-                        <i class="fas fa-star"></i>&nbsp;
-                        <i class="fas fa-star"></i>&nbsp;
-                        <i class="fas fa-star"></i>&nbsp;
-                        <i class="far fa-star"></i>
-                      </span>
-                      <span
-                        v-if="toilet.avg_rating == 5"
-                        style="display: block, inline"
-                      >
-                        <i class="fas fa-star"></i>&nbsp;
-                        <i class="fas fa-star"></i>&nbsp;
-                        <i class="fas fa-star"></i>&nbsp;
-                        <i class="fas fa-star"></i>&nbsp;
-                        <i class="fas fa-star"></i>
+                      <span style="display: block, inline">
+                        <i v-for="n in toilet.avg_rating" class="fas fa-star"
+                          >&nbsp;
+                        </i>
+                        <i
+                          v-for="n in (5-toilet.avg_rating)"
+                          class="far fa-star"
+                          >&nbsp;</i
+                        >
                       </span>
                       (<span id="avg" type="number">{{toilet.avg_rating}}</span
                       >)
