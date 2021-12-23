@@ -188,7 +188,7 @@
                 <hr style="clear: both" />
                 <div
                   class="room-img"
-                  style="background-image: url(images/toilet0.jpg)"
+                  :style="{'background-image': 'url(images/'+images[toiletInfo.toilet_id % 21]}"
                 ></div>
               </div>
               <h5>
