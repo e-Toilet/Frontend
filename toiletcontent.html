@@ -1123,25 +1123,6 @@
           console.log("Food");
         }
       }
-
-      function AddLocation() {
-        if (navigator.geolocation) {
-          //取得 經緯度
-          navigator.geolocation.getCurrentPosition(addPosition); //有拿到位置就呼叫 showPosition 函式
-        } else {
-          //沒有支援呼叫地理位置功能的瀏覽器
-        }
-      }
-
-      function addPosition(pos) {
-        $("#here").attr("type", "show").show();
-        $("#here")
-          .attr(
-            "placeholder",
-            "(" + pos.coords.longitude + "," + pos.coords.latitude + ")"
-          )
-          .show();
-      }
     </script>
 
     <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
@@ -1239,7 +1220,6 @@
     <script src="js/jquery.animateNumber.min.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/scrollax.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
