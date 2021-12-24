@@ -6,14 +6,19 @@ const app = new Vue({
         name: "",
         isRegistered: false,
         account: [],
-        comment:""
+        comment: "",
+        loginFrom: {
+            useremail: "",
+            pass: ""
+        },
+        accountInfo: []
     },
     created: () => {
         axios.get('http://140.115.87.117:8090/getMemberInfo?member_id=112')
             .then((response) => {
                 result = JSON.parse(response.data.Memberinfo)
                 app.account = result
-//                console.log(result)
+                //                console.log(result)
             })
         axios.get('http://140.115.87.117:8090/getMemberReviewCount?member_id=112')
             .then((response) => {
@@ -38,10 +43,7 @@ const app = new Vue({
                     })
                     .catch((error) => {
                         alert("註冊失敗！此信箱已存在，請嘗試新的信箱！")
-                        return
                     })
-
-
             }
             if (!this.name) {
                 alert('Name欄位為必填.');
@@ -65,6 +67,40 @@ const app = new Vue({
         validPassword: function (password) {
             var re = /[A-Za-z0-9]{6,}/;
             return re.test(password);
+        },
+        login: function () {
+            console.log(this.loginFrom.useremail)
+            console.log(this.loginFrom.pass)
+            let checkLogin = this.loginFrom.useremail && this.validEmail(this.loginFrom.useremail) && this.loginFrom.pass && this.validPassword(this.loginFrom.pass)
+            if (checkLogin) {
+                axios.post('http://140.115.87.117:8090/Signin', {
+                        email: app.loginFrom.useremail,
+                        password: app.loginFrom.pass
+                    })
+                    .then((response) => {
+                        axios.get('http://140.115.87.117:8090/getAllMember')
+                            .then((response) => {
+                                result = JSON.parse(response.data.Memberinfo)
+                                app.accountInfo = result
+                            });
+                        result = response.data;
+                        alert("登入成功");
+                        location.href = `index.html`;
+                    })
+                    .catch(() => {
+                        alert("登入失敗！請再輸入一次信箱密碼");
+                    });
+            }
+            if (!this.loginFrom.useremail) {
+                alert('Email欄位為必填.');
+            } else if (!this.validEmail(this.loginFrom.useremail)) {
+                alert('請輸入有效的Email.');
+            }
+            if (!this.loginFrom.pass) {
+                alert('Password欄位為必填.');
+            } else if (!this.validPassword(this.loginFrom.pass)) {
+                alert('Password格式不符合');
+            }
         }
     }
 })
