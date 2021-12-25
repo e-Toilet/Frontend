@@ -125,7 +125,11 @@
 
     <section>
         <div class="container">
-            <div class="row col-lg-12 justify-content-center col-lg-8">
+        <div class="row1">
+          <div class="col-lg-12 row justify-content-center">
+<!--            <div class="row justify-content-center">-->
+              <div class="col-lg-8">
+<!--            <div class="row col-lg-12 justify-content-center col-lg-8">-->
                 <div class="row" id="showtoilet">
                     <div class="col-md-12">
                         <div class="col-md-12 room-single mb-5 mt-4">
@@ -136,7 +140,7 @@
                             <div class="room-img" :style="{'background-image': 'url(images/'+images[toiletInfo.toilet_id % 21]}"></div>
                         </div>
                         <h5>
-                            &nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;
                             <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;
                             <span>
                                 {{countries[toiletInfo.country_id-1]['country_name']}}
@@ -146,30 +150,35 @@
                         </h5>
                         <div>
                             <h5>
-                                <span class="per" style="margin-left: 3rem">
+                                <span class="per" style="margin-left: 46px">
                                     <span id="address">{{toiletInfo.address}}</span>
                                 </span>
                             </h5>
                         </div>
                         <div>
                             <h5>
-                                <span class="per" style="margin-left: 3rem">(
-                                    <span id="latitude">{{toiletInfo.longitude}}</span>
-                                    ,
-                                    <span id="longitude">{{toiletInfo.latitude}}</span>
-                                    )</span>
+                                <span class="per" style="margin-left: 46px">經度：
+                                    <span id="latitude">{{toiletInfo.longitude}}</span></span>
                             </h5>
                         </div>
                         <div>
                             <h5>
-                                &nbsp;&nbsp;&nbsp;
+                                <span class="per" style="margin-left: 46px">
+                                    緯度：<span id="longitude">{{toiletInfo.latitude}}</span>
+                                    </span>
+                            </h5>
+                        </div>
+                        <br>
+                        <div>
+                            <h5>
+                                &nbsp;&nbsp;
                                 <i class="fab fa-gratipay"></i>&nbsp;&nbsp;
                                 <span>評價筆數&nbsp; <h id="count">({{reviews.length}})</h></span>
                             </h5>
                         </div>
                         <div>
                             <h5>
-                                <span class="per" style="margin-left: 3rem">
+                                <span class="per" style="margin-left: 46px">
                                     <span style="display: block, inline">
                                         <i v-for="n in (toiletInfo.avgRating|0)" class="fas fa-star">&nbsp;
                                         </i>
@@ -605,6 +614,7 @@
                     </div>
                 </div>
             </div>
+              </div></div>
         </div>
     </section>
     <!-- loader -->
