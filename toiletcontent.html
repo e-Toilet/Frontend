@@ -1,22 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
     <title>eToilet</title>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet" />
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css" />
     <link rel="stylesheet" href="css/animate.css" />
@@ -36,1174 +28,716 @@
     <link rel="stylesheet" href="css/icomoon.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/tabstyle.css" />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/buttom.css" />
     <link rel="stylesheet" href="css/ul.css" />
 
     <style>
-      .list1 {
-        list-style: none;
-      }
+        .list1 {
+            list-style: none;
+        }
 
-      .list2 {
-        list-style: none;
-      }
+        .list2 {
+            list-style: none;
+        }
 
-      .list1 li {
-        cursor: pointer;
-        display: inline;
-      }
+        .list1 li {
+            cursor: pointer;
+            display: inline;
+        }
 
-      .list2 li {
-        cursor: pointer;
-        display: inline;
-      }
+        .list2 li {
+            cursor: pointer;
+            display: inline;
+        }
+
     </style>
-  </head>
-  <body>
-    <nav
-      class="
+</head>
+
+<body>
+    <nav class="
         navbar navbar-expand-lg navbar-dark
         ftco_navbar
         bg-dark
         ftco-navbar-light
-      "
-      id="ftco-navbar"
-    >
-      <div class="container">
-        <a class="navbar-brand" href="index.html"
-          ><img
-            src="images/logo.png"
-            class="navbar-brand"
-            href="index.html"
-            width="40px"
-            height="40px"
-        /></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#ftco-nav"
-          aria-controls="ftco-nav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="oi oi-menu"></span> Menu
-        </button>
+      " id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="navbar-brand" href="index.html" width="40px" height="40px" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
 
-        <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a href="index.html" class="nav-link">首頁</a>
-            </li>
-            <li class="nav-item">
-              <a
-                href="#Create"
-                class="nav-link"
-                data-toggle="modal"
-                data-target="#Create"
-                >新增廁所</a
-              >
-            </li>
-            <li class="nav-item">
-              <a href="./Control_Panel/index.html" class="nav-link">去後台</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                id="navbarDropdownMenuLink"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <img
-                  src="images/user_large.jpg"
-                  width="30"
-                  height="30"
-                  style="border: 2px #d0d0d0 solid; border-radius: 50%"
-              /></a>
-              <div
-                class="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <a class="dropdown-item" href="account.html">個人資料</a>
-                <a class="dropdown-item" href="Login.html">登入</a>
-              </div>
-            </li>
-          </ul>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#Create" class="nav-link" data-toggle="modal" data-target="#Create">新增廁所</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./Control_Panel/index.html" class="nav-link">去後台</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="images/user_large.jpg" width="30" height="30" style="border: 2px #d0d0d0 solid; border-radius: 50%" /></a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="account.html">個人資料</a>
+                            <a class="dropdown-item" href="Login.html">登入</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
     <!-- END nav -->
 
     <div class="hero-wrap" style="background-image: url('images/2.jpeg')">
-      <div class="overlay"></div>
-      <div class="container">
-        <div
-          class="
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="
             row
             no-gutters
             slider-text
             d-flex
             align-itemd-end
             justify-content-center
-          "
-        >
-          <div
-            class="
+          ">
+                <div class="
               col-md-9
               ftco-animate
               text-center
               d-flex
               align-items-end
               justify-content-center
-            "
-          >
-            <div class="text">
-              <p class="breadcrumbs mb-2">
-                <span class="mr-2"><a href="index.html">Home</a></span>
-                <span>Toilet Information </span>
-              </p>
-              <h1 class="mb-4 bread">Toilet Information Page</h1>
+            ">
+                    <div class="text">
+                        <p class="breadcrumbs mb-2">
+                            <span class="mr-2"><a href="index.html">Home</a></span>
+                            <span>Toilet Information </span>
+                        </p>
+                        <h1 class="mb-4 bread">Toilet Information Page</h1>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
 
     <section>
-      <div class="container">
-        <div class="row col-lg-12 justify-content-center col-lg-8">
-          <div class="row" id="showtoilet">
-            <div class="col-md-12">
-              <div class="col-md-12 room-single mb-5 mt-4">
-                <h2 class="mb-4" style="text-align: left; float: left">
-                  {{toiletInfo.name}}
-                </h2>
-                <hr style="clear: both" />
-                <div
-                  class="room-img"
-                  :style="{'background-image': 'url(images/'+images[toiletInfo.toilet_id % 21]}"
-                ></div>
-              </div>
-              <h5>
-                &nbsp;&nbsp;&nbsp;
-                <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;
-                <span>
-                  {{countries[toiletInfo.country_id-1]['country_name']}}
-                </span>
-                、<span>{{cities[toiletInfo.city_id-1].city_name}}</span>
-                、<span
-                  >{{districts[toiletInfo.district_id-1].district_name}}</span
-                >
-              </h5>
-              <div>
-                <h5>
-                  <span class="per" style="margin-left: 3rem">
-                    <span id="address">{{toiletInfo.address}}</span>
-                  </span>
-                </h5>
-              </div>
-              <div>
-                <h5>
-                  <span class="per" style="margin-left: 3rem"
-                    >(
-                    <span id="latitude">{{toiletInfo.longitude}}</span>
-                    ,
-                    <span id="longitude">{{toiletInfo.latitude}}</span>
-                    )</span
-                  >
-                </h5>
-              </div>
-              <div>
-                <h5>
-                  &nbsp;&nbsp;&nbsp;
-                  <i class="fab fa-gratipay"></i>&nbsp;&nbsp;
-                  <span
-                    >評價筆數&nbsp; <h id="count">({{reviews.length}})</h></span
-                  >
-                </h5>
-              </div>
-              <div>
-                <h5>
-                  <span class="per" style="margin-left: 3rem">
-                    <span style="display: block, inline">
-                      <i
-                        v-for="n in (toiletInfo.avgRating|0)"
-                        class="fas fa-star"
-                        >&nbsp;
-                      </i>
-                      <i
-                        v-for="n in (5-(toiletInfo.avgRating|0))"
-                        class="far fa-star"
-                        >&nbsp;</i
-                      >
-                      <h id="average_rating">({{toiletInfo.avgRating}})</h>
-                      &nbsp;&nbsp;
-                    </span>
-                  </span>
-                </h5>
-              </div>
-              <div class="col-md-12 room-single mt-4 mb-5">
-                <br />
-                <h4 class="mb-4">
-                  <i
-                    class="fas fa-envelope-open-text"
-                    style="font-size: 24px"
-                  ></i
-                  >&nbsp;&nbsp;評論及評分
-                </h4>
-                <p>分享你的經驗供別人參考</p>
-                <table style="border: 0" cellpadding="5">
-                  <tr>
-                    <td colspan="2">
-                      <img
-                        src="images/user_large.jpg"
-                        width="50px"
-                        height="50px"
-                        style="border: 2px #d0d0d0 solid; border-radius: 50%"
-                      />
-                    </td>
-                    <td>lily</td>
-                    <td>
-                      <button
-                        class="btn btn-primary py-2 px-4"
-                        style="font-size: 17px"
-                        data-toggle="modal"
-                        data-target="#Commet"
-                      >
-                        新增評論
-                      </button>
-                    </td>
-                  </tr>
-                </table>
-                <br />
-                <h4 class="mb-4">
-                  <i
-                    class="fas fa-envelope-open-text"
-                    style="font-size: 24px"
-                  ></i
-                  >&nbsp;&nbsp;您的評論
-                </h4>
-                <table
-                  class="table table-bordered"
-                  style="width: 730px"
-                  v-for="review in reviews"
-                  v-if="review.member_id==112"
-                >
-                  <thead>
-                    <tr border="0">
-                      <th colspan="2" style="padding-left: 20px">
-                        <img
-                          src="images/user_large.jpg"
-                          width="50px"
-                          height="50px"
-                          style="border: 2px #d0d0d0 solid; border-radius: 50%"
-                        />&nbsp;&nbsp;&nbsp;{{review.member_name}}
-                        <span style="float: right">
-                          <button
-                            type="button"
-                            class="btn"
-                            style="background-color: transparent"
-                          >
-                            <img
-                              src="images/edit.png"
-                              width="18"
-                              height="20"
-                              @click="SendReviewInfo(review)"
-                              data-toggle="modal"
-                              data-target="#EditCommet"
-                            />
-                          </button>
-                          <button
-                            @click="delete_myreview(review)"
-                            type="button"
-                            class="btn"
-                            style="background-color: transparent"
-                          >
-                            <img
-                              src="images/delete.png"
-                              width="18"
-                              height="20"
-                            /></button
-                        ></span>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td colspan="2">
-                        <a href="#">
-                          <span
-                            style="margin-bottom: 8px; display: inline-block"
-                          >
-                            <span style="display: block, inline">
-                              <i v-for="n in review.rating" class="fas fa-star"
-                                >&nbsp;
-                              </i>
-                              <i
-                                v-for="n in (5-review.rating)"
-                                class="far fa-star"
-                                >&nbsp;</i
-                              >
+        <div class="container">
+            <div class="row col-lg-12 justify-content-center col-lg-8">
+                <div class="row" id="showtoilet">
+                    <div class="col-md-12">
+                        <div class="col-md-12 room-single mb-5 mt-4">
+                            <h2 class="mb-4" style="text-align: left; float: left">
+                                {{toiletInfo.name}}
+                            </h2>
+                            <hr style="clear: both" />
+                            <div class="room-img" :style="{'background-image': 'url(images/'+images[toiletInfo.toilet_id % 21]}"></div>
+                        </div>
+                        <h5>
+                            &nbsp;&nbsp;&nbsp;
+                            <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;
+                            <span>
+                                {{countries[toiletInfo.country_id-1]['country_name']}}
                             </span>
-                          </span>
-                        </a>
-                        <!-- 評價內容 -->
-                        <h6 id="yourcommet">{{review.content}}</h6>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                            、<span>{{cities[toiletInfo.city_id-1].city_name}}</span>
+                            、<span>{{districts[toiletInfo.district_id-1].district_name}}</span>
+                        </h5>
+                        <div>
+                            <h5>
+                                <span class="per" style="margin-left: 3rem">
+                                    <span id="address">{{toiletInfo.address}}</span>
+                                </span>
+                            </h5>
+                        </div>
+                        <div>
+                            <h5>
+                                <span class="per" style="margin-left: 3rem">(
+                                    <span id="latitude">{{toiletInfo.longitude}}</span>
+                                    ,
+                                    <span id="longitude">{{toiletInfo.latitude}}</span>
+                                    )</span>
+                            </h5>
+                        </div>
+                        <div>
+                            <h5>
+                                &nbsp;&nbsp;&nbsp;
+                                <i class="fab fa-gratipay"></i>&nbsp;&nbsp;
+                                <span>評價筆數&nbsp; <h id="count">({{reviews.length}})</h></span>
+                            </h5>
+                        </div>
+                        <div>
+                            <h5>
+                                <span class="per" style="margin-left: 3rem">
+                                    <span style="display: block, inline">
+                                        <i v-for="n in (toiletInfo.avgRating|0)" class="fas fa-star">&nbsp;
+                                        </i>
+                                        <i v-for="n in (5-(toiletInfo.avgRating|0))" class="far fa-star">&nbsp;</i>
+                                        <h id="average_rating">({{toiletInfo.avgRating}})</h>
+                                        &nbsp;&nbsp;
+                                    </span>
+                                </span>
+                            </h5>
+                        </div>
+                        <div class="col-md-12 room-single mt-4 mb-5">
+                            <br />
+                            <h4 class="mb-4">
+                                <i class="fas fa-envelope-open-text" style="font-size: 24px"></i>&nbsp;&nbsp;評論及評分
+                            </h4>
+                            <p>分享你的經驗供別人參考</p>
+                            <table style="border: 0" cellpadding="5">
+                                <tr>
+                                    <td colspan="2">
+                                        <img src="images/user_large.jpg" width="50px" height="50px" style="border: 2px #d0d0d0 solid; border-radius: 50%" />
+                                    </td>
+                                    <td>lily</td>
+                                    <td>
+                                        <button class="btn btn-primary py-2 px-4" style="font-size: 17px" data-toggle="modal" data-target="#Commet">
+                                            新增評論
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br />
+                            <h4 class="mb-4">
+                                <i class="fas fa-envelope-open-text" style="font-size: 24px"></i>&nbsp;&nbsp;您的評論
+                            </h4>
+                            <table class="table table-bordered" style="width: 730px" v-for="review in reviews" v-if="review.member_id==112">
+                                <thead>
+                                    <tr border="0">
+                                        <th colspan="2" style="padding-left: 20px">
+                                            <img src="images/user_large.jpg" width="50px" height="50px" style="border: 2px #d0d0d0 solid; border-radius: 50%" />&nbsp;&nbsp;&nbsp;{{review.member_name}}
+                                            <span style="float: right">
+                                                <button type="button" class="btn" style="background-color: transparent">
+                                                    <img src="images/edit.png" width="18" height="20" @click="SendReviewInfo(review)" data-toggle="modal" data-target="#EditCommet" />
+                                                </button>
+                                                <button @click="delete_myreview(review)" type="button" class="btn" style="background-color: transparent">
+                                                    <img src="images/delete.png" width="18" height="20" /></button></span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2">
+                                            <a href="#">
+                                                <span style="margin-bottom: 8px; display: inline-block">
+                                                    <span style="display: block, inline">
+                                                        <i v-for="n in review.rating" class="fas fa-star">&nbsp;
+                                                        </i>
+                                                        <i v-for="n in (5-review.rating)" class="far fa-star">&nbsp;</i>
+                                                    </span>
+                                                </span>
+                                            </a>
+                                            <!-- 評價內容 -->
+                                            <h6 id="yourcommet">{{review.content}}</h6>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
-              <div class="col-md-12 room-single mb-5 mt-4">
-                <h3 class="mb-4">
-                  &nbsp;<i class="far fa-thumbs-up" style="font-size: 24px"></i
-                  >&nbsp;&nbsp;評價篩選
-                </h3>
-                <div>
-                  <div
-                    style="
+                        <div class="col-md-12 room-single mb-5 mt-4">
+                            <h3 class="mb-4">
+                                &nbsp;<i class="far fa-thumbs-up" style="font-size: 24px"></i>&nbsp;&nbsp;評價篩選
+                            </h3>
+                            <div>
+                                <div style="
                       height: 139.2px;
                       width: 150px;
                       float: left;
                       text-align: center;
-                    "
-                  >
-                    <br />
-                    <h1 style="display: inline">{{toiletInfo.avgRating}}</h1>
-                    /
-                    <div v-if="reviews.length>0" style="display: inline">
-                      <h4 style="display: inline">{{reviews.length-1}}</h4>
-                      則
-                    </div>
-                    <div v-if="reviews.length==0" style="display: inline">
-                      <h4 style="display: inline">{{reviews.length}}</h4>
-                      則
-                    </div>
-                    <div style="color: #8d703b">
-                      <span style="display: block, inline">
-                        <i
-                          v-for="n in (toiletInfo.avgRating|0)"
-                          class="fas fa-star"
-                          >&nbsp;</i
-                        >
-                        <i
-                          v-for="n in (5-(toiletInfo.avgRating|0))"
-                          class="far fa-star"
-                          >&nbsp;</i
-                        >
-                      </span>
-                    </div>
-                  </div>
-                  <div class="tab">
-                    <!-- 評價篩選標籤 -->
-                    <button
-                      class="button1234 button1"
-                      style="width: 120px"
-                      onclick="openCity(event, 'all')"
-                    >
-                      全部<br />
-                      ({{reviews.length}})</button
-                    >&nbsp;
-                    <button
-                      class="button12345 button1"
-                      style="width: 120px"
-                      onclick="openCity(event, 'comment')"
-                    >
-                      附上評論<br />
-                      (1)
-                    </button>
-                    <button
-                      class="button123 button1"
-                      style="width: 120px"
-                      onclick="openCity(event, 'fivestar')"
-                    >
-                      <i
-                        class="fas fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="fas fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="fas fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="fas fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="fas fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i
-                      ><br />
-                      (1)
-                    </button>
-                    <button
-                      class="button123 button1"
-                      style="width: 120px"
-                      onclick="openCity(event, 'fourstar')"
-                    >
-                      <i
-                        class="fas fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="fas fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="fas fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="fas fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="far fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i
-                      ><br />
-                      (1)
-                    </button>
-                    <button
-                      class="button123 button1"
-                      style="width: 120px"
-                      onclick="openCity(event, 'threestar')"
-                    >
-                      <i
-                        class="fas fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="fas fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="fas fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="far fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="far fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i
-                      ><br />
-                      (0)
-                    </button>
-                    <button
-                      class="button123 button1"
-                      style="width: 120px"
-                      onclick="openCity(event, 'twostar')"
-                    >
-                      <i
-                        class="fas fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="fas fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="far fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="far fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="far fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i
-                      ><br />
-                      (0)
-                    </button>
-                    <button
-                      class="button123 button1"
-                      style="width: 120px"
-                      onclick="openCity(event, 'onestar')"
-                    >
-                      <i
-                        class="fas fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="far fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="far fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="far fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i>
-                      <i
-                        class="far fa-star"
-                        style="width: 13px; height: 13px"
-                      ></i
-                      ><br />
-                      (0)
-                    </button>
-                  </div>
-                </div>
-                <div id="show_toilet">
-                  <div
-                    style="display: unset"
-                    v-for="review in reviews"
-                    v-if="review.member_id!=112"
-                  >
-                    <br />
-                    <table
-                      class="table table-bordered"
-                      style="width: 730px"
-                      v-show="review.rating==selected_rating||selected_rating==0"
-                    >
-                      <thead>
-                        <tr>
-                          <th colspan="2" style="padding-left: 20px">
-                            <img
-                              src="images/user_large.jpg"
-                              width="50px"
-                              height="50px"
-                              style="
+                    ">
+                                    <br />
+                                    <h1 style="display: inline">{{toiletInfo.avgRating}}</h1>
+                                    /
+                                    <div v-if="reviews.length>0" style="display: inline">
+                                        <h4 style="display: inline">{{reviews.length-1}}</h4>
+                                        則
+                                    </div>
+                                    <div v-if="reviews.length==0" style="display: inline">
+                                        <h4 style="display: inline">{{reviews.length}}</h4>
+                                        則
+                                    </div>
+                                    <div style="color: #8d703b">
+                                        <span style="display: block, inline">
+                                            <i v-for="n in (toiletInfo.avgRating|0)" class="fas fa-star">&nbsp;</i>
+                                            <i v-for="n in (5-(toiletInfo.avgRating|0))" class="far fa-star">&nbsp;</i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="tab">
+                                    <!-- 評價篩選標籤 -->
+                                    <button class="button1234 button1" style="width: 120px" onclick="openCity(event, 'all')">
+                                        全部<br />
+                                        ({{reviews.length}})</button>&nbsp;
+                                    <button class="button12345 button1" style="width: 120px" onclick="openCity(event, 'comment')">
+                                        附上評論<br />
+                                        (1)
+                                    </button>
+                                    <button class="button123 button1" style="width: 120px" onclick="openCity(event, 'fivestar')">
+                                        <i class="fas fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="fas fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="fas fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="fas fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="fas fa-star" style="width: 13px; height: 13px"></i><br />
+                                        (1)
+                                    </button>
+                                    <button class="button123 button1" style="width: 120px" onclick="openCity(event, 'fourstar')">
+                                        <i class="fas fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="fas fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="fas fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="fas fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="far fa-star" style="width: 13px; height: 13px"></i><br />
+                                        (1)
+                                    </button>
+                                    <button class="button123 button1" style="width: 120px" onclick="openCity(event, 'threestar')">
+                                        <i class="fas fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="fas fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="fas fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="far fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="far fa-star" style="width: 13px; height: 13px"></i><br />
+                                        (0)
+                                    </button>
+                                    <button class="button123 button1" style="width: 120px" onclick="openCity(event, 'twostar')">
+                                        <i class="fas fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="fas fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="far fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="far fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="far fa-star" style="width: 13px; height: 13px"></i><br />
+                                        (0)
+                                    </button>
+                                    <button class="button123 button1" style="width: 120px" onclick="openCity(event, 'onestar')">
+                                        <i class="fas fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="far fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="far fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="far fa-star" style="width: 13px; height: 13px"></i>
+                                        <i class="far fa-star" style="width: 13px; height: 13px"></i><br />
+                                        (0)
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="show_toilet">
+                                <div style="display: unset" v-for="review in reviews" v-if="review.member_id!=112">
+                                    <br />
+                                    <table class="table table-bordered" style="width: 730px" v-show="review.rating==selected_rating||selected_rating==0">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2" style="padding-left: 20px">
+                                                    <img src="images/user_large.jpg" width="50px" height="50px" style="
                                 border: 2px #d0d0d0 solid;
                                 border-radius: 50%;
-                              "
-                            />&nbsp;&nbsp;&nbsp;{{review.member_name}}
-                            <span style="float: right">
-                              <button
-                                @click="delete_review(review)"
-                                type="button"
-                                class="btn"
-                                style="background-color: transparent"
-                              >
-                                <img
-                                  src="images/delete.png"
-                                  width="18"
-                                  height="20"
-                                /></button
-                            ></span>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td colspan="2">
-                            <a href="#">
-                              <span
-                                style="
+                              " />&nbsp;&nbsp;&nbsp;{{review.member_name}}
+                                                    <span style="float: right">
+                                                        <button @click="delete_review(review)" type="button" class="btn" style="background-color: transparent">
+                                                            <img src="images/delete.png" width="18" height="20" /></button></span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <a href="#">
+                                                        <span style="
                                   margin-bottom: 8px;
                                   display: inline-block;
-                                "
-                              >
-                                <i
-                                  v-for="n in review.rating"
-                                  class="fas fa-star"
-                                  >&nbsp;
-                                </i>
-                                <i
-                                  v-for="n in (5-review.rating)"
-                                  class="far fa-star"
-                                  >&nbsp;</i
-                                >
-                              </span>
-                            </a>
-                            <!-- 評價內容 -->
-                            <h6>{{review.content}}</h6>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              class="modal fade"
-              id="Create"
-              tabindex="-1"
-              role="dialog"
-              aria-labelledby="myModalLabel"
-              aria-hidden="true"
-            >
-              <div
-                class="modal-dialog model-dialog-centered modal-lg"
-                role="document"
-                style="width: 400"
-              >
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-hidden="true"
-                    >
-                      &times;
-                    </button>
-                  </div>
-                  <div class="modal-body" style="align-content: center">
-                    <table
-                      align="center"
-                      style="text-align: center; border-collapse: separate"
-                      rules="none"
-                    >
-                      <tr height="40">
-                        <td style="width: 100px">
-                          <font color="red">＊</font>廁所名稱
-                        </td>
-                        <td align="left">
-                          <input
-                            v-model.trim="create_toilet.name"
-                            rows="1"
-                            style="width: 200px"
-                            required
-                          />
-                        </td>
-                      </tr>
+                                ">
+                                                            <i v-for="n in review.rating" class="fas fa-star">&nbsp;
+                                                            </i>
+                                                            <i v-for="n in (5-review.rating)" class="far fa-star">&nbsp;</i>
+                                                        </span>
+                                                    </a>
+                                                    <!-- 評價內容 -->
+                                                    <h6>{{review.content}}</h6>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="Create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog model-dialog-centered modal-lg" role="document" style="width: 400">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                </div>
+                                <div class="modal-body" style="align-content: center">
+                                    <table align="center" style="text-align: center; border-collapse: separate" rules="none">
+                                        <tr height="40">
+                                            <td style="width: 100px">
+                                                <font color="red">＊</font>廁所名稱
+                                            </td>
+                                            <td align="left">
+                                                <input v-model.trim="create_toilet.name" rows="1" style="width: 200px" required />
+                                            </td>
+                                        </tr>
 
-                      <tr height="40">
-                        <td style="width: 100px">
-                          <font color="red">＊</font>國家
-                        </td>
-                        <td align="left">
-                          <select
-                            v-model="create_toilet.country_id"
-                            style="width: 200px"
-                          >
-                            <option value="-1" selected disabled>國家</option>
-                            <option
-                              v-for="country in countries"
-                              :value="country.country_id"
-                            >
-                              {{country.country_name}}
-                            </option>
-                          </select>
-                        </td>
-                      </tr>
+                                        <tr height="40">
+                                            <td style="width: 100px">
+                                                <font color="red">＊</font>國家
+                                            </td>
+                                            <td align="left">
+                                                <select v-model="create_toilet.country_id" style="width: 200px">
+                                                    <option value="-1" selected disabled>國家</option>
+                                                    <option v-for="country in countries" :value="country.country_id">
+                                                        {{country.country_name}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
 
-                      <tr height="40">
-                        <td style="width: 100px">
-                          <font color="red">＊</font>城市
-                        </td>
-                        <td align="left">
-                          <select
-                            v-model="create_toilet.city_id"
-                            style="width: 200px"
-                          >
-                            <option value="-1" selected disabled>城市</option>
-                            <option
-                              v-for="city in cities"
-                              :value="city.city_id"
-                              v-show="city.country_id == create_toilet.country_id"
-                            >
-                              {{city.city_name}}
-                            </option>
-                          </select>
-                        </td>
-                      </tr>
+                                        <tr height="40">
+                                            <td style="width: 100px">
+                                                <font color="red">＊</font>城市
+                                            </td>
+                                            <td align="left">
+                                                <select v-model="create_toilet.city_id" style="width: 200px">
+                                                    <option value="-1" selected disabled>城市</option>
+                                                    <option v-for="city in cities" :value="city.city_id" v-show="city.country_id == create_toilet.country_id">
+                                                        {{city.city_name}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
 
-                      <tr height="40">
-                        <td style="width: 100px">
-                          <font color="red">＊</font>地區
-                        </td>
-                        <td align="left">
-                          <select
-                            v-model="create_toilet.district_id"
-                            style="width: 200px"
-                          >
-                            <option value="-1" selected disabled>地區</option>
-                            <option
-                              v-for="district in districts"
-                              :value="district.district_id"
-                              v-show="district.city_id == create_toilet.city_id"
-                            >
-                              {{district.district_name}}
-                            </option>
-                          </select>
-                        </td>
-                      </tr>
-                      <tr height="40">
-                        <td style="width: 100px">
-                          <font color="red">＊</font>地址
-                        </td>
-                        <td align="left">
-                          <input
-                            v-model.trim="create_toilet.address"
-                            rows="1"
-                            style="width: 200px"
-                            required
-                          />
-                        </td>
-                      </tr>
-                      <tr height="40">
-                        <td style="width: 100px">
-                          <font color="red">＊</font>經緯度
-                        </td>
-                        <td align="left">
-                          <button
-                            type="button"
-                            class="btn"
-                            @click="create_showPosition"
-                            style="background: white"
-                          >
-                            <img src="images/gps.png" width="30" height="30" />
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="width: 100px"></td>
-                        <td>
-                          <input
-                            id="longitude"
-                            v-model="create_toilet.longitude"
-                            :type="isShow ? 'show':'hidden'"
-                            disabled
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="width: 100px"></td>
-                        <td>
-                          <input
-                            id="latitude"
-                            v-model="create_toilet.latitude"
-                            :type="isShow ? 'show':'hidden'"
-                            disabled
-                          />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td colspan="2">
-                          <img id="output" height="150" style="display: none" />
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
-                  <div class="modal-footer">
-                    <input
-                      type="submit"
-                      @click="createto"
-                      class="btn btn-primary"
-                      value="送出"
-                      style="width: 80px; height: 35px; font-size: 13px"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="modal fade"
-        id="Commet"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="myModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog model-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-body" id="showtoilet">
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-hidden="true"
-              >
-                &times;
-              </button>
-              <table
-                align="center"
-                style="
+                                        <tr height="40">
+                                            <td style="width: 100px">
+                                                <font color="red">＊</font>地區
+                                            </td>
+                                            <td align="left">
+                                                <select v-model="create_toilet.district_id" style="width: 200px">
+                                                    <option value="-1" selected disabled>地區</option>
+                                                    <option v-for="district in districts" :value="district.district_id" v-show="district.city_id == create_toilet.city_id">
+                                                        {{district.district_name}}
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr height="40">
+                                            <td style="width: 100px">
+                                                <font color="red">＊</font>地址
+                                            </td>
+                                            <td align="left">
+                                                <input v-model.trim="create_toilet.address" rows="1" style="width: 200px" required />
+                                            </td>
+                                        </tr>
+                                        <tr height="40">
+                                            <td style="width: 100px">
+                                                <font color="red">＊</font>經緯度
+                                            </td>
+                                            <td align="left">
+                                                <button type="button" class="btn" @click="create_showPosition" style="background: white">
+                                                    <img src="images/gps.png" width="30" height="30" />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 100px"></td>
+                                            <td>
+                                                <input id="longitude" v-model="create_toilet.longitude" :type="isShow ? 'show':'hidden'" disabled />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 100px"></td>
+                                            <td>
+                                                <input id="latitude" v-model="create_toilet.latitude" :type="isShow ? 'show':'hidden'" disabled />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <img id="output" height="150" style="display: none" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="submit" @click="createto" class="btn btn-primary" value="送出" style="width: 80px; height: 35px; font-size: 13px" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="Commet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog model-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <table align="center" style="text-align: center;margin-top: 2rem;border-collapse: separate;border-spacing: 0px 1rem;" rules="none">
+                                        <tr>
+                                            <td align="left" width="25%">
+                                                <img src="images/user_large.jpg" width="50px" height="50px" style="border: 2px #d0d0d0 solid; border-radius: 50%" />
+                                            </td>
+                                            <td align="left">{{account.name}}</td>
+                                        </tr>
+
+                                        <tr height="40">
+                                            <td align="left" colspan="2">
+                                                <font color="black">評分</font>
+                                            </td>
+                                        </tr>
+                                        <tr height="40">
+                                            <td colspan="2">
+                                                <ul class="list1">
+                                                    <li>
+                                                        <img id="one" src="images/star.png" width="50px" height="50px" />
+                                                    </li>
+                                                    <li>
+                                                        <img id="two" src="images/star.png" width="50px" height="50px" />
+                                                    </li>
+                                                    <li>
+                                                        <img id="three" src="images/star.png" width="50px" height="50px" />
+                                                    </li>
+                                                    <li>
+                                                        <img id="four" src="images/star.png" width="50px" height="50px" />
+                                                    </li>
+                                                    <li>
+                                                        <img id="five" src="images/star.png" width="50px" height="50px" />
+                                                    </li>
+                                                </ul>
+                                                <div id="s1" v-model.trim="rating"></div>
+                                            </td>
+                                        </tr>
+
+                                        <tr height="40">
+                                            <td align="left" colspan="2">
+                                                <font color="black">評論</font>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="2">
+                                                <textarea v-model.trim="content" style="width: 310px; height: 50px; min-height: 50px" placeholder="詳細說明你在這個地點的親身經驗"></textarea>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table align="center" style="text-align: center" rules="none">
+                                        <tr>
+                                            <td>
+                                                <input type="submit" class="btn btn-primary" value="取消" style="width: 80px; height: 35px; font-size: 13px" />
+                                            </td>
+                                            <td>
+                                                <input @click="createcommet" type="submit" class="btn btn-primary" value="送出" style="width: 80px; height: 35px; font-size: 13px" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="EditCommet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog model-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <table align="center" style="
                   text-align: center;
                   margin-top: 2rem;
                   border-collapse: separate;
                   border-spacing: 0px 1rem;
-                "
-                rules="none"
-              >
-                <tr>
-                  <td align="left" width="25%">
-                    <img
-                      src="images/user_large.jpg"
-                      width="50px"
-                      height="50px"
-                      style="border: 2px #d0d0d0 solid; border-radius: 50%"
-                    />
-                  </td>
-                  <td align="left">{{account.name}}</td>
-                </tr>
+                " rules="none">
+                                        <tr>
+                                            <td align="left" width="25%">
+                                                <img src="images/user_large.jpg" width="50px" height="50px" style="border: 2px #d0d0d0 solid; border-radius: 50%" />
+                                            </td>
+                                            <td align="left">{{account.name}}</td>
+                                        </tr>
 
-                <tr height="40">
-                  <td align="left" colspan="2">
-                    <font color="black">評分</font>
-                  </td>
-                </tr>
-                <tr height="40">
-                  <td colspan="2">
-                    <ul class="list1">
-                      <li>
-                        <img
-                          id="one"
-                          src="images/star.png"
-                          width="50px"
-                          height="50px"
-                        />
-                      </li>
-                      <li>
-                        <img
-                          id="two"
-                          src="images/star.png"
-                          width="50px"
-                          height="50px"
-                        />
-                      </li>
-                      <li>
-                        <img
-                          id="three"
-                          src="images/star.png"
-                          width="50px"
-                          height="50px"
-                        />
-                      </li>
-                      <li>
-                        <img
-                          id="four"
-                          src="images/star.png"
-                          width="50px"
-                          height="50px"
-                        />
-                      </li>
-                      <li>
-                        <img
-                          id="five"
-                          src="images/star.png"
-                          width="50px"
-                          height="50px"
-                        />
-                      </li>
-                    </ul>
-                    <div id="s1" v-model.trim="rating"></div>
-                  </td>
-                </tr>
+                                        <tr height="40">
+                                            <td align="left" colspan="2">
+                                                <font color="black">評分</font>
+                                            </td>
+                                        </tr>
+                                        <tr height="40">
+                                            <td colspan="2">
+                                                <ul class="list2" id="review_rating">
+                                                    <li>
+                                                        <img src="images/star.png" width="50px" height="50px" />
+                                                    </li>
+                                                    <li>
+                                                        <img src="images/star.png" width="50px" height="50px" />
+                                                    </li>
+                                                    <li>
+                                                        <img src="images/star.png" width="50px" height="50px" />
+                                                    </li>
+                                                    <li>
+                                                        <img src="images/star.png" width="50px" height="50px" />
+                                                    </li>
+                                                    <li>
+                                                        <img src="images/star.png" width="50px" height="50px" />
+                                                    </li>
+                                                </ul>
+                                                <div id="s2" v-model.trim="review_rating"></div>
+                                            </td>
+                                        </tr>
 
-                <tr height="40">
-                  <td align="left" colspan="2">
-                    <font color="black">評論</font>
-                  </td>
-                </tr>
+                                        <tr height="40">
+                                            <td align="left" colspan="2">
+                                                <font color="black">評論</font>
+                                            </td>
+                                        </tr>
 
-                <tr>
-                  <td colspan="2">
-                    <textarea
-                      v-model.trim="content"
-                      style="width: 310px; height: 50px; min-height: 50px"
-                      placeholder="詳細說明你在這個地點的親身經驗"
-                    ></textarea>
-                  </td>
-                </tr>
-              </table>
-              <table align="center" style="text-align: center" rules="none">
-                <tr>
-                  <td>
-                    <input
-                      type="submit"
-                      class="btn btn-primary"
-                      value="取消"
-                      style="width: 80px; height: 35px; font-size: 13px"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      @click="createcommet"
-                      type="submit"
-                      class="btn btn-primary"
-                      value="送出"
-                      style="width: 80px; height: 35px; font-size: 13px"
-                    />
-                  </td>
-                </tr>
-              </table>
+                                        <tr>
+                                            <td colspan="2">
+                                                <textarea id="review_content" style="width: 310px; height: 50px; min-height: 50px" placeholder="詳細說明你在這個地點的親身經驗" v-model.lazy="review_info.content"></textarea>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table align="center" style="text-align: center" rules="none">
+                                        <tr>
+                                            <td>
+                                                <input type="submit" class="btn btn-primary" value="取消" style="width: 80px; height: 35px; font-size: 13px" />
+                                            </td>
+                                            <td>
+                                                <input type="submit" @click="update_review" class="btn btn-primary" value="送出" style="width: 80px; height: 35px; font-size: 13px" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div
-        class="modal fade"
-        id="EditCommet"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="myModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog model-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-body" id="showtoilet">
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-hidden="true"
-              >
-                &times;
-              </button>
-              <table
-                align="center"
-                style="
-                  text-align: center;
-                  margin-top: 2rem;
-                  border-collapse: separate;
-                  border-spacing: 0px 1rem;
-                "
-                rules="none"
-              >
-                <tr>
-                  <td align="left" width="25%">
-                    <img
-                      src="images/user_large.jpg"
-                      width="50px"
-                      height="50px"
-                      style="border: 2px #d0d0d0 solid; border-radius: 50%"
-                    />
-                  </td>
-                  <td align="left">{{account.name}}</td>
-                </tr>
-
-                <tr height="40">
-                  <td align="left" colspan="2">
-                    <font color="black">評分</font>
-                  </td>
-                </tr>
-                <tr height="40">
-                  <td colspan="2">
-                    <ul class="list2" id="review_rating">
-                      <li>
-                        <img src="images/star.png" width="50px" height="50px" />
-                      </li>
-                      <li>
-                        <img src="images/star.png" width="50px" height="50px" />
-                      </li>
-                      <li>
-                        <img src="images/star.png" width="50px" height="50px" />
-                      </li>
-                      <li>
-                        <img src="images/star.png" width="50px" height="50px" />
-                      </li>
-                      <li>
-                        <img src="images/star.png" width="50px" height="50px" />
-                      </li>
-                    </ul>
-                    <div id="s2" v-model.trim="review_rating"></div>
-                  </td>
-                </tr>
-
-                <tr height="40">
-                  <td align="left" colspan="2">
-                    <font color="black">評論</font>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td colspan="2">
-                    <textarea
-                      id="review_content"
-                      style="width: 310px; height: 50px; min-height: 50px"
-                      placeholder="詳細說明你在這個地點的親身經驗"
-                      v-model.lazy="review_info.content"
-                    ></textarea>
-                  </td>
-                </tr>
-              </table>
-              <table align="center" style="text-align: center" rules="none">
-                <tr>
-                  <td>
-                    <input
-                      type="submit"
-                      class="btn btn-primary"
-                      value="取消"
-                      style="width: 80px; height: 35px; font-size: 13px"
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="submit"
-                      @click="update_review"
-                      class="btn btn-primary"
-                      value="送出"
-                      style="width: 80px; height: 35px; font-size: 13px"
-                    />
-                  </td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen">
-      <svg class="circular" width="48px" height="48px">
-        <circle
-          class="path-bg"
-          cx="24"
-          cy="24"
-          r="22"
-          fill="none"
-          stroke-width="4"
-          stroke="#eeeeee"
-        />
-        <circle
-          class="path"
-          cx="24"
-          cy="24"
-          r="22"
-          fill="none"
-          stroke-width="4"
-          stroke-miterlimit="10"
-          stroke="#F96D00"
-        />
-      </svg>
+        <svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+        </svg>
     </div>
 
     <!--小卡片的內容-->
     <script>
-      function openCity(evt, cityName) {
-        console.log(cityName);
-        if (cityName == "all") {
-          document.getElementById("one").style.display = "unset";
-          document.getElementById("two").style.display = "unset";
-          console.log("Scenery");
+        function openCity(evt, cityName) {
+            console.log(cityName);
+            if (cityName == "all") {
+                document.getElementById("one").style.display = "unset";
+                document.getElementById("two").style.display = "unset";
+                console.log("Scenery");
+            }
+            if (cityName == "comment") {
+                document.getElementById("one").style.display = "unset";
+                document.getElementById("two").style.display = "none";
+                console.log("People");
+            }
+            if (cityName == "fivestar") {
+                document.getElementById("one").style.display = "unset";
+                document.getElementById("two").style.display = "none";
+                console.log("Food");
+            }
+            if (cityName == "fourstar") {
+                document.getElementById("one").style.display = "none";
+                document.getElementById("two").style.display = "unset";
+                console.log("Food");
+            }
+            if (cityName == "threestar") {
+                document.getElementById("one").style.display = "none";
+                document.getElementById("two").style.display = "none";
+                console.log("Food");
+            }
+            if (cityName == "twostar") {
+                document.getElementById("one").style.display = "none";
+                document.getElementById("two").style.display = "none";
+                console.log("Food");
+            }
+            if (cityName == "onestar") {
+                document.getElementById("one").style.display = "none";
+                document.getElementById("two").style.display = "none";
+                console.log("Food");
+            }
         }
-        if (cityName == "comment") {
-          document.getElementById("one").style.display = "unset";
-          document.getElementById("two").style.display = "none";
-          console.log("People");
-        }
-        if (cityName == "fivestar") {
-          document.getElementById("one").style.display = "unset";
-          document.getElementById("two").style.display = "none";
-          console.log("Food");
-        }
-        if (cityName == "fourstar") {
-          document.getElementById("one").style.display = "none";
-          document.getElementById("two").style.display = "unset";
-          console.log("Food");
-        }
-        if (cityName == "threestar") {
-          document.getElementById("one").style.display = "none";
-          document.getElementById("two").style.display = "none";
-          console.log("Food");
-        }
-        if (cityName == "twostar") {
-          document.getElementById("one").style.display = "none";
-          document.getElementById("two").style.display = "none";
-          console.log("Food");
-        }
-        if (cityName == "onestar") {
-          document.getElementById("one").style.display = "none";
-          document.getElementById("two").style.display = "none";
-          console.log("Food");
-        }
-      }
+
     </script>
 
     <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
     <script>
-      $(function () {
-        var aLi = $(".list1 li");
-        var leng = aLi.length;
-        var arr = ["1", "2", "3", "4", "5"];
-        var arr2 = [
-          "images/star.png",
-          "images/star.png",
-          "images/star.png",
-          "images/star.png",
-          "images/star.png",
-        ];
-        var s1 = "";
+        $(function() {
+            var aLi = $(".list1 li");
+            var leng = aLi.length;
+            var arr = ["1", "2", "3", "4", "5"];
+            var arr2 = [
+                "images/star.png",
+                "images/star.png",
+                "images/star.png",
+                "images/star.png",
+                "images/star.png",
+            ];
+            var s1 = "";
 
-        aLi.click(function () {
-          for (var j = 0; j < leng; j++) {
-            aLi.eq(j).find("img").attr("src", "images/star.png");
-          }
-          var index = $(this).index();
-          if (index < 2) {
-            for (var j = 0; j <= index; j++) {
-              aLi.eq(j).find("img").attr("src", "images/star2.png");
-              s1 = arr[index];
-              arr2[j] = aLi.eq(j).find("img").attr("src");
-            }
-          } else {
-            for (var j = 0; j <= index; j++) {
-              aLi.eq(j).find("img").attr("src", "images/star2.png");
-              s1 = arr[index];
-              arr2[j] = aLi.eq(j).find("img").attr("src");
-            }
-          }
+            aLi.click(function() {
+                for (var j = 0; j < leng; j++) {
+                    aLi.eq(j).find("img").attr("src", "images/star.png");
+                }
+                var index = $(this).index();
+                if (index < 2) {
+                    for (var j = 0; j <= index; j++) {
+                        aLi.eq(j).find("img").attr("src", "images/star2.png");
+                        s1 = arr[index];
+                        arr2[j] = aLi.eq(j).find("img").attr("src");
+                    }
+                } else {
+                    for (var j = 0; j <= index; j++) {
+                        aLi.eq(j).find("img").attr("src", "images/star2.png");
+                        s1 = arr[index];
+                        arr2[j] = aLi.eq(j).find("img").attr("src");
+                    }
+                }
 
-          for (var k = index + 1; k < leng; k++) {
-            arr2[k] = "images/star.png";
-          }
-          $("#s1").text(s1);
-          console.log(s1);
+                for (var k = index + 1; k < leng; k++) {
+                    arr2[k] = "images/star.png";
+                }
+                $("#s1").text(s1);
+                console.log(s1);
+            });
         });
-      });
-      $(function () {
-        var aLi = $(".list2 li");
-        var leng = aLi.length;
-        var arr = ["1", "2", "3", "4", "5"];
-        var arr2 = [
-          "images/star.png",
-          "images/star.png",
-          "images/star.png",
-          "images/star.png",
-          "images/star.png",
-        ];
-        var s2 = "";
+        $(function() {
+            var aLi = $(".list2 li");
+            var leng = aLi.length;
+            var arr = ["1", "2", "3", "4", "5"];
+            var arr2 = [
+                "images/star.png",
+                "images/star.png",
+                "images/star.png",
+                "images/star.png",
+                "images/star.png",
+            ];
+            var s2 = "";
 
-        aLi.click(function () {
-          for (var j = 0; j < leng; j++) {
-            aLi.eq(j).find("img").attr("src", "images/star.png");
-          }
-          var index = $(this).index();
-          if (index < 2) {
-            for (var j = 0; j <= index; j++) {
-              aLi.eq(j).find("img").attr("src", "images/star2.png");
-              s2 = arr[index];
-              arr2[j] = aLi.eq(j).find("img").attr("src");
-            }
-          } else {
-            for (var j = 0; j <= index; j++) {
-              aLi.eq(j).find("img").attr("src", "images/star2.png");
-              s2 = arr[index];
-              arr2[j] = aLi.eq(j).find("img").attr("src");
-            }
-          }
+            aLi.click(function() {
+                for (var j = 0; j < leng; j++) {
+                    aLi.eq(j).find("img").attr("src", "images/star.png");
+                }
+                var index = $(this).index();
+                if (index < 2) {
+                    for (var j = 0; j <= index; j++) {
+                        aLi.eq(j).find("img").attr("src", "images/star2.png");
+                        s2 = arr[index];
+                        arr2[j] = aLi.eq(j).find("img").attr("src");
+                    }
+                } else {
+                    for (var j = 0; j <= index; j++) {
+                        aLi.eq(j).find("img").attr("src", "images/star2.png");
+                        s2 = arr[index];
+                        arr2[j] = aLi.eq(j).find("img").attr("src");
+                    }
+                }
 
-          for (var k = index + 1; k < leng; k++) {
-            arr2[k] = "images/star.png";
-          }
-          $("#s2").text(s2);
+                for (var k = index + 1; k < leng; k++) {
+                    arr2[k] = "images/star.png";
+                }
+                $("#s2").text(s2);
+            });
         });
-      });
+
     </script>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -1228,5 +762,6 @@
 
     <!-- Vue actions -->
     <script src="./js/vue/toilet.js"></script>
-  </body>
+</body>
+
 </html>
