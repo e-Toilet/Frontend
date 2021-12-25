@@ -207,6 +207,7 @@
                                 </div>
                                 <div class="col-md-12 room-single mt-4 mb-5">
                                     <br />
+                                    <div>
                                     <h4 class="mb-4">
                                         <i class="fas fa-envelope-open-text" style="font-size: 24px"></i>&nbsp;&nbsp;評論及評分
                                     </h4>
@@ -224,11 +225,13 @@
                                             </td>
                                         </tr>
                                     </table>
+                                    </div>
                                     <br />
+                                    <div v-for="review in reviews" v-if="review.member_id==112">
                                     <h4 class="mb-4">
                                         <i class="fas fa-envelope-open-text" style="font-size: 24px"></i>&nbsp;&nbsp;您的評論
                                     </h4>
-                                    <table class="table table-bordered" style="width: 730px" v-for="review in reviews" v-if="review.member_id==112">
+                                    <table class="table table-bordered" style="width: 730px">
                                         <thead>
                                             <tr border="0">
                                                 <th colspan="2" style="padding-left: 20px">
@@ -260,6 +263,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
+                                </div>
                                 </div>
 
                                 <div class="col-md-12 room-single mb-5 mt-4">
@@ -524,7 +528,7 @@
                                                                 <img id="five" src="images/star.png" width="50px" height="50px" />
                                                             </li>
                                                         </ul>
-                                                        <div id="s1" v-model.trim="rating"></div>
+                                                        <div id="s1" v-model.trim="review_info.changestar"></div>
                                                     </td>
                                                 </tr>
 
@@ -583,22 +587,22 @@
                                                     <td colspan="2">
                                                         <ul class="list2" id="review_rating">
                                                             <li>
-                                                                <img src="images/star.png" width="50px" height="50px" />
+                                                             <img id="star1" width="50px" height="50px" :src="imgNum>0 ? srcStar : srcNoStar" @click="imgItem(1)"> 
                                                             </li>
                                                             <li>
-                                                                <img src="images/star.png" width="50px" height="50px" />
+                                                                <img id="star2" width="50px" height="50px" :src="imgNum>1 ? srcStar : srcNoStar" @click="imgItem(2)"> 
                                                             </li>
                                                             <li>
-                                                                <img src="images/star.png" width="50px" height="50px" />
+                                                                <img id="star3" width="50px" height="50px" :src="imgNum>2 ? srcStar : srcNoStar" @click="imgItem(3)"> 
                                                             </li>
                                                             <li>
-                                                                <img src="images/star.png" width="50px" height="50px" />
+                                                                <img id="star4" width="50px" height="50px" :src="imgNum>3 ? srcStar : srcNoStar" @click="imgItem(4)"> 
                                                             </li>
                                                             <li>
-                                                                <img src="images/star.png" width="50px" height="50px" />
+                                                                <img id="star5" width="50px" height="50px" :src="imgNum>4 ? srcStar : srcNoStar" @click="imgItem(5)"> 
                                                             </li>
                                                         </ul>
-                                                        <div id="s2" v-model.trim="review_rating"></div>
+                                                        <div id="s2" >{{imgNum}}</div>
                                                     </td>
                                                 </tr>
 
@@ -686,87 +690,6 @@
     </script>
 
     <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
-    <script>
-        $(function() {
-            var aLi = $(".list1 li");
-            var leng = aLi.length;
-            var arr = ["1", "2", "3", "4", "5"];
-            var arr2 = [
-                "images/star.png",
-                "images/star.png",
-                "images/star.png",
-                "images/star.png",
-                "images/star.png",
-            ];
-            var s1 = "";
-
-            aLi.click(function() {
-                for (var j = 0; j < leng; j++) {
-                    aLi.eq(j).find("img").attr("src", "images/star.png");
-                }
-                var index = $(this).index();
-                if (index < 2) {
-                    for (var j = 0; j <= index; j++) {
-                        aLi.eq(j).find("img").attr("src", "images/star2.png");
-                        s1 = arr[index];
-                        arr2[j] = aLi.eq(j).find("img").attr("src");
-                    }
-                } else {
-                    for (var j = 0; j <= index; j++) {
-                        aLi.eq(j).find("img").attr("src", "images/star2.png");
-                        s1 = arr[index];
-                        arr2[j] = aLi.eq(j).find("img").attr("src");
-                    }
-                }
-
-                for (var k = index + 1; k < leng; k++) {
-                    arr2[k] = "images/star.png";
-                }
-                $("#s1").text(s1);
-                console.log(s1);
-            });
-        });
-        $(function() {
-            var aLi = $(".list2 li");
-            var leng = aLi.length;
-            var arr = ["1", "2", "3", "4", "5"];
-            var arr2 = [
-                "images/star.png",
-                "images/star.png",
-                "images/star.png",
-                "images/star.png",
-                "images/star.png",
-            ];
-            var s2 = "";
-
-            aLi.click(function() {
-                for (var j = 0; j < leng; j++) {
-                    aLi.eq(j).find("img").attr("src", "images/star.png");
-                }
-                var index = $(this).index();
-                if (index < 2) {
-                    for (var j = 0; j <= index; j++) {
-                        aLi.eq(j).find("img").attr("src", "images/star2.png");
-                        s2 = arr[index];
-                        arr2[j] = aLi.eq(j).find("img").attr("src");
-                    }
-                } else {
-                    for (var j = 0; j <= index; j++) {
-                        aLi.eq(j).find("img").attr("src", "images/star2.png");
-                        s2 = arr[index];
-                        arr2[j] = aLi.eq(j).find("img").attr("src");
-                    }
-                }
-
-                for (var k = index + 1; k < leng; k++) {
-                    arr2[k] = "images/star.png";
-                }
-                $("#s2").text(s2);
-            });
-        });
-
-    </script>
-
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>
