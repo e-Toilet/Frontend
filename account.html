@@ -142,7 +142,7 @@
                                     <a style="cursor: pointer" onclick="edit('Name')"><i style="font-size: 16px" class="far" data-toggle="modal" data-target="#modell">&#xf044;</i></a>&nbsp;&nbsp;
                                 </div>
                                 <div id="NameCheck" style="float: right; display: none">
-                                    <a style="cursor: pointer" id="NameCheckbt" @click="update_account"><i style="font-size: 16px" class="fas" data-toggle="modal" data-target="#modell">&#xf00c;</i></a>&nbsp;&nbsp;<a style="cursor: pointer" id="NameCanclebt" onclick="update('NameCancle')"><i style="font-size: 16px" class="fa" data-toggle="modal" data-target="#modell">&#xf00d;</i></a>&nbsp;&nbsp;
+                                    <a style="cursor: pointer" id="NameCheckbt" onclick="update('Name')" @click="update_account"><i style="font-size: 16px" class="fas" data-toggle="modal" data-target="#modell">&#xf00c;</i></a>&nbsp;&nbsp;<a style="cursor: pointer" id="NameCanclebt" onclick="update('NameCancle')"><i style="font-size: 16px" class="fa" data-toggle="modal" data-target="#modell">&#xf00d;</i></a>&nbsp;&nbsp;
                                 </div>
                             </div>
                             <div class="borderstyle">
@@ -161,7 +161,7 @@
                                     <a style="cursor: pointer" onclick="edit('Mail')"><i style="font-size: 16px" class="far" data-toggle="modal" data-target="#modell">&#xf044;</i></a>&nbsp;&nbsp;
                                 </div>
                                 <div id="MailCheck" style="float: right; display: none">
-                                    <a style="cursor: pointer" id="MailCheckbt" @click="update_account"><i style="font-size: 16px" class="fas" data-toggle="modal" data-target="#modell">&#xf00c;</i></a>&nbsp;&nbsp;<a style="cursor: pointer" id="MailCanclebt" onclick="update('MailCancle')"><i style="font-size: 16px" class="fa" data-toggle="modal" data-target="#modell">&#xf00d;</i></a>&nbsp;&nbsp;
+                                    <a style="cursor: pointer" id="MailCheckbt" onclick="update('Mail')" @click="update_account"><i style="font-size: 16px" class="fas" data-toggle="modal" data-target="#modell">&#xf00c;</i></a>&nbsp;&nbsp;<a style="cursor: pointer" id="MailCanclebt" onclick="update('MailCancle')"><i style="font-size: 16px" class="fa" data-toggle="modal" data-target="#modell">&#xf00d;</i></a>&nbsp;&nbsp;
                                 </div>
                             </div>
                             <div class="borderstyle">
@@ -181,7 +181,7 @@
                                     <a style="cursor: pointer" onclick="edit('Password')"><i style="font-size: 16px" class="far" data-toggle="modal" data-target="#modell">&#xf044;</i></a>&nbsp;&nbsp;
                                 </div>
                                 <div id="PasswordCheck" style="float: right; display: none">
-                                    <a style="cursor: pointer" id="PasswordCheckbt" @click="update_account" v-if="checkpass==account_info.password && account_info.password.length>5 "><i style="font-size: 16px" class="fas" data-toggle="modal" data-target="#modell">&#xf00c;</i></a>&nbsp;&nbsp;<a style="cursor: pointer" id="PasswordCanclebt" onclick="update('PasswordCancle')"><i style="font-size: 16px" class="fa" data-toggle="modal" data-target="#modell">&#xf00d;</i></a>&nbsp;&nbsp;
+                                    <a style="cursor: pointer" id="PasswordCheckbt" onclick="update('Password')" @click="update_account" v-if="checkpass==account_info.password"><i style="font-size: 16px" class="fas" data-toggle="modal" data-target="#modell">&#xf00c;</i></a>&nbsp;&nbsp;<a style="cursor: pointer" id="PasswordCanclebt" onclick="update('PasswordCancle')"><i style="font-size: 16px" class="fa" data-toggle="modal" data-target="#modell">&#xf00d;</i></a>&nbsp;&nbsp;
                                 </div>
                             </div>
                             <div>
