@@ -120,12 +120,18 @@ const showtoilet = new Vue({
                         showtoilet.create_toilet
                     )
                     .then((response) => {
-                        result = response.data;
-                        alert("新增成功");
-                        self.location.reload();
+                        swal({
+                            title: "新增成功",
+                            icon: "success",
+                        }).then(function () {
+                            self.location.reload();
+                        })
                     })
                     .catch(() => {
-                        alert("新增失敗！請再試一次");
+                        swal({
+                            title: "新增失敗",
+                            icon: "error",
+                        });
                     });
             }
 

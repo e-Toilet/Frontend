@@ -24,7 +24,7 @@ const app = new Vue({
             .then((response) => {
                 result = JSON.parse(response.data.Review_count)
                 app.comment = result
-                console.log(result)
+                //                console.log(result)
             })
     },
     methods: {
@@ -36,14 +36,25 @@ const app = new Vue({
                         password: app.password,
                         name: app.name
                     })
-                    .then((response) => {
-                        result = response.data
-                        alert("註冊成功")
-                        self.location.reload()
+                    .then(() => {
+                        swal({
+                            title: "註冊成功",
+                            icon: "success",
+                        }).then(function () {
+                            self.location.reload();
+                        })
                     })
                     .catch((error) => {
-                        alert("註冊失敗！此信箱已存在，請嘗試新的信箱！")
+                        swal({
+                            title: "註冊失敗！此信箱已存在，請嘗試新的信箱！",
+                            icon: "error",
+                        });
                     })
+            }
+            if (!this.email) {
+                alert('Email欄位為必填.');
+            } else if (!this.validEmail(this.email)) {
+                alert('請輸入有效的Email.');
             }
             if (!this.name) {
                 alert('Name欄位為必填.');
@@ -52,11 +63,6 @@ const app = new Vue({
                 alert('Password欄位為必填.');
             } else if (!this.validPassword(this.password)) {
                 alert('Password格式不符合');
-            }
-            if (!this.email) {
-                alert('Email欄位為必填.');
-            } else if (!this.validEmail(this.email)) {
-                alert('請輸入有效的Email.');
             }
             e.preventDefault();
         },
@@ -77,18 +83,19 @@ const app = new Vue({
                         email: app.loginFrom.useremail,
                         password: app.loginFrom.pass
                     })
-                    .then((response) => {
-                        axios.get('http://140.115.87.117:8090/getAllMember')
-                            .then((response) => {
-                                result = JSON.parse(response.data.Memberinfo)
-                                app.accountInfo = result
-                            });
-                        result = response.data;
-                        alert("登入成功");
-                        location.href = `index.html`;
+                    .then(() => {
+                        swal({
+                            title: "登入成功",
+                            icon: "success",
+                        }).then(function () {
+                            location.href = `index.html`;
+                        })
                     })
                     .catch(() => {
-                        alert("登入失敗！請再輸入一次信箱密碼");
+                        swal({
+                            title: "登入失敗！請再輸入一次信箱密碼",
+                            icon: "error",
+                        });
                     });
             }
             if (!this.loginFrom.useremail) {

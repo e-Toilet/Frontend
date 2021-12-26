@@ -74,13 +74,18 @@ const searchtoilet = new Vue({
                         name: searchtoilet.name
                     })
                     .then((response) => {
-                        result = response.data
-                        alert("新增成功")
-                        self.location.reload()
+                        swal({
+                            title: "新增成功",
+                            icon: "success",
+                        }).then(function () {
+                            self.location.reload();
+                        })
                     })
                     .catch((error) => {
-                        alert("新增失敗！請再試一次")
-                        return
+                        swal({
+                            title: "新增失敗",
+                            icon: "error",
+                        });
                     })
             }
             if (!this.name) {
@@ -137,13 +142,4 @@ const searchtoilet = new Vue({
             location.href = `toiletcontent.html?toilet_id=${toilet_id}`
         }
     },
-    computed: {
-        changeimage: function () {
-            let images = ['toilet.jpg', 'toilet1.jpg', 'toilet2.jpg', 'toilet3.jpg', 'toilet4.jpg', 'toilet5.jpg', 'toilet6.jpg', 'toilet7.jpg', 'toilet8.jpeg', 'toilet9.jpg', 'toilet10.jpg', 'toilet11.jpg', 'toilet12.jpg', 'toilet13.jpg', 'toilet14.jpg', 'toilet15.jpg', 'toilet16.jpg', 'toilet17.jpg', 'toilet18.jpg', 'toilet19.jpg', 'toilet20.jpg']
-            let img = images[Math.floor(Math.random() * 20)]
-            let style = "background-image:url('images/" + img + "'); background-repeat: round";
-            console.log("1")
-            return style
-        }
-    }
 })
