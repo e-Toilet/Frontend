@@ -40,11 +40,12 @@ const showtoilet = new Vue({
         toiletInfo: {},
         reviews: [],
         account: {},
-        rating: "",
+        //        rating: 0,
         content: "",
+        createimgNum: 0,
         review_info: {
-            rating: 0,
-            content:"",
+            //            rating: 0,
+            content: "",
         },
         selected_rating: 0,
         imgNum: 0,
@@ -175,32 +176,31 @@ const showtoilet = new Vue({
             });
         },
         createcommet: function (e) {
-            let check = this.rating && this.content.length < 46;
-            console.log(showtoilet.rating);
+            let check = this.createimgNum && this.content.length < 46;
+            console.log(showtoilet.createimgNum);
             console.log(showtoilet.content);
+            console.log(showtoilet.toiletInfo.toilet_id);
             if (check) {
                 axios
-                    .post("http://140.115.87.117:8090/CreateNewReview", {
-                        rating: showtoilet.rating,
+                    .post("http://140.115.87.117:8090/createNewReview", {
+                        rating: showtoilet.createimgNum,
                         member_id: 112,
-                        toilet_id: 2,
+                        toilet_id: showtoilet.toiletInfo.toilet_id,
                         content: showtoilet.content,
                     })
                     .then((response) => {
-                        result = response.data;
-                        alert("新增評論成功");
-                        console.log(rating);
-                        console.log(member_id);
-                        console.log(toilet_id);
-                        console.log(content);
-                        self.location.reload();
+                        swal({
+                            title: "新增評論成功",
+                            icon: "success",
+                        }).then(function () {
+                            self.location.reload();
+                        })
                     })
                     .catch((error) => {
                         alert("新增失敗！");
-                        return;
                     });
             }
-            if (!this.rating) {
+            if (!this.createimgNum) {
                 alert("星等必選.");
             }
             if (this.content.length > 45) {
@@ -231,7 +231,9 @@ const showtoilet = new Vue({
                             swal({
                                 title: `刪除成功`,
                                 icon: "success",
-                            });
+                            }).then(function () {
+                                self.location.reload();
+                            })
                         })
                         .catch((error) => {
                             swal({
@@ -271,7 +273,9 @@ const showtoilet = new Vue({
                             swal({
                                 title: `刪除成功`,
                                 icon: "success",
-                            });
+                            }).then(function () {
+                                self.location.reload();
+                            })
                         })
                         .catch((error) => {
                             swal({
@@ -290,18 +294,21 @@ const showtoilet = new Vue({
         },
         update_review: () => {
             console.log(showtoilet.review_info);
-            let checkIsInputedAndLegal = this.review_info.rating;
-            if (checkIsInputedAndLegal) {
+            let checkcommet = showtoilet.imgNum > 0;
+            if (checkcommet) {
                 axios
                     .post(
                         "http://140.115.87.117:8090/updateReview",
-                        showtoilet.review_info
+                        showtoilet.review_info,
+                        showtoilet.imgNum
                     )
                     .then(() => {
                         swal({
                             title: "修改成功",
                             icon: "success",
-                        });
+                        }).then(function () {
+                            self.location.reload();
+                        })
                         //  showtoilet.review_info
                         showtoilet.review_info[showtoilet.review_info.review_id - 1] = showtoilet.review_info;
                     })
@@ -315,7 +322,7 @@ const showtoilet = new Vue({
                         });
                     });
             }
-            if (!this.rating) {
+            if (showtoilet.imgNum == 0) {
                 alert("星等必選.");
             }
         },
@@ -324,7 +331,11 @@ const showtoilet = new Vue({
         },
         imgItem: function (num) {
             showtoilet.imgNum = num;
-            showtoilet.review_info.rating=num;
+            showtoilet.review_info.rating = num;
+        },
+        createimgItem: function (num) {
+            showtoilet.createimgNum = num;
+            showtoilet.rating = num;
         },
     },
 });
