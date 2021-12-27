@@ -8,17 +8,17 @@ const app = new Vue({
     districts: [],
   },
   created: () => {
-    axios.get("http://140.115.87.117:8090/getAllToilet").then((response) => {
+    axios.get("https://etoilet.ddns.net:8090/getAllToilet").then((response) => {
       result = JSON.parse(response.data.Toiletinfo);
       app.toilets = result;
     });
-    axios.get("http://140.115.87.117:8090/getAllCountry").then((response) => {
+    axios.get("https://etoilet.ddns.net:8090/getAllCountry").then((response) => {
       app.countries = JSON.parse(response.data.CountryInfo);
     });
-    axios.get("http://140.115.87.117:8090/getAllCity").then((response) => {
+    axios.get("https://etoilet.ddns.net:8090/getAllCity").then((response) => {
       app.cities = JSON.parse(response.data.CityInfo);
     });
-    axios.get("http://140.115.87.117:8090/getAllDistrict").then((response) => {
+    axios.get("https://etoilet.ddns.net:8090/getAllDistrict").then((response) => {
       app.districts = JSON.parse(response.data.DistrictInfo);
     });
   },
@@ -36,7 +36,7 @@ const app = new Vue({
       }).then((response) => {
         if (response) {
           axios
-            .post("http://140.115.87.117:8090/deleteToilet", {
+            .post("https://etoilet.ddns.net:8090/deleteToilet", {
               toilet_id: toilet_id,
             })
             .then(() => {
@@ -67,7 +67,7 @@ const app = new Vue({
     update_toilet: () => {
       console.log(app.toilet_info)
       axios
-        .post("http://140.115.87.117:8090/updateToilet", app.toilet_info)
+        .post("https://etoilet.ddns.net:8090/updateToilet", app.toilet_info)
         .then(() => {
           swal({
             title: "Toilet update Successfully",

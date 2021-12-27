@@ -7,7 +7,7 @@ const app = new Vue({
     isPasswordLegal: false,
   },
   created: () => {
-    axios.get("http://140.115.87.117:8090/getAllMember").then((response) => {
+    axios.get("https://etoilet.ddns.net:8090/getAllMember").then((response) => {
       result = JSON.parse(response.data.Memberinfo);
       app.members = result;
     });
@@ -26,7 +26,7 @@ const app = new Vue({
       }).then((response) => {
         if (response) {
           axios
-            .post("http://140.115.87.117:8090/updateMemberStatus", {
+            .post("https://etoilet.ddns.net:8090/updateMemberStatus", {
               member_id: member_id,
               status: 0,
             })
@@ -57,7 +57,7 @@ const app = new Vue({
     },
     update_member: () => {
       axios
-        .post("http://140.115.87.117:8090/updateMemberInfo", app.member_info)
+        .post("https://etoilet.ddns.net:8090/updateMemberInfo", app.member_info)
         .then((response) => {
           swal({
             title: "Member update Successfully",
@@ -97,7 +97,7 @@ const app = new Vue({
       }).then((response) => {
         if (response) {
           axios
-            .post("http://140.115.87.117:8090/updateMemberStatus", {
+            .post("https://etoilet.ddns.net:8090/updateMemberStatus", {
               member_id: member_id,
               status: set_member_status,
             })
