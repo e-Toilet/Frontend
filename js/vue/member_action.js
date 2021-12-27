@@ -14,13 +14,13 @@ const app = new Vue({
         accountInfo: []
     },
     created: () => {
-        axios.get('http://140.115.87.117:8090/getMemberInfo?member_id=112')
+        axios.get('https://etoilet.ddns.net:8090/getMemberInfo?member_id=112')
             .then((response) => {
                 result = JSON.parse(response.data.Memberinfo)
                 app.account = result
                 //                console.log(result)
             })
-        axios.get('http://140.115.87.117:8090/getMemberReviewCount?member_id=112')
+        axios.get('https://etoilet.ddns.net:8090/getMemberReviewCount?member_id=112')
             .then((response) => {
                 result = JSON.parse(response.data.Review_count)
                 app.comment = result
@@ -31,7 +31,7 @@ const app = new Vue({
         checkForm: function (e) {
             let checkIsInputedAndLegal = this.email && this.validEmail(this.email) && this.password && this.validPassword(this.password) && this.name
             if (checkIsInputedAndLegal) {
-                axios.post('http://140.115.87.117:8090/Register', {
+                axios.post('https://etoilet.ddns.net:8090/Register', {
                         email: app.email,
                         password: app.password,
                         name: app.name
@@ -79,7 +79,7 @@ const app = new Vue({
             console.log(this.loginFrom.pass)
             let checkLogin = this.loginFrom.useremail && this.validEmail(this.loginFrom.useremail) && this.loginFrom.pass && this.validPassword(this.loginFrom.pass)
             if (checkLogin) {
-                axios.post('http://140.115.87.117:8090/Signin', {
+                axios.post('https://etoilet.ddns.net:8090/Signin', {
                         email: app.loginFrom.useremail,
                         password: app.loginFrom.pass
                     })

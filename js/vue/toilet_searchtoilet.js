@@ -46,7 +46,7 @@ const searchtoilet = new Vue({
     },
     created: () => {
         //取得所有關於country, city and district的資訊
-        axios.get("http://140.115.87.117:8090/getAllLoc").then((response) => {
+        axios.get("https://etoilet.ddns.net:8090/getAllLoc").then((response) => {
             searchtoilet.countries = JSON.parse(response.data.CountryInfo);
             searchtoilet.cities = JSON.parse(response.data.CityInfo);
             searchtoilet.districts = JSON.parse(response.data.DistrictInfo);
@@ -67,7 +67,7 @@ const searchtoilet = new Vue({
         if (param_obj.hasOwnProperty("district_id")) {
             axios
                 .get(
-                    `http://140.115.87.117:8090/getToiletByLoc?district_id=${param_obj["district_id"]}`
+                    `https://etoilet.ddns.net:8090/getToiletByLoc?district_id=${param_obj["district_id"]}`
                 )
                 .then((response) => {
                     result = JSON.parse(response.data.Toiletinfo);
@@ -79,7 +79,7 @@ const searchtoilet = new Vue({
         ) {
             axios
                 .get(
-                    `http://140.115.87.117:8090/getToiletByLongitude?longitude=${param_obj["longitude"]}&latitude=${param_obj["latitude"]}`
+                    `https://etoilet.ddns.net:8090/getToiletByLongitude?longitude=${param_obj["longitude"]}&latitude=${param_obj["latitude"]}`
                 )
                 .then((response) => {
                     console.log(response);
@@ -105,7 +105,7 @@ const searchtoilet = new Vue({
             if (checkIsInputedAndLegal) {
                 axios
                     .post(
-                        "http://140.115.87.117:8090/createNewToilet",
+                        "https://etoilet.ddns.net:8090/createNewToilet",
                         searchtoilet.create_toilet
                     )
                     .then((response) => {

@@ -37,19 +37,19 @@ const searchtoilet = new Vue({
         } catch (error) {
 
         }
-        axios.get(`http://140.115.87.117:8090/getToiletByLoc?district_id=${district_id}`)
+        axios.get(`https://etoilet.ddns.net:8090/getToiletByLoc?district_id=${district_id}`)
             .then((response) => {
                 result = JSON.parse(response.data.Toiletinfo)
                 searchtoilet.toilets = result
                 console.log(result)
             })
-        axios.get(`http://140.115.87.117:8090/getToiletByID?toilet_id=${toilet_id}`)
+        axios.get(`https://etoilet.ddns.net:8090/getToiletByID?toilet_id=${toilet_id}`)
             .then((response) => {
                 result = JSON.parse(response.data.Toiletinfo)
                 showtoilet.toiletinfo = result
                 //                console.log(result)
             })
-        axios.get('http://140.115.87.117:8090/getAllLoc')
+        axios.get('https://etoilet.ddns.net:8090/getAllLoc')
             .then((response) => {
                 result = JSON.parse(response.data.CountryInfo)
                 result1 = JSON.parse(response.data.CityInfo)
@@ -64,7 +64,7 @@ const searchtoilet = new Vue({
         createto: function (e) {
             let checkIsInputedAndLegal = this.name && this.address && this.longitude && this.latitude && this.create.country_id && this.create.city_id && this.create.district_id
             if (checkIsInputedAndLegal) {
-                axios.post('http://140.115.87.117:8090/createNewToilet', {
+                axios.post('https://etoilet.ddns.net:8090/createNewToilet', {
                         address: searchtoilet.address,
                         longitude: searchtoilet.longitude,
                         latitude: searchtoilet.latitude,

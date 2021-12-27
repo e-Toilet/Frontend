@@ -37,6 +37,7 @@ const showtoilet = new Vue({
       "toilet19.jpg",
       "toilet20.jpg",
     ],
+//        review_member_id:[],
         toiletInfo: {},
         reviews: [],
         account: {},
@@ -54,7 +55,7 @@ const showtoilet = new Vue({
     },
     created: () => {
         //取得所有關於country, city and district的資訊
-        axios.get("http://140.115.87.117:8090/getAllLoc").then((response) => {
+        axios.get("https://etoilet.ddns.net:8090/getAllLoc").then((response) => {
             showtoilet.countries = JSON.parse(response.data.CountryInfo);
             showtoilet.cities = JSON.parse(response.data.CityInfo);
             showtoilet.districts = JSON.parse(response.data.DistrictInfo);
@@ -75,7 +76,7 @@ const showtoilet = new Vue({
         if (param_obj.hasOwnProperty("toilet_id")) {
             axios
                 .get(
-                    `http://140.115.87.117:8090/getToiletByID?toilet_id=${param_obj["toilet_id"]}`
+                    `https://etoilet.ddns.net:8090/getToiletByID?toilet_id=${param_obj["toilet_id"]}`
                 )
                 .then((response) => {
                     result = JSON.parse(response.data.Toiletinfo);
@@ -84,17 +85,23 @@ const showtoilet = new Vue({
                 });
             axios
                 .get(
-                    `http://140.115.87.117:8090/getReview?toilet_id=${param_obj["toilet_id"]}`
+                    `https://etoilet.ddns.net:8090/getReview?toilet_id=${param_obj["toilet_id"]}`
                 )
                 .then((response) => {
                     if (response.data.hasOwnProperty("Reviewinfo")) {
                         result = JSON.parse(response.data.Reviewinfo);
                         showtoilet.reviews = result;
+//                        for(var i=0;i< showtoilet.reviews.length;i++){
+//                            console.log(showtoilet.reviews[i].member_id)
+//                            showtoilet.review_member_id==showtoilet.reviews[i].member_id
+//                        }
+//                        
+//                            console.log(showtoilet.review_member_id)
                     }
                 });
         }
         axios
-            .get("http://140.115.87.117:8090/getMemberInfo?member_id=112")
+            .get("https://etoilet.ddns.net:8090/getMemberInfo?member_id=112")
             .then((response) => {
                 result = JSON.parse(response.data.Memberinfo);
                 //登入中的會員也只會有一個，所以直接拿一個就好
@@ -116,7 +123,7 @@ const showtoilet = new Vue({
             if (checkIsInputedAndLegal) {
                 axios
                     .post(
-                        "http://140.115.87.117:8090/createNewToilet",
+                        "https://etoilet.ddns.net:8090/createNewToilet",
                         showtoilet.create_toilet
                     )
                     .then((response) => {
@@ -188,7 +195,7 @@ const showtoilet = new Vue({
             console.log(showtoilet.toiletInfo.toilet_id);
             if (check) {
                 axios
-                    .post("http://140.115.87.117:8090/createNewReview", {
+                    .post("https://etoilet.ddns.net:8090/createNewReview", {
                         rating: showtoilet.createimgNum,
                         member_id: 112,
                         toilet_id: showtoilet.toiletInfo.toilet_id,
@@ -226,7 +233,7 @@ const showtoilet = new Vue({
             }).then((response) => {
                 if (response) {
                     axios
-                        .post("http://140.115.87.117:8090/deleteReview", {
+                        .post("https://etoilet.ddns.net:8090/deleteReview", {
                             review_id: review_id,
                         })
                         .then(() => {
@@ -268,7 +275,7 @@ const showtoilet = new Vue({
             }).then((response) => {
                 if (response) {
                     axios
-                        .post("http://140.115.87.117:8090/deleteReview", {
+                        .post("https://etoilet.ddns.net:8090/deleteReview", {
                             review_id: review_id,
                         })
                         .then(() => {
@@ -304,7 +311,7 @@ const showtoilet = new Vue({
             if (checkcommet) {
                 axios
                     .post(
-                        "http://140.115.87.117:8090/updateReview",
+                        "https://etoilet.ddns.net:8090/updateReview",
                         showtoilet.review_info,
                         showtoilet.imgNum
                     )

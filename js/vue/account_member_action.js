@@ -14,7 +14,7 @@ const app = new Vue({
     },
     created: () => {
         axios
-            .get("http://140.115.87.117:8090/getMemberInfo?member_id=112")
+            .get("https://etoilet.ddns.net:8090/getMemberInfo?member_id=112")
             .then((response) => {
                 result = JSON.parse(response.data.Memberinfo);
                 app.account = result[0];
@@ -24,7 +24,7 @@ const app = new Vue({
                 //                console.log(result)
             });
         axios
-            .get("http://140.115.87.117:8090/getMemberReviewCount?member_id=112")
+            .get("https://etoilet.ddns.net:8090/getMemberReviewCount?member_id=112")
             .then((response) => {
                 result = JSON.parse(response.data.Review_count);
                 app.comment = result;
@@ -37,7 +37,7 @@ const app = new Vue({
             let checkupdate=app.validEmail(app.account_info.email) && app.validPassword(app.account_info.password)
             if (checkupdate) {
                 axios
-                    .post("http://140.115.87.117:8090/updateMemberInfo",
+                    .post("https://etoilet.ddns.net:8090/updateMemberInfo",
                         app.account_info
                     )
                     .then(() => {

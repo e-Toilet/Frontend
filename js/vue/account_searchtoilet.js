@@ -17,7 +17,7 @@ const searchtoilet = new Vue({
     },
     created: () => {
         axios
-            .get("http://140.115.87.117:8090/getAllLoc")
+            .get("https://etoilet.ddns.net:8090/getAllLoc")
             .then((response) => {
                 searchtoilet.countries = JSON.parse(response.data.CountryInfo);
                 searchtoilet.cities = JSON.parse(response.data.CityInfo);
@@ -42,7 +42,7 @@ const searchtoilet = new Vue({
             if (checkIsInputedAndLegal) {
                 axios
                     .post(
-                        "http://140.115.87.117:8090/createNewToilet",
+                        "https://etoilet.ddns.net:8090/createNewToilet",
                         searchtoilet.create_toilet
                     )
                     .then((response) => {
