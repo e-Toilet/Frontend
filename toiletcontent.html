@@ -763,7 +763,7 @@
                                 <option
                                   v-for="city in cities"
                                   :value="city.city_id"
-                                  v-show="city.country_id == create_toilet.country_id"
+                                  v-if="city.country_id == create_toilet.country_id"
                                 >
                                   {{city.city_name}}
                                 </option>
@@ -786,7 +786,7 @@
                                 <option
                                   v-for="district in districts"
                                   :value="district.district_id"
-                                  v-show="district.city_id == create_toilet.city_id"
+                                  v-if="district.city_id == create_toilet.city_id"
                                 >
                                   {{district.district_name}}
                                 </option>

@@ -1,6 +1,8 @@
 const searchtoilet = new Vue({
     el: "#searchtoilet",
     data: {
+        member_id:-1,
+        is_admin:false,
         countries: [],
         cities: [],
         districts: [],
@@ -23,6 +25,7 @@ const searchtoilet = new Vue({
         isShow: false,
     },
     created: () => {
+        //初始化資料
         axios
             .get("https://etoilet.ddns.net:8090/getAllLoc")
             .then((response) => {
@@ -144,5 +147,15 @@ const searchtoilet = new Vue({
         JumpToLngLat: (lat, lng) => {
             location.href = `toilet.html?longitude=${lng}&latitude=${lat}`;
         },
+        getMemberId:() => {
+            const value = `; ${document.cookie}`
+            let member_parts = value.split(`; member_id=`)
+            return member_parts.pop().split(';').shift()
+        },
+        getStatus: () => {
+            const value = `; ${document.cookie}`
+            let status_parts = value.split('; isAdmin=')
+            return status_parts.pop.split(';').shift()
+        }
     },
 });

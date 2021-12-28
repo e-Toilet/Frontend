@@ -13,20 +13,6 @@ const app = new Vue({
         },
         accountInfo: []
     },
-    created: () => {
-        axios.get('https://etoilet.ddns.net:8090/getMemberInfo?member_id=112')
-            .then((response) => {
-                result = JSON.parse(response.data.Memberinfo)
-                app.account = result
-                //                console.log(result)
-            })
-        axios.get('https://etoilet.ddns.net:8090/getMemberReviewCount?member_id=112')
-            .then((response) => {
-                result = JSON.parse(response.data.Review_count)
-                app.comment = result
-                //                console.log(result)
-            })
-    },
     methods: {
         checkForm: function (e) {
             let checkIsInputedAndLegal = this.email && this.validEmail(this.email) && this.password && this.validPassword(this.password) && this.name
@@ -83,7 +69,13 @@ const app = new Vue({
                         email: app.loginFrom.useremail,
                         password: app.loginFrom.pass
                     })
-                    .then(() => {
+                    .then((response) => {
+                        //接收回傳的資訊
+                        let member_info = JSON.parse(response.data.Memberinfo)[0]
+                        console.log(member_info)
+                        document.cookie = `member_id=${member_info.member_id}`
+                        document.cookie = `isAdmin=${member_info.status == 2 ? true : false}`
+
                         swal({
                             title: "登入成功",
                             icon: "success",
