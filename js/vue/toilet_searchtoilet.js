@@ -43,8 +43,8 @@ const searchtoilet = new Vue({
       "toilet20.jpg",
     ],
         toilets: [],
-        lon:"",
-        lat:""
+        lon: "",
+        lat: ""
     },
     created: () => {
         //取得所有關於country, city and district的資訊
@@ -74,8 +74,8 @@ const searchtoilet = new Vue({
                 .then((response) => {
                     result = JSON.parse(response.data.Toiletinfo);
                     searchtoilet.toilets = result;
-                    searchtoilet.lon=param_obj["longitude"]
-                    searchtoilet.lat=param_obj["latitude"] 
+                    searchtoilet.lon = param_obj["longitude"]
+                    searchtoilet.lat = param_obj["latitude"]
                     console.log(param_obj["longitude"])
 
                 });
@@ -91,6 +91,8 @@ const searchtoilet = new Vue({
                     console.log(response);
                     result = JSON.parse(response.data.Toiletinfo);
                     searchtoilet.toilets = result;
+                    searchtoilet.lon = param_obj["longitude"]
+                    searchtoilet.lat = param_obj["latitude"]
                 });
         } else {
             return;
@@ -207,7 +209,7 @@ const searchtoilet = new Vue({
                 return searchtoilet.web.district_name;
             });
         },
-        rounddistance:(distance) => {
+        rounddistance: (distance) => {
             return Math.round(distance * 100000) / 100000;
         }
     },
