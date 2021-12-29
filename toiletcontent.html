@@ -99,10 +99,10 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a href="index.html" class="nav-link">首頁</a>
             </li>
-            <li class="nav-item" id="create-toilet-nav" style="display: none">
+            <li class="nav-item">
               <a
                 href="#Create"
                 class="nav-link"
@@ -111,7 +111,7 @@
                 >新增廁所</a
               >
             </li>
-            <li class="nav-item" id="backend-nav" style="display: none">
+            <li class="nav-item">
               <a href="./Control_Panel/index.html" class="nav-link">去後台</a>
             </li>
             <li class="nav-item dropdown">
@@ -132,70 +132,14 @@
                 class="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
-                <a
-                  id="info-btn"
-                  class="dropdown-item"
-                  href="account.html"
-                  style="display: none"
-                  >個人資料</a
-                >
-                <a id="login-btn" class="dropdown-item" href="Login.html"
-                  >登入</a
-                >
-                <a
-                  id="logout-btn"
-                  class="dropdown-item"
-                  style="display: none"
-                  onclick="deleteAllCookies()"
-                  >登出</a
-                >
+                <a class="dropdown-item" href="account.html">個人資料</a>
+                <a class="dropdown-item" href="Login.html">登入</a>
               </div>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <script>
-      const getCookie = (name) => {
-        try {
-          const value = `; ${document.cookie}`;
-          const parts = value.split(`; ${name}=`);
-          if (parts.length === 2) return parts.pop().split(";").shift();
-        } catch {
-          return "";
-        }
-      };
-
-      const deleteAllCookies = () => {
-        var cookies = document.cookie.split(";");
-
-        for (var i = 0; i < cookies.length; i++) {
-          var cookie = cookies[i];
-          var eqPos = cookie.indexOf("=");
-          var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-          document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-        }
-        location.reload();
-      };
-
-      var create_toilet_nav = document.getElementById("create-toilet-nav");
-      var backend_nav = document.getElementById("backend-nav");
-      var login_btn = document.getElementById("login-btn");
-      var logout_btn = document.getElementById("logout-btn");
-      var info_btn = document.getElementById("info-btn");
-
-      if (getCookie("isAdmin") != undefined) {
-        //新增廁所的項目
-        create_toilet_nav.style.display = "block";
-        //個人資料按鈕
-        info_btn.style.display = "block";
-        //登出按鈕
-        logout_btn.style.display = "block";
-        //登入按鈕
-        login_btn.style.display = "none";
-        if (getCookie("isAdmin") == "true") backend_nav.style.display = "block";
-      }
-    </script>
     <!-- END nav -->
 
     <div class="hero-wrap" style="background-image: url('images/2.jpeg')">
@@ -242,7 +186,7 @@
               <!--            <div class="row col-lg-12 justify-content-center col-lg-8">-->
               <div class="row" id="showtoilet">
                 <div class="col-md-12">
-                  <div class="col-md-12 room-single mb-5 mt-4">
+                  <div class="col-md-12 room-single mb-51 mt-4">
                     <h2 class="mb-4" style="text-align: left; float: left">
                       {{toiletInfo.name}}
                     </h2>
@@ -338,7 +282,7 @@
                       </span>
                     </h5>
                   </div>
-                  <div class="col-md-12 room-single mt-4 mb-5">
+                  <div class="col-md-12 room-single mt-4 mb-51">
                     <br />
                     <div>
                       <h4 class="mb-4">
@@ -461,7 +405,7 @@
                     </div>
                   </div>
 
-                  <div class="col-md-12 room-single mb-5 mt-4">
+                  <div class="col-md-12 room-single mb-51 mt-4">
                     <h3 class="mb-4">
                       &nbsp;<i
                         class="far fa-thumbs-up"
@@ -1300,11 +1244,7 @@
       }
     </script>
 
-    <script
-      src="https://code.jquery.com/jquery-1.12.4.js"
-      integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
-      crossorigin="anonymous"
-    ></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>

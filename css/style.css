@@ -8687,6 +8687,10 @@ button.bg-dark:focus {
 .my-5 {
     margin-bottom: 25rem !important;
 }
+.mb-51,
+.my-5 {
+    margin-bottom: 3rem !important;
+}
 
 .ml-5,
 .mx-5 {
