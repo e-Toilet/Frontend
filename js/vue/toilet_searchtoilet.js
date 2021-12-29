@@ -213,6 +213,9 @@ const searchtoilet = new Vue({
         return searchtoilet.web.district_name;
       });
     },
+    Distance: (distance) => {
+      return Math.floor(distance * 1) / 1;
+    },
     rounddistance: (distance) => {
       return Math.round(distance * 10) / 10;
     },
@@ -220,6 +223,19 @@ const searchtoilet = new Vue({
       return Math.round(distance * 1000);
       console.log(Math.round(distance * 1000));
     },
+    longitudelength: (longitude) => {
+      return Math.round(longitude * 10000) / 10000;
+    },
+    latitudelength: (latitude) => {
+      return Math.round(latitude * 10000) / 10000;
+    },
+  },
+  rounddistance: (distance) => {
+    return Math.round(distance * 10) / 10;
+  },
+  roundmeter: (distance) => {
+    return Math.round(distance * 1000);
+    console.log(Math.round(distance * 1000));
   },
 });
 function sortByKey(array, key) {
