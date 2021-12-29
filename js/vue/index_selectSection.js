@@ -39,8 +39,6 @@ const searchtoilet = new Vue({
             },
             (err) => {
                 //失敗後回傳reject
-                document.getElementById("log").value = "0"
-                document.getElementById("lat").value = "0"
             }
         );
         //初始化資料
