@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
     <title>eToilet</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css" />
     <link rel="stylesheet" href="css/animate.css" />
@@ -27,250 +35,478 @@
     <link rel="stylesheet" href="css/icomoon.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/tabstyle.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="css/buttom.css" />
     <link rel="stylesheet" href="css/ul.css" />
-</head>
+  </head>
 
-<body>
-    <nav class="
+  <body>
+    <nav
+      class="
         navbar navbar-expand-lg navbar-dark
         ftco_navbar
         bg-dark
         ftco-navbar-light
-      " id="ftco-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="navbar-brand" href="index.html" width="40px" height="40px" /></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-            </button>
+      "
+      id="ftco-navbar"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="index.html"
+          ><img
+            src="images/logo.png"
+            class="navbar-brand"
+            href="index.html"
+            width="40px"
+            height="40px"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#ftco-nav"
+          aria-controls="ftco-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="oi oi-menu"></span> Menu
+        </button>
 
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link">首頁</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#Create" class="nav-link" data-toggle="modal" data-target="#Create">新增廁所</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="./Control_Panel/index.html" class="nav-link">去後台</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="images/user_large.jpg" width="30" height="30" style="border: 2px #d0d0d0 solid; border-radius: 50%" /></a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="account.html">個人資料</a>
-                            <a class="dropdown-item" href="Login.html">登入</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a href="index.html" class="nav-link">首頁</a>
+            </li>
+            <li class="nav-item" id="create-toilet-nav" style="display: none">
+              <a
+                href="#Create"
+                class="nav-link"
+                data-toggle="modal"
+                data-target="#Create"
+                >新增廁所</a
+              >
+            </li>
+            <li class="nav-item" id="backend-nav" style="display: none">
+              <a href="./Control_Panel/index.html" class="nav-link">去後台</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img
+                  src="images/user_large.jpg"
+                  width="30"
+                  height="30"
+                  style="border: 2px #d0d0d0 solid; border-radius: 50%"
+              /></a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a
+                  id="info-btn"
+                  class="dropdown-item"
+                  href="account.html"
+                  style="display: none"
+                  >個人資料</a
+                >
+                <a id="login-btn" class="dropdown-item" href="Login.html"
+                  >登入</a
+                >
+                <a
+                  id="logout-btn"
+                  class="dropdown-item"
+                  style="display: none"
+                  onclick="deleteAllCookies()"
+                  >登出</a
+                >
+              </div>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
+    <script>
+      const getCookie = (name) => {
+        try {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(";").shift();
+        } catch {
+          return "";
+        }
+      };
+
+      const deleteAllCookies = () => {
+        var cookies = document.cookie.split(";");
+
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i];
+          var eqPos = cookie.indexOf("=");
+          var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+          document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+        location.reload();
+      };
+
+      var create_toilet_nav = document.getElementById("create-toilet-nav");
+      var backend_nav = document.getElementById("backend-nav");
+      var login_btn = document.getElementById("login-btn");
+      var logout_btn = document.getElementById("logout-btn");
+      var info_btn = document.getElementById("info-btn");
+
+      if (getCookie("isAdmin") != undefined) {
+        //新增廁所的項目
+        create_toilet_nav.style.display = "block";
+        //個人資料按鈕
+        info_btn.style.display = "block";
+        //登出按鈕
+        logout_btn.style.display = "block";
+        //登入按鈕
+        login_btn.style.display = "none";
+        if (getCookie("isAdmin") == "true") backend_nav.style.display = "block";
+      }
+    </script>
     <!-- END nav -->
 
     <div class="hero-wrap" style="background-image: url('images/2.jpeg')">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="
+      <div class="overlay"></div>
+      <div class="container">
+        <div
+          class="
             row
             no-gutters
             slider-text
             d-flex
             align-itemd-end
             justify-content-center
-          ">
-                <div class="
+          "
+        >
+          <div
+            class="
               col-md-9
               ftco-animate
               text-center
               d-flex
               align-items-end
               justify-content-center
-            ">
-                    <div class="text">
-                        <p class="breadcrumbs mb-2">
-                            <span class="mr-2"><a href="index.html">Home</a></span>
-                            <span>Search Results </span>
-                        </p>
-                        <h1 class="mb-4 bread">Search Results Page</h1>
-                    </div>
-                </div>
+            "
+          >
+            <div class="text">
+              <p class="breadcrumbs mb-2">
+                <span class="mr-2"><a href="index.html">Home</a></span>
+                <span>Search Results </span>
+              </p>
+              <h1 class="mb-4 bread">Search Results Page</h1>
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <section class="ftco-section bg-light">
-        <div class="container" id="searchtoilet">
+      <div class="container" id="searchtoilet">
+        <div class="row">
+          <div class="col-lg-12">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-sm col-md-6 col-lg-4" v-for="toilet in sortDistance" v-if="toilet.status == 1">
-                            <!--小卡片-->
-                            <div class="room">
-                                <a :style="{'background-image': 'url(images/'+images[toilet.toilet_id % 21]}" class="img d-flex justify-content-center align-items-center" @click="JumpToToilet(toilet.toilet_id)" style="cursor: pointer">
-                                    <div class="
+              <div
+                class="col-sm col-md-6 col-lg-4"
+                v-for="toilet in sortDistance"
+                v-if="toilet.status == 1"
+              >
+                <!--小卡片-->
+                <div class="room">
+                  <a
+                    :style="{'background-image': 'url(images/'+images[toilet.toilet_id % 21]}"
+                    class="img d-flex justify-content-center align-items-center"
+                    @click="JumpToToilet(toilet.toilet_id)"
+                    style="cursor: pointer"
+                  >
+                    <div
+                      class="
                         icon
                         d-flex
                         justify-content-center
                         align-items-center
-                      ">
-                                        <span class="icon-search2"></span>
-                                    </div>
-                                </a>
-                                <div class="text p-3 text-center">
-                                    <h3 class="mb-3" style="cursor: pointer">
-                                        <a style="float: inherit" @click="JumpToToilet(toilet.toilet_id)">{{toilet.name}}</a>
-                                    </h3>
-                                    <p>
-                                        <span class="per"> <span>{{toilet.address}}</span></span>
-                                    </p>
-                                    <p>
-                                        <span class="per">
-                                            <span>經度: {{toilet.longitude}}</span>
-                                            <br />
-                                            <span>緯度: {{toilet.latitude}}</span>
-                                        </span>
-                                    </p>
-                                    <p>
-                                        <span class="per" v-if="lon!=0 && lat!=0">
-                                            <span v-if="rounddistance(toilet.distance)==0">距離你 <u>{{roundmeter(toilet.distance)}}</u> 公尺</span>
-                                            <span v-if="rounddistance(toilet.distance)!=0">距離你 <u>{{rounddistance(toilet.distance)}}</u> 公里</span></span>
-                                    </p>
-                                    <p>
-                                        <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;
-                                        <span> {{getCountryName(toilet.country_id)}} </span>
-                                        、<span>{{getCityName(toilet.city_id)}}</span> 、<span>{{getDistrictName(toilet.district_id)}}</span>
-                                    </p>
-                                    <hr />
-                                    <p class="pt-1">
-                                        <span style="display: block, inline">
-                                            <i v-for="n in (toilet.avg_rating|0)" class="fas fa-star">&nbsp;
-                                            </i>
-                                            <i v-for="n in (5-(toilet.avg_rating|0))" class="far fa-star">&nbsp;</i>
-                                        </span>
-                                        (<span id="avg" type="number">{{toilet.avg_rating}}</span>)
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                      "
+                    >
+                      <span class="icon-search2"></span>
                     </div>
+                  </a>
+                  <div class="text p-3 text-center">
+                    <h3 class="mb-3" style="cursor: pointer">
+                      <a
+                        style="float: inherit"
+                        @click="JumpToToilet(toilet.toilet_id)"
+                        >{{toilet.name}}</a
+                      >
+                    </h3>
+                    <p>
+                      <span class="per"> <span>{{toilet.address}}</span></span>
+                    </p>
+                    <p>
+                      <span class="per">
+                        <span>經度: {{toilet.longitude}}</span>
+                        <br />
+                        <span>緯度: {{toilet.latitude}}</span>
+                      </span>
+                    </p>
+                    <p>
+                      <span class="per" v-if="lon!=0 && lat!=0">
+                        <span v-if="rounddistance(toilet.distance)==0"
+                          >距離你
+                          <u>{{roundmeter(toilet.distance)}}</u> 公尺</span
+                        >
+                        <span v-if="rounddistance(toilet.distance)!=0"
+                          >距離你
+                          <u>{{rounddistance(toilet.distance)}}</u> 公里</span
+                        ></span
+                      >
+                    </p>
+                    <p>
+                      <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;
+                      <span> {{getCountryName(toilet.country_id)}} </span>
+                      、<span>{{getCityName(toilet.city_id)}}</span> 、<span
+                        >{{getDistrictName(toilet.district_id)}}</span
+                      >
+                    </p>
+                    <hr />
+                    <p class="pt-1">
+                      <span style="display: block, inline">
+                        <i
+                          v-for="n in (toilet.avg_rating|0)"
+                          class="fas fa-star"
+                          >&nbsp;
+                        </i>
+                        <i
+                          v-for="n in (5-(toilet.avg_rating|0))"
+                          class="far fa-star"
+                          >&nbsp;</i
+                        >
+                      </span>
+                      (<span id="avg" type="number">{{toilet.avg_rating}}</span
+                      >)
+                    </p>
+                  </div>
                 </div>
+              </div>
             </div>
-            <div class="modal fade" id="Create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog model-dialog-centered modal-lg" role="document" style="width: 400">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                &times;
-                            </button>
-                        </div>
-                        <div class="modal-body" style="align-content: center">
-                            <table align="center" style="text-align: center; border-collapse: separate" rules="none">
-                                <tr height="40">
-                                    <td style="width: 100px">
-                                        <font color="red">＊</font>廁所名稱
-                                    </td>
-                                    <td align="left">
-                                        <input v-model.trim="create_toilet.name" rows="1" style="width: 200px" required />
-                                    </td>
-                                </tr>
-
-                                <tr height="40">
-                                    <td style="width: 100px">
-                                        <font color="red">＊</font>國家
-                                    </td>
-                                    <td align="left">
-                                        <select v-model="create_toilet.country_id" style="width: 200px">
-                                            <option value="-1" selected disabled>國家</option>
-                                            <option v-for="country in countries" :value="country.country_id">
-                                                {{country.country_name}}
-                                            </option>
-                                        </select>
-                                    </td>
-                                </tr>
-
-                                <tr height="40">
-                                    <td style="width: 100px">
-                                        <font color="red">＊</font>城市
-                                    </td>
-                                    <td align="left">
-                                        <select v-model="create_toilet.city_id" style="width: 200px">
-                                            <option value="-1" selected disabled>城市</option>
-                                            <option v-for="city in cities" :value="city.city_id" v-if="city.country_id == create_toilet.country_id">
-                                                {{city.city_name}}
-                                            </option>
-                                        </select>
-                                    </td>
-                                </tr>
-
-                                <tr height="40">
-                                    <td style="width: 100px">
-                                        <font color="red">＊</font>地區
-                                    </td>
-                                    <td align="left">
-                                        <select v-model="create_toilet.district_id" style="width: 200px">
-                                            <option value="-1" selected disabled>地區</option>
-                                            <option v-for="district in districts" :value="district.district_id" v-if="district.city_id == create_toilet.city_id">
-                                                {{district.district_name}}
-                                            </option>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr height="40">
-                                    <td style="width: 100px">
-                                        <font color="red">＊</font>地址
-                                    </td>
-                                    <td align="left">
-                                        <input v-model.trim="create_toilet.address" rows="1" style="width: 200px" required />
-                                    </td>
-                                </tr>
-                                <tr height="40">
-                                    <td style="width: 100px">
-                                        <font color="red">＊</font>經緯度
-                                    </td>
-                                    <td align="left">
-                                        <button type="button" class="btn" @click="create_showPosition" style="background: white">
-                                            <img src="images/gps.png" width="30" height="30" />
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 100px"></td>
-                                    <td>
-                                        <input id="longitude" v-model="create_toilet.longitude" :type="isShow ? 'show':'hidden'" disabled />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 100px"></td>
-                                    <td>
-                                        <input id="latitude" v-model="create_toilet.latitude" :type="isShow ? 'show':'hidden'" disabled />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <img id="output" height="150" style="display: none" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="submit" @click="createto" class="btn btn-primary" value="送出" style="width: 80px; height: 35px; font-size: 13px" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div
+          class="modal fade"
+          id="Create"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="myModalLabel"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog model-dialog-centered modal-lg"
+            role="document"
+            style="width: 400"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-hidden="true"
+                >
+                  &times;
+                </button>
+              </div>
+              <div class="modal-body" style="align-content: center">
+                <table
+                  align="center"
+                  style="text-align: center; border-collapse: separate"
+                  rules="none"
+                >
+                  <tr height="40">
+                    <td style="width: 100px">
+                      <font color="red">＊</font>廁所名稱
+                    </td>
+                    <td align="left">
+                      <input
+                        v-model.trim="create_toilet.name"
+                        rows="1"
+                        style="width: 200px"
+                        required
+                      />
+                    </td>
+                  </tr>
+
+                  <tr height="40">
+                    <td style="width: 100px">
+                      <font color="red">＊</font>國家
+                    </td>
+                    <td align="left">
+                      <select
+                        v-model="create_toilet.country_id"
+                        style="width: 200px"
+                      >
+                        <option value="-1" selected disabled>國家</option>
+                        <option
+                          v-for="country in countries"
+                          :value="country.country_id"
+                        >
+                          {{country.country_name}}
+                        </option>
+                      </select>
+                    </td>
+                  </tr>
+
+                  <tr height="40">
+                    <td style="width: 100px">
+                      <font color="red">＊</font>城市
+                    </td>
+                    <td align="left">
+                      <select
+                        v-model="create_toilet.city_id"
+                        style="width: 200px"
+                      >
+                        <option value="-1" selected disabled>城市</option>
+                        <option
+                          v-for="city in cities"
+                          :value="city.city_id"
+                          v-if="city.country_id == create_toilet.country_id"
+                        >
+                          {{city.city_name}}
+                        </option>
+                      </select>
+                    </td>
+                  </tr>
+
+                  <tr height="40">
+                    <td style="width: 100px">
+                      <font color="red">＊</font>地區
+                    </td>
+                    <td align="left">
+                      <select
+                        v-model="create_toilet.district_id"
+                        style="width: 200px"
+                      >
+                        <option value="-1" selected disabled>地區</option>
+                        <option
+                          v-for="district in districts"
+                          :value="district.district_id"
+                          v-if="district.city_id == create_toilet.city_id"
+                        >
+                          {{district.district_name}}
+                        </option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr height="40">
+                    <td style="width: 100px">
+                      <font color="red">＊</font>地址
+                    </td>
+                    <td align="left">
+                      <input
+                        v-model.trim="create_toilet.address"
+                        rows="1"
+                        style="width: 200px"
+                        required
+                      />
+                    </td>
+                  </tr>
+                  <tr height="40">
+                    <td style="width: 100px">
+                      <font color="red">＊</font>經緯度
+                    </td>
+                    <td align="left">
+                      <button
+                        type="button"
+                        class="btn"
+                        @click="create_showPosition"
+                        style="background: white"
+                      >
+                        <img src="images/gps.png" width="30" height="30" />
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 100px"></td>
+                    <td>
+                      <input
+                        id="longitude"
+                        v-model="create_toilet.longitude"
+                        :type="isShow ? 'show':'hidden'"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 100px"></td>
+                    <td>
+                      <input
+                        id="latitude"
+                        v-model="create_toilet.latitude"
+                        :type="isShow ? 'show':'hidden'"
+                        disabled
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <img id="output" height="150" style="display: none" />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <input
+                  type="submit"
+                  @click="createto"
+                  class="btn btn-primary"
+                  value="送出"
+                  style="width: 80px; height: 35px; font-size: 13px"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen">
-        <svg class="circular" width="48px" height="48px">
-            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
-        </svg>
+      <svg class="circular" width="48px" height="48px">
+        <circle
+          class="path-bg"
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke-width="4"
+          stroke="#eeeeee"
+        />
+        <circle
+          class="path"
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke-width="4"
+          stroke-miterlimit="10"
+          stroke="#F96D00"
+        />
+      </svg>
     </div>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/jquery.min.js"></script>
@@ -290,10 +526,14 @@
     <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+      integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
     <!-- Vue actions -->
     <script src="./js/vue/toilet_searchtoilet.js"></script>
-</body>
-
+  </body>
 </html>
