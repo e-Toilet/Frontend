@@ -100,6 +100,12 @@ const app = new Vue({
             } else if (!this.validPassword(this.loginFrom.pass)) {
                 alert('Password格式不符合');
             }
+        },
+        forgot: function () {
+            swal({
+                title: "若忘記密碼請聯繫管理員！",
+                icon: "warning",
+            });
         }
     }
 })
