@@ -217,9 +217,12 @@ const searchtoilet = new Vue({
         rounddistance: (distance) => {
             return Math.round(distance * 10) / 10;
         },
+        roundmeter: (distance) => {
+            return Math.round(distance * 1000);
+            console.log(Math.round(distance * 1000))
+        },
     },
 });
-
 function sortByKey(array, key) {
     return array.sort(function (a, b) {
         var x = a[key];
