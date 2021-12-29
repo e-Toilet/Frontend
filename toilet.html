@@ -242,46 +242,9 @@
                         d-flex
                         justify-content-center
                         align-items-center
-                      ">
-                                        <span class="icon-search2"></span>
-                                    </div>
-                                </a>
-                                <div class="text p-3 text-center">
-                                    <h3 class="mb-3" style="cursor: pointer">
-                                        <a style="float: inherit" @click="JumpToToilet(toilet.toilet_id)">{{toilet.name}}</a>
-                                    </h3>
-                                    <p>
-                                        <span class="per"> <span>{{toilet.address}}</span></span>
-                                    </p>
-                                    <p>
-                                        <span class="per">
-                                            <span>經度: {{longitudelength(toilet.longitude)}}</span>
-                                            <br />
-                                            <span>緯度: {{latitudelength(toilet.latitude)}}</span>
-                                        </span>
-                                    </p>
-                                    <p>
-                                        <span class="per" v-if="lon!=0 && lat!=0">
-                                            <span v-if="Distance(toilet.distance)==0">距離你 <u>{{roundmeter(toilet.distance)}}</u> 公尺</span>
-                                            <span v-if="Distance(toilet.distance)!=0">距離你 <u>{{rounddistance(toilet.distance)}}</u> 公里</span></span>
-                                    </p>
-                                    <p>
-                                        <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;
-                                        <span> {{getCountryName(toilet.country_id)}} </span>
-                                        、<span>{{getCityName(toilet.city_id)}}</span> 、<span>{{getDistrictName(toilet.district_id)}}</span>
-                                    </p>
-                                    <hr />
-                                    <p class="pt-1">
-                                        <span style="display: block, inline">
-                                            <i v-for="n in (toilet.avg_rating|0)" class="fas fa-star">&nbsp;
-                                            </i>
-                                            <i v-for="n in (5-(toilet.avg_rating|0))" class="far fa-star">&nbsp;</i>
-                                        </span>
-                                        (<span id="avg" type="number">{{toilet.avg_rating}}</span>)
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                      "
+                    >
+                      <span class="icon-search2"></span>
                     </div>
                   </a>
                   <div class="text p-3 text-center">
@@ -297,18 +260,18 @@
                     </p>
                     <p>
                       <span class="per">
-                        <span>經度: {{toilet.longitude}}</span>
+                        <span>經度: {{longitudelength(toilet.longitude)}}</span>
                         <br />
-                        <span>緯度: {{toilet.latitude}}</span>
+                        <span>緯度: {{latitudelength(toilet.latitude)}}</span>
                       </span>
                     </p>
                     <p>
                       <span class="per" v-if="lon!=0 && lat!=0">
-                        <span v-if="rounddistance(toilet.distance)==0"
+                        <span v-if="Distance(toilet.distance)==0"
                           >距離你
                           <u>{{roundmeter(toilet.distance)}}</u> 公尺</span
                         >
-                        <span v-if="rounddistance(toilet.distance)!=0"
+                        <span v-if="Distance(toilet.distance)!=0"
                           >距離你
                           <u>{{rounddistance(toilet.distance)}}</u> 公里</span
                         ></span
