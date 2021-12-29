@@ -350,5 +350,11 @@ const showtoilet = new Vue({
             showtoilet.createimgNum = num;
             showtoilet.rating = num;
         },
+        longitudelength: (longitude) => {
+            return Math.round(longitude * 10000) / 10000;
+        },
+        latitudelength: (latitude) => {
+            return Math.round(latitude * 10000) / 10000;
+        },
     },
 });
