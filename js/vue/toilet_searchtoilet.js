@@ -214,6 +214,9 @@ const searchtoilet = new Vue({
                 return searchtoilet.web.district_name;
             });
         },
+        Distance: (distance) => {
+            return Math.round(distance * 1) / 1;
+        },
         rounddistance: (distance) => {
             return Math.round(distance * 10) / 10;
         },
