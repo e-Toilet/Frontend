@@ -46,6 +46,11 @@ const searchtoilet = new Vue({
         lon: "",
         lat: ""
     },
+    computed: {
+        sortDistance: function () {
+            return sortByKey(this.toilets, 'distance');
+        }
+    },
     created: () => {
         //取得所有關於country, city and district的資訊
         axios.get("https://etoilet.ddns.net:8090/getAllLoc").then((response) => {
@@ -211,6 +216,14 @@ const searchtoilet = new Vue({
         },
         rounddistance: (distance) => {
             return Math.round(distance * 10) / 10;
-        }
+        },
     },
 });
+
+function sortByKey(array, key) {
+    return array.sort(function (a, b) {
+        var x = a[key];
+        var y = b[key];
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    });
+}

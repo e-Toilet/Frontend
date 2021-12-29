@@ -107,7 +107,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
-                        <div class="col-sm col-md-6 col-lg-4" v-for="toilet in toilets" v-if="toilet.status == 1">
+                        <div class="col-sm col-md-6 col-lg-4" v-for="toilet in sortDistance" v-if="toilet.status == 1">
                             <!--小卡片-->
                             <div class="room">
                                 <a :style="{'background-image': 'url(images/'+images[toilet.toilet_id % 21]}" class="img d-flex justify-content-center align-items-center" @click="JumpToToilet(toilet.toilet_id)" style="cursor: pointer">
