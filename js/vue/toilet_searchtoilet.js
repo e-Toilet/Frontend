@@ -215,7 +215,7 @@ const searchtoilet = new Vue({
             });
         },
         Distance: (distance) => {
-            return Math.round(distance * 1) / 1;
+            return Math.floor(distance * 1) / 1;
         },
         rounddistance: (distance) => {
             return Math.round(distance * 10) / 10;
