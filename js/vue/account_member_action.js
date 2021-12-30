@@ -6,7 +6,7 @@ const app = new Vue({
       name: "",
       email: "",
       password: "",
-      member_id: 112,
+      member_id: 1,
     },
     comment: 0,
     password: "",
@@ -23,6 +23,7 @@ const app = new Vue({
       .then((response) => {
         result = JSON.parse(response.data.Memberinfo);
         app.account = result[0];
+        app.account_info.member_id = member_id
         app.account_info.name = app.account.name;
         app.account_info.email = app.account.email;
         app.account_info.password = app.account.password;
