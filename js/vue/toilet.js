@@ -39,6 +39,7 @@ const showtoilet = new Vue({
         ],
         toiletInfo: {},
         reviews: [],
+        allreviews: [],
         myReview:{
             member_name: "",
             rating: 0,
@@ -115,8 +116,9 @@ const showtoilet = new Vue({
                 )
                 .then((response) => {
                     if (response.data.hasOwnProperty("Reviewinfo")) {
+                        allresult = JSON.parse(response.data.Reviewinfo);
+                        showtoilet.allreviews=allresult
                         result = JSON.parse(response.data.Reviewinfo);
-                        
                         //先找出member本人的評論，再把其他人的評論放到reviews
                         for(let i = 0; i < result.length; i++){
                             if(result[i].member_id == member_id){

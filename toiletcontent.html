@@ -314,7 +314,7 @@
                       <i class="fab fa-gratipay"></i>&nbsp;&nbsp;
                       <span
                         >評價筆數&nbsp;
-                        <h id="count">({{reviews.length}})</h></span
+                        <h id="count">({{allreviews.length}})</h></span
                       >
                     </h5>
                   </div>
@@ -339,8 +339,7 @@
                     </h5>
                   </div>
                   <div class="col-md-12 room-single mt-4 mb-51">
-                    <br />
-                    <div>
+                    <div v-if="myReview.review_id == undefined" style="margin-top: 4rem;">
                       <h4 class="mb-4">
                         <i
                           class="fas fa-envelope-open-text"
@@ -385,8 +384,8 @@
                         </tr>
                       </table>
                     </div>
-                    <br />
-                    <div v-if="account.member_id != 0">
+                    <div v-if="account.member_id != 0" style="margin-top: 3rem;">
+                      <div v-if="myReview.review_id != undefined">
                       <h4 class="mb-4">
                         <i
                           class="fas fa-envelope-open-text"
@@ -394,7 +393,7 @@
                         ></i
                         >&nbsp;&nbsp;您的評論
                       </h4>
-                      <table class="table table-bordered" style="width: 730px" v-if="myReview.review_id != undefined">
+                      <table class="table table-bordered" style="width: 730px">
                         <thead>
                           <tr border="0">
                             <th colspan="2" style="padding-left: 20px">
@@ -467,36 +466,35 @@
                           </tr>
                         </tbody>
                       </table>
+                      </div>
                     </div>
                   </div>
 
                   <div class="col-md-12 room-single mb-51 mt-4">
-                    <h3 class="mb-4">
+                    <h3 class="mb-41">
                       &nbsp;<i
                         class="far fa-thumbs-up"
                         style="font-size: 24px"
                       ></i
-                      >&nbsp;&nbsp;評價篩選
+                      >&nbsp;&nbsp;所有評價
                     </h3>
                     <div>
                       <div
-                        style="
-                          height: 139.2px;
-                          width: 150px;
-                          float: left;
-                          text-align: center;
-                        "
+                        style="text-align: center;display:flex;align-items:center;margin-left: 4px;"
                       >
-                        <br />
                         <h1 style="display: inline">
-                          {{toiletInfo.avgRating}}星
-                        </h1>
-                        /
+                          {{toiletInfo.avgRating}}</h1>&nbsp;&nbsp;星&nbsp;&nbsp;
+                        /&nbsp;&nbsp;
                         <div v-if="reviews.length>0" style="display: inline">
-                          <h4 style="display: inline">{{reviews.length}}</h4>
+                          <h4 style="display: inline">{{reviews.length}}</h4>&nbsp;&nbsp;
                           則
                         </div>
-                        <div style="color: #8d703b">
+                        <div v-if="reviews.length==0" style="display: inline">
+                          <h4 style="display: inline">0</h4>&nbsp;&nbsp;
+                          則
+                        </div>
+                        </div>
+                        <div style="color: #8d703b;display:flex;align-items:center;margin-left: 4px;">
                           <span style="display: block, inline">
                             <i
                               v-for="n in (toiletInfo.avgRating|0)"
@@ -509,8 +507,9 @@
                               >&nbsp;</i
                             >
                           </span>
+                        </div>  
                         </div>
-                      </div>
+                        <br>
                       <!-- <div class="tab">
                         評價篩選標籤
                         <button
@@ -670,13 +669,11 @@
                           (0)
                         </button>
                       </div> -->
-                    </div>
                     <div id="show_toilet">
                       <div
                         style="display: unset"
                         v-for="review in reviews"
                       >
-                        <br />
                         <table
                           class="table table-bordered"
                           style="width: 730px"
@@ -739,6 +736,7 @@
                             </tr>
                           </tbody>
                         </table>
+                        <br>
                       </div>
                     </div>
                   </div>
