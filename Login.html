@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="group">
                                     <label for="pass" class="label">Password</label>
-                                    <input name="s_password" id="Password" type="password" minlength="6" pattern="[A-Za-z0-9]{2,100}" class="input" data-type="password" required="required" v-model="loginFrom.pass">
+                                    <input name="s_password" id="Password" type="password" minlength="6" pattern="[A-Za-z0-9]{2,100}" class="input" data-type="password" required="required" v-model="loginFrom.pass" @keyup.enter="login">
                                 </div><br>
                                 <br>
                                 <div align=center>
@@ -84,7 +84,7 @@
                             <table>
                                 <div class="sign-up-htm">
                                     <div class="group">
-                                        <label for="user" class="label">EMail</label>
+                                        <label for="user" class="label">E-Mail</label>
                                         <input v-model.trim="email" name="r_mail" type="email" placeholder="aaa@gmail.com" class="input" required="required">
                                     </div>
                                     <div class="group">
@@ -93,7 +93,7 @@
                                     </div>
                                     <div class="group">
                                         <label for="pass" class="label">Password</label>
-                                        <input v-model.trim="password" name="r_password" type="password" placeholder="至少六位數以上字母或數字" required pattern="[A-Za-z0-9]{6,20}" class="input" data-type="password" required="required">
+                                        <input v-model.trim="password" name="r_password" type="password" placeholder="至少六位數以上字母或數字" required pattern="[A-Za-z0-9]{6,20}" class="input" data-type="password" required="required" @keyup.enter="checkForm">
                                     </div>
                                     <br>
                                     <div class="group">

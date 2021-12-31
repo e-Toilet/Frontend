@@ -80,7 +80,7 @@ const app = new Vue({
                             title: "登入成功",
                             icon: "success",
                         }).then(function () {
-                            location.href = `index.html`;
+                            history.go(-1)
                         })
                     })
                     .catch(() => {
