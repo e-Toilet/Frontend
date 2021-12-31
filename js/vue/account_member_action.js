@@ -5,7 +5,12 @@ const app = new Vue({
     account_info: {
       name: "",
       email: "",
+      member_id: 1,
+    },
+    password_info:{
       password: "",
+      name: "",
+      email: "",
       member_id: 1,
     },
     comment: 0,
@@ -26,7 +31,10 @@ const app = new Vue({
         app.account_info.member_id = member_id
         app.account_info.name = app.account.name;
         app.account_info.email = app.account.email;
-        app.account_info.password = app.account.password;
+        app.password_info.member_id = member_id
+        app.password_info.name = app.account.name;
+        app.password_info.email = app.account.email;
+        // app.account_info.password = app.account.password;
       });
     axios
       .get(
@@ -42,8 +50,7 @@ const app = new Vue({
     update_account: () => {
       console.log(app.account_info);
       let checkupdate =
-        app.validEmail(app.account_info.email) &&
-        app.validPassword(app.account_info.password);
+        app.validEmail(app.account_info.email);
       if (checkupdate) {
         axios
           .post(
@@ -71,7 +78,43 @@ const app = new Vue({
       if (!app.validEmail(app.account_info.email)) {
         alert("請輸入有效的Email");
       }
-      if (!app.validPassword(app.account_info.password)) {
+      // if (!app.validPassword(app.account_info.password)) {
+      //   alert("Password格式不符合，需要超過6位之字母或數字");
+      // }
+    },
+    update_password: () => {
+      console.log(app.account_info);
+      let checkupdate =
+        app.validEmail(app.password_info.email) &&
+        app.validPassword(app.password_info.password);
+      if (checkupdate) {
+        axios
+          .post(
+            "https://etoilet.ddns.net:8090/updateMemberInfo",
+            app.password_info
+          )
+          .then(() => {
+            swal({
+              title: "修改成功",
+              icon: "success",
+            }).then(function () {
+              self.location.reload();
+            });
+            // app.account
+            app.account[app.password_info.member_id - 1] = app.password_info;
+          })
+          .catch((error) => {
+            console.log();
+            swal({
+              title: "修改失敗",
+              icon: "error",
+            });
+          });
+      }
+      if (!app.validEmail(app.password_info.email)) {
+        alert("請輸入有效的Email");
+      }
+      if (!app.validPassword(app.password_info.password)) {
         alert("Password格式不符合，需要超過6位之字母或數字");
       }
     },
