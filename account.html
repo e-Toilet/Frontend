@@ -333,52 +333,7 @@
                   >
                   <label style="display: inline" id="Mail"
                     >{{account.email}}</label
-                  ><label
-                    ><input
-                      id="EditMail"
-                      type="text"
-                      :placeholder="account.email"
-                      v-model.lazy="account_info.email"
-                      name="請輸入電子郵件"
-                      style="display: none; width: 120px"
-                  /></label>
-                  <div style="float: right" id="EditMailbt">
-                    <a style="cursor: pointer" onclick="edit('Mail')"
-                      ><i
-                        style="font-size: 16px"
-                        class="far"
-                        data-toggle="modal"
-                        data-target="#modell"
-                        >&#xf044;</i
-                      ></a
-                    >&nbsp;&nbsp;
-                  </div>
-                  <div id="MailCheck" style="float: right; display: none">
-                    <a
-                      style="cursor: pointer"
-                      id="MailCheckbt"
-                      onclick="update('Mail')"
-                      @click="update_account"
-                      ><i
-                        style="font-size: 16px"
-                        class="fas"
-                        data-toggle="modal"
-                        data-target="#modell"
-                        >&#xf00c;</i
-                      ></a
-                    >&nbsp;&nbsp;<a
-                      style="cursor: pointer"
-                      id="MailCanclebt"
-                      onclick="update('MailCancle')"
-                      ><i
-                        style="font-size: 16px"
-                        class="fa"
-                        data-toggle="modal"
-                        data-target="#modell"
-                        >&#xf00d;</i
-                      ></a
-                    >&nbsp;&nbsp;
-                  </div>
+                  >                  
                 </div>
                 <div class="borderstyle">
                   <br />
@@ -387,22 +342,13 @@
                   ><label id="Password" style="display: inline">已設定</label>
                   <div id="EditPassword" style="display: none">
                     <br />
-                    <label style="margin-left: 8px"
-                      >舊密碼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-                        id="EditOldPassword"
-                        type="password"
-                        name="舊密碼"
-                        v-model="password"
-                        style="display: none; width: 120px"
-                    /></label>
-                    <br />
-                    <div v-show="password==account.password">
                       <label style="margin-left: 8px"
-                        >新密碼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+                        >新密碼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input
                           id="EditNewPassword"
                           type="password"
                           name="新密碼"
-                          v-model.lazy="account_info.password"
+                          v-model.lazy="password_info.password"
                           style="display: none; width: 120px"
                       /></label>
                       <br />
@@ -414,7 +360,6 @@
                           v-model="checkpass"
                           style="display: none; width: 120px"
                       /></label>
-                    </div>
                   </div>
                   <div style="float: right" id="EditPasswordbt">
                     <a style="cursor: pointer" onclick="edit('Password')"
@@ -432,8 +377,8 @@
                       style="cursor: pointer"
                       id="PasswordCheckbt"
                       onclick="update('Password')"
-                      @click="update_account"
-                      v-if="checkpass==account_info.password"
+                      @click="update_password"
+                      v-if="checkpass && checkpass==password_info.password"
                       ><i
                         style="font-size: 16px"
                         class="fas"
@@ -686,16 +631,9 @@
           document.getElementById("EditNamebt").style.display = "none";
           document.getElementById("NameCheck").style.display = "inline";
         }
-        if (category == "Mail") {
-          document.getElementById("Mail").style.display = "none";
-          document.getElementById("EditMail").style.display = "inline";
-          document.getElementById("EditMailbt").style.display = "none";
-          document.getElementById("MailCheck").style.display = "inline";
-        }
         if (category == "Password") {
           document.getElementById("Password").style.display = "none";
           document.getElementById("EditPassword").style.display = "inline";
-          document.getElementById("EditOldPassword").style.display = "inline";
           document.getElementById("EditNewPassword").style.display = "inline";
           document.getElementById("CheckNewPassword").style.display = "inline";
           document.getElementById("EditPasswordbt").style.display = "none";
@@ -718,20 +656,6 @@
           document.getElementById("EditNamebt").style.display = "inline";
           document.getElementById("NameCheck").style.display = "none";
         }
-
-        if (category == "Mail" || category == "MailCancle") {
-          if (category == "Mail") {
-            value = document.getElementById("EditMail").value;
-            document.getElementById("Mail").innerHTML =
-              "<label id = 'Mail' style='display: inline;''>" +
-              value +
-              "</label>";
-          }
-          document.getElementById("Mail").style.display = "inline";
-          document.getElementById("EditMail").style.display = "none";
-          document.getElementById("EditMailbt").style.display = "inline";
-          document.getElementById("MailCheck").style.display = "none";
-        }
         if (category == "Password" || category == "PasswordCancle") {
           document.getElementById("Password").innerHTML =
             "<label id='Password' style='display: inline;''>已設定</label>";
@@ -739,7 +663,6 @@
           document.getElementById("EditPassword").style.display = "none";
           document.getElementById("EditPasswordbt").style.display = "inline";
           document.getElementById("PasswordCheck").style.display = "none";
-          document.getElementById("EditOldPassword").style.display = "none";
           document.getElementById("EditNewPassword").style.display = "none";
           document.getElementById("CheckNewPassword").style.display = "none";
         }
