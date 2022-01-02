@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="group">
                                     <label for="pass" class="label">Password</label>
-                                    <input name="s_password" id="Password" type="password" minlength="6" pattern="[A-Za-z0-9]{2,100}" class="input" data-type="password" required="required" v-model="loginFrom.pass" @keyup.enter="login">
+                                    <input name="s_password" id="Password" type="password" minlength="6" pattern="[A-Za-z0-9]{2,100}" maxlength="45" class="input" data-type="password" required="required" v-model="loginFrom.pass" @keyup.enter="login">
                                 </div><br>
                                 <br>
                                 <div class="group">
