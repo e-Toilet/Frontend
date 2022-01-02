@@ -65,9 +65,10 @@ const app = new Vue({
       });
     },
     update_toilet: () => {
-      console.log(app.toilet_info)
+      let toilet_info = app.toilet_info
+      delete toilet_info['status']
       axios
-        .post("https://etoilet.ddns.net:8090/updateToilet", app.toilet_info)
+        .post("https://etoilet.ddns.net:8090/updateToilet", toilet_info)
         .then(() => {
           swal({
             title: "Toilet update Successfully",
