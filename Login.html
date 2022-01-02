@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="group">
                                     <label for="pass" class="label">Password</label>
-                                    <input name="s_password" id="Password" type="password" minlength="6" pattern="[A-Za-z0-9]{2,100}" class="input" data-type="password" required="required" v-model="loginFrom.pass" @keyup.enter="login">
+                                    <input name="s_password" id="Password" type="password" minlength="6" maxlength="45" pattern="[A-Za-z0-9]{2,100}" class="input" data-type="password" required="required" v-model="loginFrom.pass" @keyup.enter="login">
                                 </div><br>
                                 <br>
                                 <div class="group">
@@ -86,7 +86,7 @@
                                     </div>
                                     <div class="group">
                                         <label for="pass" class="label">Password</label>
-                                        <input v-model.trim="password" name="r_password" type="password" placeholder="至少六位數以上字母或數字" required pattern="[A-Za-z0-9]{6,20}" class="input" data-type="password" required="required" @keyup.enter="checkForm">
+                                        <input v-model.trim="password" name="r_password" type="password" placeholder="至少六位數以上字母或數字" required pattern="[A-Za-z0-9]{6,20}" class="input" data-type="password" minlength="6" maxlength="45" required="required" @keyup.enter="checkForm">
                                     </div>
                                     <br>
                                     <div class="group">
