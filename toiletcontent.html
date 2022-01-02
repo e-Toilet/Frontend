@@ -332,7 +332,7 @@
                             class="far fa-star"
                             >&nbsp;</i
                           >
-                          <h id="average_rating">({{toiletInfo.avgRating}})</h>
+                          <h id="average_rating">({{ratinglength(toiletInfo.avgRating)}})</h>
                           &nbsp;&nbsp;
                         </span>
                       </span>
@@ -476,14 +476,14 @@
                         class="far fa-thumbs-up"
                         style="font-size: 24px"
                       ></i
-                      >&nbsp;&nbsp;所有評價
+                      >&nbsp;&nbsp;其他評論
                     </h3>
                     <div>
                       <div
                         style="text-align: center;display:flex;align-items:center;margin-left: 4px;"
                       >
                         <h1 style="display: inline">
-                          {{toiletInfo.avgRating}}</h1>&nbsp;&nbsp;星&nbsp;&nbsp;
+                          {{ratinglength(toiletInfo.avgRating)}}</h1>&nbsp;&nbsp;星&nbsp;&nbsp;
                         /&nbsp;&nbsp;
                         <div v-if="reviews.length>0" style="display: inline">
                           <h4 style="display: inline">{{reviews.length}}</h4>&nbsp;&nbsp;
@@ -1262,7 +1262,7 @@
     </div>
 
     <!--小卡片的內容-->
-    <script>
+    <!-- <script>
       function openCity(evt, cityName) {
         console.log(cityName);
         if (cityName == "all") {
@@ -1301,7 +1301,7 @@
           console.log("Food");
         }
       }
-    </script>
+    </script> -->
 
 <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

@@ -230,6 +230,9 @@ const searchtoilet = new Vue({
         latitudelength: (latitude) => {
             return Math.round(latitude * 10000) / 10000;
         },
+        ratinglength: (rating) => {
+            return Math.round(rating * 100) /100;
+        },
     },
 });
 function sortByKey(array, key) {
