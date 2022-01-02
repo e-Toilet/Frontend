@@ -62,7 +62,9 @@ const app = new Vue({
           swal({
             title: "Member update Successfully",
             icon: "success",
-          });
+          }).then(function () {
+            self.location.reload();
+        });
         })
         .catch((error) => {
           swal({
