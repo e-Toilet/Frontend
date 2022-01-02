@@ -73,7 +73,9 @@ const app = new Vue({
           swal({
             title: "Toilet update Successfully",
             icon: "success",
-          })
+          }).then(function () {
+            self.location.reload();
+        })
           // app.toilets
           app.toilets[app.toilet_info.toilet_id-1] = app.toilet_info
         })
