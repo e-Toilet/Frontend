@@ -54,7 +54,7 @@
                             <div class="sign-in-htm">
                                 <div class="group">
                                     <label for="user" class="label">EMail</label>
-                                    <input name="s_mail" id="Mail" type="email" class="input" required="required" v-model="loginFrom.useremail">
+                                    <input name="s_mail" id="Mail" maxlength="45" type="email" class="input" required="required" v-model="loginFrom.useremail">
                                 </div>
                                 <div class="group">
                                     <label for="pass" class="label">Password</label>
@@ -78,15 +78,15 @@
                                 <div class="sign-up-htm">
                                     <div class="group">
                                         <label for="user" class="label">E-Mail</label>
-                                        <input v-model.trim="email" name="r_mail" type="email" placeholder="aaa@gmail.com" class="input" required="required">
+                                        <input v-model.trim="email" name="r_mail" maxlength="45" type="email" placeholder="aaa@gmail.com" class="input" required="required">
                                     </div>
                                     <div class="group">
                                         <label for="name" class="label">Name</label>
-                                        <input v-model.trim="name" name="r_name" type="text" class="input" required="required">
+                                        <input v-model.trim="name" name="r_name" maxlength="45" type="text" class="input" required="required">
                                     </div>
                                     <div class="group">
                                         <label for="pass" class="label">Password</label>
-                                        <input v-model.trim="password" name="r_password" type="password" placeholder="至少六位數以上字母或數字" required pattern="[A-Za-z0-9]{6,20}" class="input" data-type="password" required="required" @keyup.enter="checkForm">
+                                        <input v-model.trim="password" name="r_password" maxlength="45" type="password" placeholder="至少六位數以上字母或數字" required pattern="[A-Za-z0-9]{6,20}" class="input" data-type="password" required="required" @keyup.enter="checkForm">
                                     </div>
                                     <br>
                                     <div class="group">

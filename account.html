@@ -276,6 +276,7 @@
                       :placeholder="account.name"
                       v-model.lazy="account_info.name"
                       name="請輸入姓名"
+                      maxlength="45"
                       style="display: none; width: 100px"
                   /></label>
                   <div style="float: right" id="EditNamebt">
@@ -348,6 +349,7 @@
                           id="EditNewPassword"
                           type="password"
                           name="新密碼"
+                          maxlength="45"
                           v-model.lazy="password_info.password"
                           style="display: none; width: 120px"
                       /></label>
@@ -357,6 +359,7 @@
                           id="CheckNewPassword"
                           type="password"
                           name="確認新密碼"
+                          maxlength="45"
                           v-model="checkpass"
                           style="display: none; width: 120px"
                       /></label>
