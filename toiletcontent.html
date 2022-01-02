@@ -779,6 +779,7 @@
                               <input
                                 v-model.trim="create_toilet.name"
                                 rows="1"
+                                maxlength="45"
                                 style="width: 200px"
                                 required
                               />
@@ -860,6 +861,7 @@
                               <input
                                 v-model.trim="create_toilet.address"
                                 rows="1"
+                                maxlength="150"
                                 style="width: 200px"
                                 required
                               />
@@ -1044,6 +1046,7 @@
                             <td colspan="2">
                               <textarea
                                 v-model.lazy="content"
+                                maxlength="45"
                                 style="
                                   width: 310px;
                                   height: 50px;
@@ -1194,6 +1197,7 @@
                             <td colspan="2">
                               <textarea
                                 id="review_content"
+                                maxlength="45"
                                 style="
                                   width: 310px;
                                   height: 50px;

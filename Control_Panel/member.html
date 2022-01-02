@@ -201,6 +201,7 @@
                         type="email"
                         class="form-control"
                         id="member_email"
+                        maxlength="45"
                         aria-describedby="emailHelp"
                         v-model="member_info.email"
                         @change="checkIFEmailLegal"
@@ -222,6 +223,7 @@
                         type="text"
                         class="form-control"
                         id="member_name"
+                        maxlength="45"
                         v-model.lazy="member_info.name"
                       />
                     </div>
@@ -233,6 +235,7 @@
                         type="password"
                         class="form-control"
                         id="member_password"
+                        maxlength="45"
                         aria-describedby="passwdHelp"
                         v-model.trim="member_info.password"
                         @change="checkIFPasswordLegal"
