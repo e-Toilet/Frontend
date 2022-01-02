@@ -56,7 +56,7 @@ const showtoilet = new Vue({
         imgNum: 0,
         content: "",
         selected_rating: 0,
-        imgNum: 0,
+        review_rating_count: [0,0,0,0,0],
         srcStar: 'images/star2.png',
         srcNoStar: 'images/star.png'
     },
@@ -135,7 +135,7 @@ const showtoilet = new Vue({
                 });
         }
         else{
-            self.location = ".../index.html"
+            self.location = "index.html"
         }
         if(member_id != undefined){
             axios
@@ -397,5 +397,8 @@ const showtoilet = new Vue({
         ratinglength: (rating) => {
             return Math.round(rating * 10) /10;
         },
+        countReview: (num) => {
+            showtoilet.review_rating_count[parseInt(num)-1] += 1
+        }
     },
 });

@@ -510,165 +510,151 @@
                         </div>  
                         </div>
                         <br>
-                      <!-- <div class="tab">
-                        評價篩選標籤
+                      <div class="tab">
+                        <button
+                          class="button123 button1"
+                          style="width: 120px"
+                          @click="selected_rating=5"
+                        >
+                          <i
+                            class="fas fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i
+                          ><br />
+                        </button>
+                        <button
+                          class="button123 button1"
+                          style="width: 120px"
+                          @click="selected_rating=4"
+                        >
+                          <i
+                            class="fas fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="far fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i
+                          ><br />
+                        </button>
+                        <button
+                          class="button123 button1"
+                          style="width: 120px"
+                          @click="selected_rating=3"
+                        >
+                          <i
+                            class="fas fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="far fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="far fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i
+                          ><br />
+                        </button>
+                        <button
+                          class="button123 button1"
+                          style="width: 120px"
+                          @click="selected_rating=2"
+                        >
+                          <i
+                            class="fas fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="far fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="far fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="far fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i
+                          ><br />
+                        </button>
+                        <button
+                          class="button123 button1"
+                          style="width: 120px"
+                          @click="selected_rating=1"
+                        >
+                          <i
+                            class="fas fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="far fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="far fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="far fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i>
+                          <i
+                            class="far fa-star"
+                            style="width: 13px; height: 13px"
+                          ></i
+                          ><br />
+                        </button>
                         <button
                           class="button1234 button1"
                           style="width: 120px"
-                          onclick="openCity(event, 'all')"
+                          @click="selected_rating=0"
                         >
                           全部<br />
                           ({{reviews.length}})</button
                         >&nbsp;
-                        <button
-                          class="button12345 button1"
-                          style="width: 120px"
-                          onclick="openCity(event, 'comment')"
-                        >
-                          附上評論<br />
-                          (1)
-                        </button>
-                        <button
-                          class="button123 button1"
-                          style="width: 120px"
-                          onclick="openCity(event, 'fivestar')"
-                        >
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i
-                          ><br />
-                          (1)
-                        </button>
-                        <button
-                          class="button123 button1"
-                          style="width: 120px"
-                          onclick="openCity(event, 'fourstar')"
-                        >
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i
-                          ><br />
-                          (1)
-                        </button>
-                        <button
-                          class="button123 button1"
-                          style="width: 120px"
-                          onclick="openCity(event, 'threestar')"
-                        >
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i
-                          ><br />
-                          (0)
-                        </button>
-                        <button
-                          class="button123 button1"
-                          style="width: 120px"
-                          onclick="openCity(event, 'twostar')"
-                        >
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i
-                          ><br />
-                          (0)
-                        </button>
-                        <button
-                          class="button123 button1"
-                          style="width: 120px"
-                          onclick="openCity(event, 'onestar')"
-                        >
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i
-                          ><br />
-                          (0)
-                        </button>
-                      </div> -->
+                      </div>
                     <div id="show_toilet">
                       <div
                         style="display: unset"
@@ -677,7 +663,7 @@
                         <table
                           class="table table-bordered"
                           style="width: 730px"
-                          v-show="review.rating==selected_rating||selected_rating==0"
+                          v-if="review.rating==selected_rating||selected_rating==0"
                         >
                           <thead>
                             <tr>
