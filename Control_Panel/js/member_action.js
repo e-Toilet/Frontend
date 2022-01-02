@@ -58,10 +58,9 @@ const app = new Vue({
     update_member: () => {
       axios
         .post("https://etoilet.ddns.net:8090/updateMemberInfo", app.member_info)
-        .then((response) => {
+        .then(() => {
           swal({
             title: "Member update Successfully",
-            text: response,
             icon: "success",
           });
         })

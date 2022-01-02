@@ -105,6 +105,8 @@ const app = new Vue({
             swal({
                 title: "若忘記密碼請聯繫管理員！",
                 icon: "warning",
+            }).then(() => {
+                location.href="mailto:etoiletTeam@gmail.com"
             });
         }
     }

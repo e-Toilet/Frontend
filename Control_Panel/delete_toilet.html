@@ -10,8 +10,9 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
+      href="./css/remixicon.css"
     />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
       integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
@@ -133,36 +134,18 @@
         <main class="content" id="app">
           <!-- 這裡才開始寫自己的Code -->
           <div class="content">
-            <h1>Member Dashboard</h1>
+            <h1>被刪除的廁所</h1>
+            <!--加入搜尋-->
             <ul>
-              <li
-                v-for="member in members"
-                v-if="member.status == 1 || member.status == 2"
-              >
-                <!--Disappear when status equals 1-->
-                <span style="padding-left: 20px">{{member.name}}</span>
-                <div style="padding-right: 20px">
-                  <a
-                    v-if="member.status == 1"
-                    @click="upgrade_member_to(member.name, member.member_id, 2)"
-                  >
-                    <!-- 會員 -->
-                    <i class="ri-user-2-line"></i>
+              <li v-for="toilet in toilets" v-if="toilet.status == 0">
+                <span style="padding-left: 20px">{{toilet.name}}</span>
+                <div style="padding-right: 20px; white-space: nowrap">
+                  <a @click="confirm_toilet(toilet)">
+                    <i class="ri-check-line"></i>
                   </a>
-                  <a
-                    v-else-if="member.status == 2"
-                    @click="upgrade_member_to(member.name, member.member_id, 1)"
-                  >
-                    <!-- 管理 -->
-                    <i class="ri-sword-fill"></i>
-                  </a>
-                  <a @click="delete_member(member)">
-                    <i class="ri-delete-bin-6-line"></i>
-                  </a>
-                  <a
-                    @click="SendMemberInfo(member)"
-                    data-bs-toggle="modal"
-                    data-bs-target="#update_member_modal"
+                  <a @click="SendToiletInfo(toilet)" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#update_toilet_modal"
                   >
                     <i class="ri-menu-line"></i>
                   </a>
@@ -173,17 +156,15 @@
           <!-- Modal -->
           <div
             class="modal fade"
-            id="update_member_modal"
+            id="update_toilet_modal"
             tabindex="-1"
-            aria-labelledby="exampleModalLabel"
+            aria-labelledby="ModalLabel"
             aria-hidden="true"
           >
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">
-                    更新會員資訊
-                  </h5>
+                  <h5 class="modal-title" id="ModalLabel">更新廁所資訊</h5>
                   <button
                     type="button"
                     class="btn-close"
@@ -194,70 +175,95 @@
                 <div class="modal-body">
                   <form style="color: black">
                     <div class="mb-3">
-                      <label for="member_email" class="form-label"
-                        >Email address</label
-                      >
-                      <input
-                        type="email"
-                        class="form-control"
-                        id="member_email"
-                        aria-describedby="emailHelp"
-                        v-model="member_info.email"
-                        @change="checkIFEmailLegal"
-                      />
-                      <div
-                        id="emailHelp"
-                        class="form-text"
-                        v-show="!isEmailLegal"
-                        style="color: red"
-                      >
-                        Email Must Be Legal
-                      </div>
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label" for="member_name"
-                        >User Name</label
-                      >
+                      <label for="toilet_name" class="form-label">Name</label>
                       <input
                         type="text"
                         class="form-control"
-                        id="member_name"
-                        v-model.lazy="member_info.name"
+                        id="toilet_name"
+                        aria-describedby="nameHelp"
+                        v-model.lazy="toilet_info.name"
+                      />
+                      <div id="nameHelp" v-show="!checkInputLegal(toilet_info.name)" class="form-text" style="color: red">
+                        Name should not be empty
+                      </div>
+                    </div>
+                    <!-- 這裡寫city country district -->
+                    <div class="mb-3">
+                      <label class="form-label">Country</label>
+                      <select class="form-select" aria-label="Default select example" v-model="toilet_info.country_id">
+                        <option selected disabled>Select Country...</option>
+                        <option v-for="country in countries" :value="country.country_id">{{ country.country_name }}</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label">City</label>
+                      <select class="form-select" aria-label="Default select example" v-model="toilet_info.city_id">
+                        <option selected disabled>Select City...</option>
+                        <option v-for="city in cities" :value="city.city_id" v-show="city.country_id == toilet_info.country_id">{{ city.city_name }}</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label">District</label>
+                      <select class="form-select" aria-label="Default select example"  v-model="toilet_info.district_id">
+                        <option selected disabled>Select District...</option>
+                        <option v-for="district in districts" :value="district.district_id" v-show="district.city_id == toilet_info.city_id">{{ district.district_name }}</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="toilet_address" class="form-label">Address</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="toilet_address"
+                        aria-describedby="addressHelp"
+                        v-model.lazy="toilet_info.address"
+                      />
+                      <div id="addressHelp" v-show="!checkInputLegal(toilet_info.address)" class="form-text" style="color: red">
+                        Address should not be empty
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label" for="toilet_longitude"
+                        >Longitude</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="toilet_longtitude"
+                        aria-describedby="longitudeHelp"
+                        v-model="toilet_info.longitude"
+                        disabled
                       />
                     </div>
                     <div class="mb-3">
-                      <label for="member_password" class="form-label"
-                        >Password</label
+                      <label for="toilet_latitude" class="form-label"
+                        >Latitude</label
                       >
                       <input
-                        type="password"
+                        type="number"
                         class="form-control"
-                        id="member_password"
-                        aria-describedby="passwdHelp"
-                        v-model.trim="member_info.password"
-                        @change="checkIFPasswordLegal"
+                        id="toilet_latitude"
+                        aria-describedby="latitudeHelp"
+                        v-model.trim="toilet_info.latitude"
+                        disabled
                       />
-                      <div
-                        id="passwdHelp"
-                        class="form-text"
-                        v-show="!isPasswordLegal"
-                        style="color: red"
-                      >
-                        Password must be more than 6 characters.
                       </div>
                     </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    @click="update_member"
-                    aria-label="Close"
-                    v-show="isPasswordLegal&isEmailLegal"
-                  >
-                    Submit
-                  </button>
+                  </form>        
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      @click="update_toilet"
+                      aria-label="Close"
+                    >
+                      Submit
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -266,14 +272,13 @@
         <div class="overlay"></div>
       </div>
     </div>
-
     <!-- partial -->
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- development version, includes helpful console warnings -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
-    <!-- 根據Vue的官網source去改變src的位址，version問題 -->
     <script src="./js/vue.js"></script>
+    <!-- 根據Vue的官網source去改變src的位址，version問題 -->
     <script src="./js/script.js"></script>
-    <script src="./js/member_action.js"></script>
+    <script src="./js/delete_toilet_action.js"></script>
   </body>
 </html>
