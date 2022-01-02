@@ -107,6 +107,8 @@ const app = new Vue({
                   set_member_status == 1 ? "member" : "admin"
                 }`,
                 icon: "success",
+              }).then(function () {
+                self.location.reload();
               });
             })
             .catch((error) => {
