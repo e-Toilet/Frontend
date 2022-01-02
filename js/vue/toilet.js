@@ -56,7 +56,6 @@ const showtoilet = new Vue({
         imgNum: 0,
         content: "",
         selected_rating: 0,
-        imgNum: 0,
         srcStar: 'images/star2.png',
         srcNoStar: 'images/star.png'
     },
@@ -381,8 +380,9 @@ const showtoilet = new Vue({
                 alert("星等必選.");
             }
         },
-        SendReviewInfo: (reviewobj) => {
-            showtoilet.review_info = reviewobj;
+        SendReviewInfo: () => {
+            showtoilet.imgNum = showtoilet.myReview.rating
+            showtoilet.content = showtoilet.myReview.content
         },
         imgItem: function (num) {
             showtoilet.imgNum = num;
