@@ -19,6 +19,7 @@ const searchtoilet = new Vue({
             district_id: "-1",
         },
         isShow: false,
+        allLoaded: false,
         images: [
       "toilet0.jpg",
       "toilet1.jpg",
@@ -82,6 +83,7 @@ const searchtoilet = new Vue({
                     searchtoilet.lon = param_obj["longitude"]
                     searchtoilet.lat = param_obj["latitude"]
                     console.log(param_obj["longitude"])
+                    searchtoilet.allLoaded=true
 
                 });
         } else if (
@@ -98,10 +100,12 @@ const searchtoilet = new Vue({
                     searchtoilet.toilets = result;
                     searchtoilet.lon = param_obj["longitude"]
                     searchtoilet.lat = param_obj["latitude"]
+                    searchtoilet.allLoaded=true
                 });
         } else {
             return;
         }
+        
     },
     methods: {
         createto: function (e) {
