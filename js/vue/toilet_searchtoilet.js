@@ -231,7 +231,7 @@ const searchtoilet = new Vue({
             return Math.round(latitude * 10000) / 10000;
         },
         ratinglength: (rating) => {
-            return Math.round(rating * 100) /100;
+            return Math.round(rating * 10) /10;
         },
     },
 });
