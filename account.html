@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
     <title>編輯個人基本資料</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css" />
     <link rel="stylesheet" href="css/animate.css" />
@@ -24,565 +32,647 @@
     <link rel="stylesheet" href="css/bootstrap-datepicker.css" />
     <link rel="stylesheet" href="css/jquery.timepicker.css" />
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/flaticon.css" />
     <link rel="stylesheet" href="css/icomoon.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/VerticalTabStyle.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+      crossorigin="anonymous"
+    />
 
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            console.log("document loaded");
-            $.ajax({
-                url: "http://localhost/SA/deluxe/PHP/CheckIdentity.php",
-                type: "POST",
-                data: {},
-                dataType: "json",
-                success: function(data) {
-                    console.log(data.Identity);
-                    console.log("good");
-                },
-                error: function(xhr) {
-                    console.log(xhr.responseText);
-                },
-            });
-        });
+  </head>
 
-        function AddLocation() {
-            if (navigator.geolocation) {
-                //取得 經緯度
-                navigator.geolocation.getCurrentPosition(addPosition); //有拿到位置就呼叫 showPosition 函式
-            } else {
-                //沒有支援呼叫地理位置功能的瀏覽器
-            }
-        }
-
-        function addPosition(pos) {
-            $("#here").attr("type", "show").show();
-            $("#here").attr("placeholder", "(" + pos.coords.longitude + "," + pos.coords.latitude + ")").show();
-        }
-
-    </script>
-</head>
-
-<body>
-    <nav class="
+  <body>
+    <nav
+      class="
         navbar navbar-expand-lg navbar-dark
         ftco_navbar
         bg-dark
         ftco-navbar-light
-      " id="ftco-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="navbar-brand" href="index.html" width="40px" height="40px" /></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="oi oi-menu"></span> Menu
-            </button>
+      "
+      id="ftco-navbar"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="index.html"
+          ><img
+            src="images/logo.png"
+            class="navbar-brand"
+            href="index.html"
+            width="40px"
+            height="40px"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#ftco-nav"
+          aria-controls="ftco-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="oi oi-menu"></span> Menu
+        </button>
 
-            <div class="collapse navbar-collapse" id="ftco-nav">
-                <ul class="navbar-nav ml-auto navbar-nav">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link">首頁</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#Create" class="nav-link" data-toggle="modal" data-target="#Create">新增廁所</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="./Control_Panel/index.html" class="nav-link">去後台</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="images/user.jpg" width="30" height="30" style="border: 2px #d0d0d0 solid; border-radius: 50%" /></a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item active" href="account.html">個人資料</a>
-                            <a class="dropdown-item" href="Login.html">登入</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a href="index.html" class="nav-link">首頁</a>
+            </li>
+            <li class="nav-item" id="create-toilet-nav" style="display: none">
+              <a
+                href="#Create"
+                class="nav-link"
+                data-toggle="modal"
+                data-target="#Create"
+                >新增廁所</a
+              >
+            </li>
+            <li class="nav-item" id="backend-nav" style="display: none">
+              <a href="./Control_Panel/index.html" class="nav-link">去後台</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img
+                  src="images/user_large.jpg"
+                  width="30"
+                  height="30"
+                  style="border: 2px #d0d0d0 solid; border-radius: 50%"
+              /></a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a
+                  id="info-btn"
+                  class="dropdown-item"
+                  href="account.html"
+                  style="display: none"
+                  >個人資料</a
+                >
+                <a id="login-btn" class="dropdown-item" href="Login.html"
+                  >登入</a
+                >
+                <a
+                  id="logout-btn"
+                  class="dropdown-item"
+                  style="display: none"
+                  onclick="deleteAllCookies()"
+                  >登出</a
+                >
+              </div>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
+    <script>
+      const getCookie = (name) => {
+        try {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(";").shift();
+        } catch {
+          return "";
+        }
+      };
+
+      const deleteAllCookies = () => {
+        var cookies = document.cookie.split(";");
+
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i];
+          var eqPos = cookie.indexOf("=");
+          var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+          document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+        location.reload();
+      };
+
+      var create_toilet_nav = document.getElementById("create-toilet-nav");
+      var backend_nav = document.getElementById("backend-nav");
+      var login_btn = document.getElementById("login-btn");
+      var logout_btn = document.getElementById("logout-btn");
+      var info_btn = document.getElementById("info-btn");
+
+      if (getCookie("isAdmin") != undefined) {
+        //新增廁所的項目
+        create_toilet_nav.style.display = "block";
+        //個人資料按鈕
+        info_btn.style.display = "block";
+        //登出按鈕
+        logout_btn.style.display = "block";
+        //登入按鈕
+        login_btn.style.display = "none";
+        if (getCookie("isAdmin") == "true") backend_nav.style.display = "block";
+      }
+    </script>
     <!-- END nav -->
 
     <div class="hero-wrap" style="background-image: url('images/2.jpeg')">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="
+      <div class="overlay"></div>
+      <div class="container">
+        <div
+          class="
             row
             no-gutters
             slider-text
             d-flex
             align-itemd-end
             justify-content-center
-          ">
-                <div class="
+          "
+        >
+          <div
+            class="
               col-md-9
               ftco-animate
               text-center
               d-flex
               align-items-end
               justify-content-center
-            ">
-                    <div class="text">
-                        <p class="breadcrumbs mb-2">
-                            <span class="mr-2"><a href="index.php">Home</a></span>
-                            <span>編輯基本資料</span>
-                        </p>
-                        <h1 class="mb-4 bread">編輯資料</h1>
-                    </div>
-                </div>
+            "
+          >
+            <div class="text">
+              <p class="breadcrumbs mb-2">
+                <span class="mr-2"><a href="index.php">Home</a></span>
+                <span>編輯基本資料</span>
+              </p>
+              <h1 class="mb-4 bread">編輯資料</h1>
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <section class="ftco-section bg-light">
-        <div>
-            <div class="container">
-                <div class="row" style="justify-content: center;align-items: center;">
-                    <div class="col-lg-9" style="display: flex;justify-content: center;align-items: center;">
-                        <div class="tab">
-                            <button class="tablinks" onclick="openCity(event, 'Profile')">
-                                基本資料
-                            </button>
-                            <button class="tablinks" onclick="openCity(event, 'Account')">
-                                帳號管理
-                            </button>
-                        </div>
-                        <div id="Profile" class="tabcontent" style="display: inline">
-                            <div align="center">
-                                <br />
-                                <div class="page-wrap" style="display: inline">
-                                    <div class="profile" style="display: inline">
-                                        <div class="profile-avatar-wrap" style="display: inline">
-                                            <label id="photo" style="display: inline">&nbsp;&nbsp;&nbsp;&nbsp;<img id="profile-avatar" src="images/user.jpg" width="50" height="50" style="
+      <div>
+        <div class="container">
+          <div class="row" style="justify-content: center; align-items: center">
+            <div
+              class="col-lg-9"
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+              id="app"
+            >
+              <div class="tab">
+                <button class="tablinks" onclick="openCity(event, 'Profile')">
+                  基本資料
+                </button>
+                <button class="tablinks" onclick="openCity(event, 'Account')">
+                  帳號管理
+                </button>
+              </div>
+              <div
+                id="Profile"
+                class="tabcontent"
+                style="display: inline"
+                id="app"
+              >
+                <div align="center">
+                  <br />
+                  <div class="page-wrap" style="display: inline">
+                    <div class="profile" style="display: inline">
+                      <div class="profile-avatar-wrap" style="display: inline">
+                        <label id="photo" style="display: inline"
+                          >&nbsp;&nbsp;&nbsp;&nbsp;<img
+                            id="profile-avatar"
+                            src="images/user_large.jpg"
+                            width="50"
+                            height="50"
+                            style="
                               border: 2px #d0d0d0 solid;
                               border-radius: 50%;
-                            " />&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                                        </div>
-                                        <label>
-                                            <input style="display: none" id="uploader" type="file" onchange="openFile(event)" accept="image/jpeg,image/jpg" />
-                                            <i style="
-                            font-size: 18px;
-                            cursor: pointer;
-                            color: #9d9d9d;
-                          " class="far">&#xf044;</i>
-                                        </label>
-                                        <label>
-                                            <button id="demo" type="button" class="btn" style="background-color: transparent">
-                                                <i class="far fa-trash-alt" style="
-                              font-size: 18px;
-                              color: #9d9d9d;
-                              margin-bottom: 7px;
-                            ">&#xf014;</i>
-                                            </button>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="borderstyle">
-                                <br />
-                                <label style="width: 80px; text-align: center"><b>帳&nbsp;&nbsp;&nbsp;號</b></label>
-                                <label id="name" style="display: inline">lily hsu</label><label><input id="EditName" type="text" value="lily hsu" name="請輸入姓名" style="display: none;width: 100px" /></label>
-                                <div style="float: right" id="EditNamebt">
-                                    <a style="cursor: pointer" onclick="edit('Name')"><i style="font-size: 16px" class="far" data-toggle="modal" data-target="#modell">&#xf044;</i></a>&nbsp;&nbsp;
-                                </div>
-                                <div id="NameCheck" style="float: right; display: none">
-                                    <a style="cursor: pointer" id="NameCheckbt" onclick="update('Name')"><i style="font-size: 16px" class="fas" data-toggle="modal" data-target="#modell">&#xf00c;</i></a>&nbsp;&nbsp;<a style="cursor: pointer" id="NameCanclebt" onclick="update('NameCancle')"><i style="font-size: 16px" class="fa" data-toggle="modal" data-target="#modell">&#xf00d;</i></a>&nbsp;&nbsp;
-                                </div>
-                            </div>
-                            <div class="borderstyle">
-                                <br />
-                                <label style="width: 80px; text-align: center"><b>評論數量</b></label>
-                                <label id="commetcount">1</label>
-                            </div>
-                        </div>
-
-                        <div id="Account" class="tabcontent">
-                            <div class="borderstyle">
-                                <br />
-                                <label style="width: 60px; text-align: center"><b>EMail</b></label>
-                                <label id="Mail" style="display: inline">abc@gamil.com</label><label><input id="EditMail" type="text" value="abc@gamil.com" name="請輸入電子郵件" style="display: none;width: 120px" /></label>
-                                <div style="float: right" id="EditMailbt">
-                                    <a style="cursor: pointer" onclick="edit('Mail')"><i style="font-size: 16px" class="far" data-toggle="modal" data-target="#modell">&#xf044;</i></a>&nbsp;&nbsp;
-                                </div>
-                                <div id="MailCheck" style="float: right; display: none">
-                                    <a style="cursor: pointer" id="MailCheckbt" onclick="update('Mail')"><i style="font-size: 16px" class="fas" data-toggle="modal" data-target="#modell">&#xf00c;</i></a>&nbsp;&nbsp;<a style="cursor: pointer" id="MailCanclebt" onclick="update('MailCancle')"><i style="font-size: 16px" class="fa" data-toggle="modal" data-target="#modell">&#xf00d;</i></a>&nbsp;&nbsp;
-                                </div>
-                            </div>
-                            <div class="borderstyle">
-                                <br />
-                                <label style="width: 60px; text-align: center"><b>密&nbsp;&nbsp;&nbsp;碼</b></label><label id="Password" style="display: inline">已設定</label>
-                                <div id="EditPassword" style="display: none">
-                                    <br>
-                                    <label style="margin-left: 8px">舊密碼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="EditOldPassword" type="password" name="舊密碼" style="display: none;width: 120px" /></label>
-                                    <br>
-                                    <label style="margin-left: 8px">新密碼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="EditNewPassword" type="password" name="新密碼" style="display: none;width: 120px" /></label>
-                                    <br>
-                                    <label style="margin-left: 8px">確認密碼&nbsp;&nbsp;&nbsp;<input id="CheckNewPassword" type="password" name="確認新密碼" style="display: none;width: 120px" /></label>
-                                </div>
-                                <div style="float: right" id="EditPasswordbt">
-                                    <a style="cursor: pointer" onclick="edit('Password')"><i style="font-size: 16px" class="far" data-toggle="modal" data-target="#modell">&#xf044;</i></a>&nbsp;&nbsp;
-                                </div>
-                                <div id="PasswordCheck" style="float: right; display: none">
-                                    <a style="cursor: pointer" id="PasswordCheckbt" onclick="update('Password')"><i style="font-size: 16px" class="fas" data-toggle="modal" data-target="#modell">&#xf00c;</i></a>&nbsp;&nbsp;<a style="cursor: pointer" id="PasswordCanclebt" onclick="update('PasswordCancle')"><i style="font-size: 16px" class="fa" data-toggle="modal" data-target="#modell">&#xf00d;</i></a>&nbsp;&nbsp;
-                                </div>
-                            </div>
-                            <div>
-                                <div id="MailCheck" style="float: right; display: none">
-                                    <a style="cursor: pointer" id="MailCheckbt" onclick="update('Mail')"><i style="font-size: 16px" class="fas" data-toggle="modal" data-target="#modell">&#xf00c;</i></a>&nbsp;&nbsp;<a style="cursor: pointer" id="MailCanclebt" onclick="update('MailCancle')"><i style="font-size: 16px" class="fa" data-toggle="modal" data-target="#modell">&#xf00d;</i></a>&nbsp;&nbsp;
-                                </div>
-                            </div>
-                        </div>
+                            "
+                          />&nbsp;&nbsp;&nbsp;&nbsp;</label
+                        >
+                      </div>
                     </div>
+                  </div>
                 </div>
+                <div class="borderstyle">
+                  <br />
+                  <label style="width: 80px; text-align: center"
+                    ><b>帳&nbsp;&nbsp;&nbsp;號</b></label
+                  >
+                  <label style="display: inline" id="name"
+                    >{{account.name}}</label
+                  ><label
+                    ><input
+                      id="EditName"
+                      type="text"
+                      :placeholder="account.name"
+                      v-model.lazy="account_info.name"
+                      name="請輸入姓名"
+                      style="display: none; width: 100px"
+                  /></label>
+                  <div style="float: right" id="EditNamebt">
+                    <a style="cursor: pointer" onclick="edit('Name')"
+                      ><i
+                        style="font-size: 16px"
+                        class="far"
+                        data-toggle="modal"
+                        data-target="#modell"
+                        >&#xf044;</i
+                      ></a
+                    >&nbsp;&nbsp;
+                  </div>
+                  <div id="NameCheck" style="float: right; display: none">
+                    <a
+                      style="cursor: pointer"
+                      id="NameCheckbt"
+                      onclick="update('Name')"
+                      @click="update_account"
+                      ><i
+                        style="font-size: 16px"
+                        class="fas"
+                        data-toggle="modal"
+                        data-target="#modell"
+                        >&#xf00c;</i
+                      ></a
+                    >&nbsp;&nbsp;<a
+                      style="cursor: pointer"
+                      id="NameCanclebt"
+                      onclick="update('NameCancle')"
+                      ><i
+                        style="font-size: 16px"
+                        class="fa"
+                        data-toggle="modal"
+                        data-target="#modell"
+                        >&#xf00d;</i
+                      ></a
+                    >&nbsp;&nbsp;
+                  </div>
+                </div>
+                <div class="borderstyle">
+                  <br />
+                  <label style="width: 80px; text-align: center"
+                    ><b>評論數量</b></label
+                  >
+                  <label>{{comment}}</label>
+                </div>
+              </div>
+
+              <div id="Account" class="tabcontent">
+                <div class="borderstyle">
+                  <br />
+                  <label style="width: 60px; text-align: center"
+                    ><b>EMail</b></label
+                  >
+                  <label style="display: inline" id="Mail"
+                    >{{account.email}}</label
+                  >                  
+                </div>
+                <div class="borderstyle">
+                  <br />
+                  <label style="width: 60px; text-align: center"
+                    ><b>密&nbsp;&nbsp;&nbsp;碼</b></label
+                  ><label id="Password" style="display: inline">已設定</label>
+                  <div id="EditPassword" style="display: none">
+                    <br />
+                      <label style="margin-left: 8px"
+                        >新密碼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input
+                          id="EditNewPassword"
+                          type="password"
+                          name="新密碼"
+                          v-model.lazy="password_info.password"
+                          style="display: none; width: 120px"
+                      /></label>
+                      <br />
+                      <label style="margin-left: 8px"
+                        >確認密碼&nbsp;&nbsp;&nbsp;<input
+                          id="CheckNewPassword"
+                          type="password"
+                          name="確認新密碼"
+                          v-model="checkpass"
+                          style="display: none; width: 120px"
+                      /></label>
+                  </div>
+                  <div style="float: right" id="EditPasswordbt">
+                    <a style="cursor: pointer" onclick="edit('Password')"
+                      ><i
+                        style="font-size: 16px"
+                        class="far"
+                        data-toggle="modal"
+                        data-target="#modell"
+                        >&#xf044;</i
+                      ></a
+                    >&nbsp;&nbsp;
+                  </div>
+                  <div id="PasswordCheck" style="float: right; display: none">
+                    <a
+                      style="cursor: pointer"
+                      id="PasswordCheckbt"
+                      onclick="update('Password')"
+                      @click="update_password"
+                      v-if="checkpass && checkpass==password_info.password"
+                      ><i
+                        style="font-size: 16px"
+                        class="fas"
+                        data-toggle="modal"
+                        data-target="#modell"
+                        >&#xf00c;</i
+                      ></a
+                    >&nbsp;&nbsp;<a
+                      style="cursor: pointer"
+                      id="PasswordCanclebt"
+                      onclick="update('PasswordCancle')"
+                      ><i
+                        style="font-size: 16px"
+                        class="fa"
+                        data-toggle="modal"
+                        data-target="#modell"
+                        >&#xf00d;</i
+                      ></a
+                    >&nbsp;&nbsp;
+                  </div>
+                </div>
+                <div></div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+      <div
+        class="modal fade"
+        id="Create"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"
+      >
+        <div
+          class="modal-dialog model-dialog-centered modal-lg"
+          role="document"
+          style="width: 400"
+        >
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-hidden="true"
+              >
+                &times;
+              </button>
+            </div>
+            <div class="modal-body" style="align-content: center">
+              <table
+                align="center"
+                style="text-align: center; border-collapse: separate"
+                rules="none"
+              >
+                <tr height="40">
+                  <td style="width: 100px">
+                    <font color="red">＊</font>廁所名稱
+                  </td>
+                  <td align="left">
+                    <input
+                      v-model.trim="create_toilet.name"
+                      rows="1"
+                      style="width: 200px"
+                      required
+                    />
+                  </td>
+                </tr>
+
+                <tr height="40">
+                  <td style="width: 100px"><font color="red">＊</font>國家</td>
+                  <td align="left">
+                    <select
+                      v-model="create_toilet.country_id"
+                      style="width: 200px"
+                    >
+                      <option value="-1" selected disabled>國家</option>
+                      <option
+                        v-for="country in countries"
+                        :value="country.country_id"
+                      >
+                        {{country.country_name}}
+                      </option>
+                    </select>
+                  </td>
+                </tr>
+
+                <tr height="40">
+                  <td style="width: 100px"><font color="red">＊</font>城市</td>
+                  <td align="left">
+                    <select
+                      v-model="create_toilet.city_id"
+                      style="width: 200px"
+                    >
+                      <option value="-1" selected disabled>城市</option>
+                      <option
+                        v-for="city in cities"
+                        :value="city.city_id"
+                        v-if="city.country_id == create_toilet.country_id"
+                      >
+                        {{city.city_name}}
+                      </option>
+                    </select>
+                  </td>
+                </tr>
+
+                <tr height="40">
+                  <td style="width: 100px"><font color="red">＊</font>地區</td>
+                  <td align="left">
+                    <select
+                      v-model="create_toilet.district_id"
+                      style="width: 200px"
+                    >
+                      <option value="-1" selected disabled>地區</option>
+                      <option
+                        v-for="district in districts"
+                        :value="district.district_id"
+                        v-if="district.city_id == create_toilet.city_id"
+                      >
+                        {{district.district_name}}
+                      </option>
+                    </select>
+                  </td>
+                </tr>
+                <tr height="40">
+                  <td style="width: 100px"><font color="red">＊</font>地址</td>
+                  <td align="left">
+                    <input
+                      v-model.trim="create_toilet.address"
+                      rows="1"
+                      style="width: 200px"
+                      required
+                    />
+                  </td>
+                </tr>
+                <tr height="40">
+                  <td style="width: 100px">
+                    <font color="red">＊</font>經緯度
+                  </td>
+                  <td align="left">
+                    <button
+                      type="button"
+                      class="btn"
+                      @click="create_showPosition"
+                      style="background: white"
+                    >
+                      <img src="images/gps.png" width="30" height="30" />
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width: 100px"></td>
+                  <td>
+                    <input
+                      id="longitude"
+                      v-model="create_toilet.longitude"
+                      :type="isShow ? 'show':'hidden'"
+                      disabled
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width: 100px"></td>
+                  <td>
+                    <input
+                      id="latitude"
+                      v-model="create_toilet.latitude"
+                      :type="isShow ? 'show':'hidden'"
+                      disabled
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <img id="output" height="150" style="display: none" />
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <input
+                type="submit"
+                @click="createto"
+                class="btn btn-primary"
+                value="送出"
+                style="width: 80px; height: 35px; font-size: 13px"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen">
-        <svg class="circular" width="48px" height="48px">
-            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
-        </svg>
+      <svg class="circular" width="48px" height="48px">
+        <circle
+          class="path-bg"
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke-width="4"
+          stroke="#eeeeee"
+        />
+        <circle
+          class="path"
+          cx="24"
+          cy="24"
+          r="22"
+          fill="none"
+          stroke-width="4"
+          stroke-miterlimit="10"
+          stroke="#F96D00"
+        />
+      </svg>
     </div>
 
     <!--小卡片的內容-->
     <script>
-        function openCity(evt, cityName) {
-            // Declare all variables
-            var i, tabcontent, tablinks;
+      function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
 
-            // Get all elements with class="tabcontent" and hide them
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-
-            // Get all elements with class="tablinks" and remove the class "active"
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-
-            // Show the current tab, and add an "active" class to the link that opened the tab
-            document.getElementById(cityName).style.display = "block";
-            evt.currentTarget.className += " active";
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
         }
 
-        function edit(category) {
-            var value;
-            console.log(category);
-            if (category == "Name") {
-                document.getElementById("name").style.display = "none";
-                document.getElementById("EditName").style.display = "inline";
-                document.getElementById("EditNamebt").style.display = "none";
-                document.getElementById("NameCheck").style.display = "inline";
-                $.ajax({
-                    url: "/account.html",
-                    type: "POST",
-                    data: {},
-                    dataType: "json",
-                    success: function(data) {
-                        console.log("good");
-                    },
-                });
-            }
-            if (category == "Mail") {
-                document.getElementById("Mail").style.display = "none";
-                document.getElementById("EditMail").style.display = "inline";
-                document.getElementById("EditMailbt").style.display = "none";
-                document.getElementById("MailCheck").style.display = "inline";
-            }
-            if (category == "Password") {
-                document.getElementById("Password").style.display = "none";
-                document.getElementById("EditPassword").style.display = "inline";
-                document.getElementById("EditOldPassword").style.display = "inline";
-                document.getElementById("EditNewPassword").style.display = "inline";
-                document.getElementById("CheckNewPassword").style.display = "inline";
-                document.getElementById("EditPasswordbt").style.display = "none";
-                document.getElementById("PasswordCheck").style.display = "inline";
-            }
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
 
-        function update(category) {
-            var value;
-            if (category == "Name" || category == "NameCancle") {
-                if (category == "Name") {
-                    value = document.getElementById("EditName").value;
-                    document.getElementById("name").innerHTML =
-                        "<label id = 'name' style='display: inline;''>" +
-                        value +
-                        "</label>";
-                }
-                document.getElementById("name").style.display = "inline";
-                document.getElementById("EditName").style.display = "none";
-                document.getElementById("EditNamebt").style.display = "inline";
-                document.getElementById("NameCheck").style.display = "none";
-            }
+        // Show the current tab, and add an "active" class to the link that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
 
-            if (category == "Mail" || category == "MailCancle") {
-                if (category == "Mail") {
-                    value = document.getElementById("EditMail").value;
-                    document.getElementById("Mail").innerHTML =
-                        "<label id = 'Mail' style='display: inline;''>" +
-                        value +
-                        "</label>";
-                }
-                document.getElementById("Mail").style.display = "inline";
-                document.getElementById("EditMail").style.display = "none";
-                document.getElementById("EditMailbt").style.display = "inline";
-                document.getElementById("MailCheck").style.display = "none";
-            }
-            if (category == "Password" || category == "PasswordCancle") {
-                document.getElementById("Password").innerHTML =
-                    "<label id='Password' style='display: inline;''>已設定</label>";
-                document.getElementById("Password").style.display = "inline";
-                document.getElementById("EditPassword").style.display = "none";
-                document.getElementById("EditPasswordbt").style.display = "inline";
-                document.getElementById("PasswordCheck").style.display = "none";
-                document.getElementById("EditOldPassword").style.display = "none";
-                document.getElementById("EditNewPassword").style.display = "none";
-                document.getElementById("CheckNewPassword").style.display = "none";
-            }
+      function edit(category) {
+        var value;
+        console.log(category);
+        if (category == "Name") {
+          document.getElementById("name").style.display = "none";
+          document.getElementById("EditName").style.display = "inline";
+          document.getElementById("EditNamebt").style.display = "none";
+          document.getElementById("NameCheck").style.display = "inline";
         }
-
-        function openFile(event) {
-            var input = event.target; //取得上傳檔案
-            var reader = new FileReader(); //建立FileReader物件
-            reader.readAsDataURL(input.files[0]); //以.readAsDataURL將上傳檔案轉換為base64字串
-            reader.onload = function() {
-                //FileReader取得上傳檔案後執行以下內容
-                var dataURL = reader.result; //設定變數dataURL為上傳圖檔的base64字串
-                $("#output").attr("src", dataURL).show(); //將img的src設定為dataURL並顯示
-            };
+        if (category == "Password") {
+          document.getElementById("Password").style.display = "none";
+          document.getElementById("EditPassword").style.display = "inline";
+          document.getElementById("EditNewPassword").style.display = "inline";
+          document.getElementById("CheckNewPassword").style.display = "inline";
+          document.getElementById("EditPasswordbt").style.display = "none";
+          document.getElementById("PasswordCheck").style.display = "inline";
         }
+      }
 
-        document.getElementById("demo").addEventListener("click", function() {
-            swal({
-                title: "確定要刪除你的頭貼嗎?",
-                icon: "warning",
-                buttons: {
-                    cancel: {
-                        text: "取消",
-                        visible: true,
-                        value: "NO"
-                    },
-                    confirm: {
-                        text: "確定",
-                        visible: true,
-                        value: "OK"
-                    },
-                },
-                dangerMode: false,
-            }).then((value) => {
-                if (value == "OK") {
-                    swal("刪除!", "已經刪除你的頭貼", "success");
-                }
-            });
-        });
-
-        //        $("#profile").change(function() { //profile  input[file]的ID
-        //            // 獲取上傳文件對象
-        //            var file = $(this)[0].files[0];
-        //            // 讀取文件URL
-        //            var reader = new FileReader();
-        //            reader.readAsDataURL(file);
-        //            // 閱讀文件完成後觸發的事件
-        //            reader.onload = function() {
-        //                // 讀取的URL結果：this.result
-        //                $("#profile").attr("src", this.result); //profile  img標籤的ID
-        //            }
-        //        });
-        var Resample = (function(canvas) {
-            // (C) WebReflection Mit Style License
-
-            function Resample(img, width, height, onresample) {
-                var load = typeof img == "string",
-                    i = load || img;
-
-                // if string, a new Image is needed
-                if (load) {
-                    i = new Image();
-                    i.onload = onload;
-                    i.onerror = onerror;
-                }
-
-                i._onresample = onresample;
-                i._width = width;
-                i._height = height;
-                load ? (i.src = img) : onload.call(img);
-            }
-
-            function onerror() {
-                throw "not found: " + this.src;
-            }
-
-            function onload() {
-                var img = this,
-                    width = img._width,
-                    height = img._height,
-                    onresample = img._onresample;
-                // if width and height are both specified
-                // the resample uses these pixels
-                // if width is specified but not the height
-                // the resample respects proportions
-                // accordingly with orginal size
-                // same is if there is a height, but no width
-                var minValue = Math.min(img.height, img.width);
-                width == null && (width = round((img.width * height) / img.height));
-                height == null && (height = round((img.height * width) / img.width));
-
-                delete img._onresample;
-                delete img._width;
-                delete img._height;
-
-                // when we reassign a canvas size
-                // this clears automatically
-                // the size should be exactly the same
-                // of the final image
-                // so that toDataURL ctx method
-                // will return the whole canvas as png
-                // without empty spaces or lines
-                canvas.width = width;
-                canvas.height = height;
-                // drawImage has different overloads
-                // in this case we need the following one ...
-                context.drawImage(
-                    // original image
-                    img,
-                    // starting x point
-                    0,
-                    // starting y point
-                    0,
-                    // image width
-                    minValue,
-                    // image height
-                    minValue,
-                    // destination x point
-                    0,
-                    // destination y point
-                    0,
-                    // destination width
-                    width,
-                    // destination height
-                    height
-                );
-                // retrieve the canvas content as
-                // base4 encoded PNG image
-                // and pass the result to the callback
-                onresample(canvas.toDataURL("image/png"));
-            }
-
-            var context = canvas.getContext("2d"),
-                // local scope shortcut
-                round = Math.round;
-
-            return Resample;
-        })(this.document.createElement("canvas"));
-
-        jQuery.event.props.push("dataTransfer");
-
-        // IIFE to prevent globals
-        (function() {
-            var s;
-            var Avatar = {
-                settings: {
-                    bod: $("body"),
-                    img: $("#profile-avatar"),
-                    fileInput: $("#uploader"),
-                },
-
-                init: function() {
-                    s = Avatar.settings;
-                    Avatar.bindUIActions();
-                },
-
-                bindUIActions: function() {
-                    var timer;
-
-                    s.bod.on("dragover", function(event) {
-                        clearTimeout(timer);
-                        if (event.currentTarget == s.bod[0]) {
-                            Avatar.showDroppableArea();
-                        }
-
-                        // Required for drop to work
-                        return false;
-                    });
-
-                    s.bod.on("dragleave", function(event) {
-                        if (event.currentTarget == s.bod[0]) {
-                            // Flicker protection
-                            timer = setTimeout(function() {
-                                Avatar.hideDroppableArea();
-                            }, 200);
-                        }
-                    });
-
-                    s.bod.on("drop", function(event) {
-                        // Or else the browser will open the file
-                        event.preventDefault();
-
-                        Avatar.handleDrop(event.dataTransfer.files);
-                    });
-
-                    s.fileInput.on("change", function(event) {
-                        Avatar.handleDrop(event.target.files);
-                    });
-                },
-
-                showDroppableArea: function() {
-                    s.bod.addClass("droppable");
-                },
-
-                hideDroppableArea: function() {
-                    s.bod.removeClass("droppable");
-                },
-
-                handleDrop: function(files) {
-                    Avatar.hideDroppableArea();
-
-                    // Multiple files can be dropped. Lets only deal with the "first" one.
-                    var file = files[0];
-
-                    if (typeof file !== "undefined" && file.type.match("image.*")) {
-                        Avatar.resizeImage(file, 256, function(data) {
-                            Avatar.placeImage(data);
-                        });
-                    } else {
-                        alert("That file wasn't an image.");
-                    }
-                },
-
-                resizeImage: function(file, size, callback) {
-                    var fileTracker = new FileReader();
-                    fileTracker.onload = function() {
-                        Resample(this.result, size, size, callback);
-                    };
-                    fileTracker.readAsDataURL(file);
-
-                    fileTracker.onabort = function() {
-                        alert("The upload was aborted.");
-                    };
-                    fileTracker.onerror = function() {
-                        alert("An error occured while reading the file.");
-                    };
-                },
-
-                placeImage: function(data) {
-                    s.img.attr("src", data);
-                },
-            };
-
-            Avatar.init();
-        })();
-
+      function update(category) {
+        var value;
+        if (category == "Name" || category == "NameCancle") {
+          if (category == "Name") {
+            value = document.getElementById("EditName").value;
+            document.getElementById("name").innerHTML =
+              "<label id = 'name' style='display: inline;''>" +
+              value +
+              "</label>";
+          }
+          document.getElementById("name").style.display = "inline";
+          document.getElementById("EditName").style.display = "none";
+          document.getElementById("EditNamebt").style.display = "inline";
+          document.getElementById("NameCheck").style.display = "none";
+        }
+        if (category == "Password" || category == "PasswordCancle") {
+          document.getElementById("Password").innerHTML =
+            "<label id='Password' style='display: inline;''>已設定</label>";
+          document.getElementById("Password").style.display = "inline";
+          document.getElementById("EditPassword").style.display = "none";
+          document.getElementById("EditPasswordbt").style.display = "inline";
+          document.getElementById("PasswordCheck").style.display = "none";
+          document.getElementById("EditNewPassword").style.display = "none";
+          document.getElementById("CheckNewPassword").style.display = "none";
+        }
+      }
     </script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="resample.js"></script>
-    <script src="avatar.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.js"
+      integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -596,103 +686,20 @@
     <script src="js/aos.js"></script>
     <script src="js/jquery.animateNumber.min.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/jquery.timepicker.min.js"></script>
     <script src="js/scrollax.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
-</body>
-<form method="post">
-    <div class="modal fade" id="Create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog model-dialog-centered modal-lg" role="document" style="width: 400">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                </div>
-                <div class="modal-body" style="align-content: center">
-                    <table align="center" style="text-align: center; border-collapse: separate" rules="none">
-                        <tr height="40">
-                            <td style="width: 100px">
-                                <font color="red">＊</font>廁所名稱
-                            </td>
-                            <td align="left">
-                                <input id="edittoilet" rows="1" style="width: 200px" required />
-                            </td>
-                        </tr>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+      integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
-                        <tr height="40">
-                            <td style="width: 100px">
-                                <font color="red">＊</font>國家
-                            </td>
-                            <td align="left">
-                                <select id="country" style="width: 200px">
-                                    <option selected disabled>國家</option>
-                                    <option>台灣</option>
-                                    <option>美國</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr height="40">
-                            <td style="width: 100px">
-                                <font color="red">＊</font>城市
-                            </td>
-                            <td align="left">
-                                <select id="city" style="width: 200px">
-                                    <option selected disabled>城市</option>
-                                    <option value="">台北市</option>
-                                    <option value="">桃園市</option>
-                                    <option value="">新竹市</option>
-                                    <option value="">台中市</option>
-                                    <option value="">高雄市</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr height="40">
-                            <td style="width: 100px">
-                                <font color="red">＊</font>地區
-                            </td>
-                            <td align="left">
-                                <select id="district" style="width: 200px">
-                                    <option selected disabled>地區</option>
-                                    <option value="">東區</option>
-                                    <option value="">北區</option>
-                                    <option value="">香山區</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr height="40">
-                            <td style="width: 100px">
-                                <font color="red">＊</font>經緯度
-                            </td>
-                            <td align="left">
-                                <button type="button" class="btn" onclick="AddLocation()" style="background: white">
-                                    <img src="images/gps.png" width="30" height="30" />
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 100px">
-                            </td>
-                            <td><input id="here" type="hidden" disabled></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <img id="output" height="150" style="display: none" />
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" class="btn btn-primary" value="送出" style="width: 80px; height: 35px; font-size: 13px" />
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-
+    <!-- Vue actions -->
+    <script src="./js/vue/account_member_action.js"></script>
+    <script src="./js/vue/account_searchtoilet.js"></script>
+  </body>
 </html>

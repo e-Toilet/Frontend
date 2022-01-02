@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon" />
+    <title>E-Toilet Control Panel</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/css-pro-layout@1.1.0/dist/css/css-pro-layout.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./css/remixicon.css"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+      integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- partial:index.partial.html -->
+    <div class="layout has-sidebar fixed-sidebar fixed-header">
+      <aside id="sidebar" class="sidebar break-point-lg has-bg-image">
+        <div class="image-wrapper">
+          <img
+            src="https://user-images.githubusercontent.com/25878302/144499035-2911184c-76d3-4611-86e7-bc4e8ff84ff5.jpg"
+            alt="sidebar background"
+          />
+        </div>
+        <div class="sidebar-layout">
+          <div class="sidebar-header">
+            <span></span>
+            <span
+              style="
+                text-transform: uppercase;
+                font-size: 12px;
+                letter-spacing: 3px;
+                font-weight: bold;
+              "
+              >etoilet control panel</span
+            >
+          </div>
+          <div class="sidebar-content">
+            <nav class="menu open-current-submenu">
+              <ul>
+                <li class="menu-item sub-menu">
+                  <a href="#">
+                    <span class="menu-icon">
+                      <i class="ri-vip-diamond-fill"></i>
+                    </span>
+                    <span class="menu-title">廁所管理</span>
+                  </a>
+                  <div class="sub-menu-list">
+                    <ul>
+                      <li class="menu-item">
+                        <a href="toilet.html">
+                          <span class="menu-title">所有廁所</span>
+                          <span class="menu-suffix">&#128167;</span>
+                        </a>
+                      </li>
+                      <li class="menu-item">
+                        <a href="review_toilet.html">
+                          <span class="menu-title">待審核廁所</span>
+                        </a>
+                      </li>
+                      <li class="menu-item">
+                        <a href="delete_toilet.html">
+                          <span class="menu-title">被刪除的廁所</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="menu-item sub-menu">
+                  <a href="#">
+                    <span class="menu-icon">
+                      <i class="ri-shopping-cart-fill"></i>
+                    </span>
+                    <span class="menu-title">管理員管理</span>
+                  </a>
+                  <div class="sub-menu-list">
+                    <ul>
+                      <li class="menu-item">
+                        <a href="member.html">
+                          <span class="menu-title">會員管理</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li class="menu-item">
+                  <a href="../index.html">
+                    <span class="menu-icon">
+                      <i class="ri-home-3-line"></i>
+                    </span>
+                    <span class="menu-title">回首頁</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="sidebar-footer" style="text-transform: uppercase">
+            <span>Copyright @ e-toilet</span>
+          </div>
+        </div>
+      </aside>
+      <div id="overlay" class="overlay"></div>
+      <div class="layout" style="background-color: #07103c; color: #ffffff">
+        <header class="header" style="background-color: #0e1c2d">
+          <a id="btn-collapse" href="#">
+            <i class="ri-menu-line ri-xl"></i>
+          </a>
+          <a id="btn-toggle" href="#" class="sidebar-toggler break-point-lg">
+            <i class="ri-menu-line ri-xl"></i>
+          </a>
+        </header>
+        <main class="content" id="app">
+          <!-- 這裡才開始寫自己的Code -->
+          <div class="content">
+            <h1>被刪除的廁所</h1>
+            <!--加入搜尋-->
+            <ul>
+              <li v-for="toilet in toilets" v-if="toilet.status == 0">
+                <span style="padding-left: 20px">{{toilet.name}}</span>
+                <div style="padding-right: 20px; white-space: nowrap">
+                  <a @click="confirm_toilet(toilet)">
+                    <i class="ri-check-line"></i>
+                  </a>
+                  <a @click="SendToiletInfo(toilet)" 
+                     data-bs-toggle="modal" 
+                     data-bs-target="#update_toilet_modal"
+                  >
+                    <i class="ri-menu-line"></i>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="update_toilet_modal"
+            tabindex="-1"
+            aria-labelledby="ModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="ModalLabel">更新廁所資訊</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form style="color: black">
+                    <div class="mb-3">
+                      <label for="toilet_name" class="form-label">Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="toilet_name"
+                        aria-describedby="nameHelp"
+                        v-model.lazy="toilet_info.name"
+                      />
+                      <div id="nameHelp" v-show="!checkInputLegal(toilet_info.name)" class="form-text" style="color: red">
+                        Name should not be empty
+                      </div>
+                    </div>
+                    <!-- 這裡寫city country district -->
+                    <div class="mb-3">
+                      <label class="form-label">Country</label>
+                      <select class="form-select" aria-label="Default select example" v-model="toilet_info.country_id">
+                        <option selected disabled>Select Country...</option>
+                        <option v-for="country in countries" :value="country.country_id">{{ country.country_name }}</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label">City</label>
+                      <select class="form-select" aria-label="Default select example" v-model="toilet_info.city_id">
+                        <option selected disabled>Select City...</option>
+                        <option v-for="city in cities" :value="city.city_id" v-show="city.country_id == toilet_info.country_id">{{ city.city_name }}</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label">District</label>
+                      <select class="form-select" aria-label="Default select example"  v-model="toilet_info.district_id">
+                        <option selected disabled>Select District...</option>
+                        <option v-for="district in districts" :value="district.district_id" v-show="district.city_id == toilet_info.city_id">{{ district.district_name }}</option>
+                      </select>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="toilet_address" class="form-label">Address</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="toilet_address"
+                        aria-describedby="addressHelp"
+                        v-model.lazy="toilet_info.address"
+                      />
+                      <div id="addressHelp" v-show="!checkInputLegal(toilet_info.address)" class="form-text" style="color: red">
+                        Address should not be empty
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label" for="toilet_longitude"
+                        >Longitude</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="toilet_longtitude"
+                        aria-describedby="longitudeHelp"
+                        v-model="toilet_info.longitude"
+                        disabled
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="toilet_latitude" class="form-label"
+                        >Latitude</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="toilet_latitude"
+                        aria-describedby="latitudeHelp"
+                        v-model.trim="toilet_info.latitude"
+                        disabled
+                      />
+                      </div>
+                    </div>
+                  </form>        
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      @click="update_toilet"
+                      aria-label="Close"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <div class="overlay"></div>
+      </div>
+    </div>
+    <!-- partial -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <!-- development version, includes helpful console warnings -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
+    <script src="./js/vue.js"></script>
+    <!-- 根據Vue的官網source去改變src的位址，version問題 -->
+    <script src="./js/script.js"></script>
+    <script src="./js/delete_toilet_action.js"></script>
+  </body>
+</html>
