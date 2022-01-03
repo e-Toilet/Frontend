@@ -80,7 +80,14 @@ const app = new Vue({
                             title: "登入成功",
                             icon: "success",
                         }).then(function () {
-                            self.location=document.referrer;
+                            let count = -1
+                            while(true){
+                                if(history.go(count) == self.location)
+                                    count--
+                                else
+                                    break
+                            }
+                            history.go(count)
                         })
                     })
                     .catch(() => {

@@ -17,6 +17,12 @@
       href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css" />
     <link rel="stylesheet" href="css/animate.css" />
@@ -332,14 +338,19 @@
                             class="far fa-star"
                             >&nbsp;</i
                           >
-                          <h id="average_rating">({{ratinglength(toiletInfo.avgRating)}})</h>
+                          <h id="average_rating"
+                            >({{ratinglength(toiletInfo.avgRating)}})</h
+                          >
                           &nbsp;&nbsp;
                         </span>
                       </span>
                     </h5>
                   </div>
                   <div class="col-md-12 room-single mt-4 mb-51">
-                    <div v-if="myReview.review_id == undefined" style="margin-top: 4rem;">
+                    <div
+                      v-if="myReview.review_id == undefined"
+                      style="margin-top: 4rem"
+                    >
                       <h4 class="mb-4">
                         <i
                           class="fas fa-envelope-open-text"
@@ -373,99 +384,102 @@
                               新增評論
                             </button>
                             <button
-                            v-else
-                            class="btn btn-primary py-2 px-4"
-                            style="font-size: 17px"
-                            onclick="javascript:location.href='./Login.html'"
-                          >
-                            登入帳戶
-                          </button>
+                              v-else
+                              class="btn btn-primary py-2 px-4"
+                              style="font-size: 17px"
+                              onclick="javascript:location.href='./Login.html'"
+                            >
+                              登入帳戶
+                            </button>
                           </td>
                         </tr>
                       </table>
                     </div>
-                    <div v-if="account.member_id != 0" style="margin-top: 3rem;">
+                    <div v-if="account.member_id != 0" style="margin-top: 3rem">
                       <div v-if="myReview.review_id != undefined">
-                      <h4 class="mb-4">
-                        <i
-                          class="fas fa-envelope-open-text"
-                          style="font-size: 24px"
-                        ></i
-                        >&nbsp;&nbsp;您的評論
-                      </h4>
-                      <table class="table table-bordered" style="width: 730px">
-                        <thead>
-                          <tr border="0">
-                            <th colspan="2" style="padding-left: 20px">
-                              <img
-                                src="images/user_large.jpg"
-                                width="50px"
-                                height="50px"
-                                style="
-                                  border: 2px #d0d0d0 solid;
-                                  border-radius: 50%;
-                                "
-                              />&nbsp;&nbsp;&nbsp;{{account.name}}
-                              <span style="float: right">
-                                <button
-                                  type="button"
-                                  class="btn"
-                                  style="background-color: transparent"
-                                >
-                                  <img
-                                    src="images/edit.png"
-                                    width="18"
-                                    height="20"
-                                    @click="SendReviewInfo()"
-                                    data-toggle="modal"
-                                    data-target="#EditCommet"
-                                  />
-                                </button>
-                                <button
-                                  @click="delete_myreview()"
-                                  type="button"
-                                  class="btn"
-                                  style="background-color: transparent"
-                                >
-                                  <img
-                                    src="images/delete.png"
-                                    width="18"
-                                    height="20"
-                                  /></button
-                              ></span>
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td colspan="2">
-                              <a href="#">
-                                <span
+                        <h4 class="mb-4">
+                          <i
+                            class="fas fa-envelope-open-text"
+                            style="font-size: 24px"
+                          ></i
+                          >&nbsp;&nbsp;您的評論
+                        </h4>
+                        <table
+                          class="table table-bordered"
+                          style="width: 730px"
+                        >
+                          <thead>
+                            <tr border="0">
+                              <th colspan="2" style="padding-left: 20px">
+                                <img
+                                  src="images/user_large.jpg"
+                                  width="50px"
+                                  height="50px"
                                   style="
-                                    margin-bottom: 8px;
-                                    display: inline-block;
+                                    border: 2px #d0d0d0 solid;
+                                    border-radius: 50%;
                                   "
-                                >
-                                  <span style="display: block, inline">
-                                    <i
-                                      v-for="n in myReview.rating"
-                                      class="fas fa-star"
-                                      >&nbsp;
-                                    </i>
-                                    <i
-                                      v-for="n in (5-myReview.rating)"
-                                      class="far fa-star"
-                                      >&nbsp;</i
-                                    >
+                                />&nbsp;&nbsp;&nbsp;{{account.name}}
+                                <span style="float: right">
+                                  <button
+                                    type="button"
+                                    class="btn"
+                                    style="background-color: transparent"
+                                  >
+                                    <img
+                                      src="images/edit.png"
+                                      width="18"
+                                      height="20"
+                                      @click="SendReviewInfo()"
+                                      data-toggle="modal"
+                                      data-target="#EditCommet"
+                                    />
+                                  </button>
+                                  <button
+                                    @click="delete_myreview()"
+                                    type="button"
+                                    class="btn"
+                                    style="background-color: transparent"
+                                  >
+                                    <img
+                                      src="images/delete.png"
+                                      width="18"
+                                      height="20"
+                                    /></button
+                                ></span>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td colspan="2">
+                                <a href="#">
+                                  <span
+                                    style="
+                                      margin-bottom: 8px;
+                                      display: inline-block;
+                                    "
+                                  >
+                                    <span style="display: block, inline">
+                                      <i
+                                        v-for="n in myReview.rating"
+                                        class="fas fa-star"
+                                        >&nbsp;
+                                      </i>
+                                      <i
+                                        v-for="n in (5-myReview.rating)"
+                                        class="far fa-star"
+                                        >&nbsp;</i
+                                      >
+                                    </span>
                                   </span>
-                                </span>
-                              </a>
-                              <!-- 評價內容 -->
-                              <h6 id="yourcommet">{{myReview.content}}</h6>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                                </a>
+                                <!-- 評價內容 -->
+                                <h6 id="yourcommet">{{myReview.content}}</h6>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </div>
                   </div>
@@ -480,189 +494,199 @@
                     </h3>
                     <div>
                       <div
-                        style="text-align: center;display:flex;align-items:center;margin-left: 4px;"
+                        style="
+                          text-align: center;
+                          display: flex;
+                          align-items: center;
+                          margin-left: 4px;
+                        "
                       >
                         <h1 style="display: inline">
-                          {{ratinglength(toiletInfo.avgRating)}}</h1>&nbsp;&nbsp;星&nbsp;&nbsp;
-                        /&nbsp;&nbsp;
+                          {{ratinglength(toiletInfo.avgRating)}}
+                        </h1>
+                        &nbsp;&nbsp;星&nbsp;&nbsp; /&nbsp;&nbsp;
                         <div v-if="reviews.length>0" style="display: inline">
-                          <h4 style="display: inline">{{reviews.length}}</h4>&nbsp;&nbsp;
-                          則
+                          <h4 style="display: inline">{{reviews.length}}</h4>
+                          &nbsp;&nbsp; 則
                         </div>
                         <div v-if="reviews.length==0" style="display: inline">
-                          <h4 style="display: inline">0</h4>&nbsp;&nbsp;
-                          則
+                          <h4 style="display: inline">0</h4>
+                          &nbsp;&nbsp; 則
                         </div>
-                        </div>
-                        <div style="color: #8d703b;display:flex;align-items:center;margin-left: 4px;">
-                          <span style="display: block, inline">
-                            <i
-                              v-for="n in (toiletInfo.avgRating|0)"
-                              class="fas fa-star"
-                              >&nbsp;</i
-                            >
-                            <i
-                              v-for="n in (5-(toiletInfo.avgRating|0))"
-                              class="far fa-star"
-                              >&nbsp;</i
-                            >
-                          </span>
-                        </div>  
-                        </div>
-                        <br>
-                      <div class="tab">
-                        <button
-                          class="button123 button1"
-                          style="width: 120px"
-                          @click="selected_rating=5"
-                        >
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i
-                          ><br />
-                        </button>
-                        <button
-                          class="button123 button1"
-                          style="width: 120px"
-                          @click="selected_rating=4"
-                        >
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i
-                          ><br />
-                        </button>
-                        <button
-                          class="button123 button1"
-                          style="width: 120px"
-                          @click="selected_rating=3"
-                        >
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i
-                          ><br />
-                        </button>
-                        <button
-                          class="button123 button1"
-                          style="width: 120px"
-                          @click="selected_rating=2"
-                        >
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i
-                          ><br />
-                        </button>
-                        <button
-                          class="button123 button1"
-                          style="width: 120px"
-                          @click="selected_rating=1"
-                        >
-                          <i
-                            class="fas fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i>
-                          <i
-                            class="far fa-star"
-                            style="width: 13px; height: 13px"
-                          ></i
-                          ><br />
-                        </button>
-                        <button
-                          class="button1234 button1"
-                          style="width: 120px"
-                          @click="selected_rating=0"
-                        >
-                          全部<br />
-                          ({{reviews.length}})</button
-                        >&nbsp;
                       </div>
-                    <div id="show_toilet">
                       <div
-                        style="display: unset"
-                        v-for="review in reviews"
+                        style="
+                          color: #8d703b;
+                          display: flex;
+                          align-items: center;
+                          margin-left: 4px;
+                        "
                       >
+                        <span style="display: block, inline">
+                          <i
+                            v-for="n in (toiletInfo.avgRating|0)"
+                            class="fas fa-star"
+                            >&nbsp;</i
+                          >
+                          <i
+                            v-for="n in (5-(toiletInfo.avgRating|0))"
+                            class="far fa-star"
+                            >&nbsp;</i
+                          >
+                        </span>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="tab">
+                      <button
+                        class="button123 button1"
+                        style="width: 120px"
+                        @click="selected_rating=5"
+                      >
+                        <i
+                          class="fas fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="fas fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="fas fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="fas fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="fas fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i
+                        ><br />
+                      </button>
+                      <button
+                        class="button123 button1"
+                        style="width: 120px"
+                        @click="selected_rating=4"
+                      >
+                        <i
+                          class="fas fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="fas fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="fas fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="fas fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="far fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i
+                        ><br />
+                      </button>
+                      <button
+                        class="button123 button1"
+                        style="width: 120px"
+                        @click="selected_rating=3"
+                      >
+                        <i
+                          class="fas fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="fas fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="fas fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="far fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="far fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i
+                        ><br />
+                      </button>
+                      <button
+                        class="button123 button1"
+                        style="width: 120px"
+                        @click="selected_rating=2"
+                      >
+                        <i
+                          class="fas fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="fas fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="far fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="far fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="far fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i
+                        ><br />
+                      </button>
+                      <button
+                        class="button123 button1"
+                        style="width: 120px"
+                        @click="selected_rating=1"
+                      >
+                        <i
+                          class="fas fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="far fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="far fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="far fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i>
+                        <i
+                          class="far fa-star"
+                          style="width: 13px; height: 13px"
+                        ></i
+                        ><br />
+                      </button>
+                      <button
+                        class="button1234 button1"
+                        style="width: 120px"
+                        @click="selected_rating=0"
+                      >
+                        全部<br />
+                        ({{reviews.length}})</button
+                      >&nbsp;
+                    </div>
+                    <div id="show_toilet">
+                      <div style="display: unset" v-for="review in reviews">
                         <table
                           class="table table-bordered"
-                          style="width: 730px;margin-top: 2rem;"
+                          style="width: 730px; margin-top: 2rem"
                           v-if="review.rating==selected_rating||selected_rating==0"
                         >
                           <thead>
@@ -1250,49 +1274,11 @@
       </svg>
     </div>
 
-    <!--小卡片的內容-->
-    <!-- <script>
-      function openCity(evt, cityName) {
-        console.log(cityName);
-        if (cityName == "all") {
-          document.getElementById("one").style.display = "unset";
-          document.getElementById("two").style.display = "unset";
-          console.log("Scenery");
-        }
-        if (cityName == "comment") {
-          document.getElementById("one").style.display = "unset";
-          document.getElementById("two").style.display = "none";
-          console.log("People");
-        }
-        if (cityName == "fivestar") {
-          document.getElementById("one").style.display = "unset";
-          document.getElementById("two").style.display = "none";
-          console.log("Food");
-        }
-        if (cityName == "fourstar") {
-          document.getElementById("one").style.display = "none";
-          document.getElementById("two").style.display = "unset";
-          console.log("Food");
-        }
-        if (cityName == "threestar") {
-          document.getElementById("one").style.display = "none";
-          document.getElementById("two").style.display = "none";
-          console.log("Food");
-        }
-        if (cityName == "twostar") {
-          document.getElementById("one").style.display = "none";
-          document.getElementById("two").style.display = "none";
-          console.log("Food");
-        }
-        if (cityName == "onestar") {
-          document.getElementById("one").style.display = "none";
-          document.getElementById("two").style.display = "none";
-          console.log("Food");
-        }
-      }
-    </script> -->
-
-<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.js"
+      integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -1316,6 +1302,12 @@
       integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
+    ></script>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
     ></script>
 
     <!-- Vue actions -->
