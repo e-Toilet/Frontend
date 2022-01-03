@@ -328,11 +328,19 @@
   }
 
   .login-form .group .label,
-  .login-form .group .input,
   .login-form .group .button {
     width: 100%;
     color: #fff;
     display: block;
+  }
+
+  .login-form .group .input {
+    width: 100%;
+    color: #000;
+    display: block;
+  }
+  .login-form .group .input::placeholder {
+    color: rgba(255, 0, 0, 0.58);
   }
 
   .login-form .group .input,
@@ -340,7 +348,7 @@
     border: none;
     padding: 10px 15px;
     border-radius: 25px;
-    background: rgba(255, 255, 255, 0.732);
+    background: rgba(255, 255, 255, 0.61);
   }
 
   /* ::placeholder {
