@@ -95,7 +95,7 @@ const searchtoilet = new Vue({
                     `https://etoilet.ddns.net:8090/getToiletByLongitude?longitude=${param_obj["longitude"]}&latitude=${param_obj["latitude"]}`
                 )
                 .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     result = JSON.parse(response.data.Toiletinfo);
                     searchtoilet.toilets = result;
                     searchtoilet.lon = param_obj["longitude"]
@@ -192,31 +192,28 @@ const searchtoilet = new Vue({
             location.href = `toiletcontent.html?toilet_id=${toilet_id}`;
         },
         getCountryName: (country_id) => {
-            if (searchtoilet.web.country_name) return searchtoilet.web.country_name;
+            // if (searchtoilet.web.country_name) return searchtoilet.web.country_name;
 
-            searchtoilet.countries.forEach((country) => {
-                if (country.country_id == country_id)
-                    searchtoilet.web.country_name = country.country_name;
-                return searchtoilet.web.country_name;
-            });
+            for(let i = 0; i < searchtoilet.countries.length; i++){
+                if(country_id == searchtoilet.countries[i].country_id)
+                    return searchtoilet.countries[i].country_name
+            }
         },
         getCityName: (city_id) => {
-            if (searchtoilet.web.city_name) return searchtoilet.web.city_name;
+            // if (searchtoilet.web.city_name) return searchtoilet.web.city_name;
 
-            searchtoilet.cities.forEach((city) => {
-                if (city.city_id == city_id)
-                    searchtoilet.web.city_name = city.city_name;
-                return searchtoilet.web.city_name;
-            });
+            for(let i = 0; i < searchtoilet.cities.length; i++){
+                if(city_id == searchtoilet.cities[i].city_id)
+                    return searchtoilet.cities[i].city_name
+            }
         },
         getDistrictName: (district_id) => {
-            if (searchtoilet.web.district_name) return searchtoilet.web.district_name;
+            // if (searchtoilet.web.district_name) return searchtoilet.web.district_name;
 
-            searchtoilet.districts.forEach((district) => {
-                if (district.district_id == district_id)
-                    searchtoilet.web.district_name = district.district_name;
-                return searchtoilet.web.district_name;
-            });
+            for(let i = 0; i < searchtoilet.districts.length; i++){
+                if(district_id == searchtoilet.districts[i].district_id)
+                    return searchtoilet.districts[i].district_name
+            }
         },
         Distance: (distance) => {
             return Math.floor(distance * 1) / 1;
@@ -226,7 +223,7 @@ const searchtoilet = new Vue({
         },
         roundmeter: (distance) => {
             return Math.round(distance * 1000);
-            console.log(Math.round(distance * 1000))
+            // console.log(Math.round(distance * 1000))
         },
         longitudelength: (longitude) => {
             return Math.round(longitude * 10000) / 10000;

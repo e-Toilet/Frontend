@@ -228,7 +228,8 @@
               <div class="col-xs-4">
                 <div class="loader-inner ball-spin-fade-loader"></div>
               </div>
-              <div class="loader loader-default is-active" v-if="!allLoaded" data-text data-blink></div>
+              <!-- <div class="loader loader-ball is-active" v-if="!allLoaded" ></div> -->
+              <div class="loader loader-default is-active" v-if="!allLoaded" data-text="全力放棄中" data-blink></div>
               <div
                 class="col-sm col-md-6 col-lg-4"
                 v-for="toilet in sortDistance"
