@@ -61,8 +61,6 @@ const app = new Vue({
             return re.test(password);
         },
         login: function () {
-            console.log(this.loginFrom.useremail)
-            console.log(this.loginFrom.pass)
             let checkLogin = this.loginFrom.useremail && this.validEmail(this.loginFrom.useremail) && this.loginFrom.pass && this.validPassword(this.loginFrom.pass)
             if (checkLogin) {
                 axios.post('https://etoilet.ddns.net:8090/Signin', {
@@ -72,7 +70,6 @@ const app = new Vue({
                     .then((response) => {
                         //接收回傳的資訊
                         let member_info = JSON.parse(response.data.Memberinfo)[0]
-                        console.log(member_info)
                         document.cookie = `member_id=${member_info.member_id}`
                         document.cookie = `isAdmin=${member_info.status == 2 ? true : false}`
 
@@ -80,14 +77,7 @@ const app = new Vue({
                             title: "登入成功",
                             icon: "success",
                         }).then(function () {
-                            let count = -1
-                            while(true){
-                                if(history.go(count) == self.location)
-                                    count--
-                                else
-                                    break
-                            }
-                            history.go(count)
+                            self.location = document.referrer
                         })
                     })
                     .catch(() => {
